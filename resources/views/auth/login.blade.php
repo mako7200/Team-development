@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -70,4 +70,37 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+</head>
+<body>
+    <header>
+        <h1>アプリ名</h1>
+        <hr>
+    </header>
+    <main>
+        <div><a href=""><i class="fa-solid fa-xmark"></i></a></div>
+        <div class="login-box">
+            <div>
+                <div>
+                    <label for="mail">Mail Address</label>
+                    <input type="text" id="mail">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="text" id="password">
+                </div>
+            </div>
+            <div><button type="submit">ログイン</button></div>
+        </div>
+    </main>
+</body>
+</html>
