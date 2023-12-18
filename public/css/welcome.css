@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.homeview{
+    background-image: url(../img/welcome2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.topimage{
+    width: 34vw;
+    height: 40vh;
+    border-radius: 20%;
+}
+
+.detail{
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.words{
+    width: 28vw;
+    font-size: 30px;
+    line-height: 2.0;
+}
+
+.appeal{
+    color: red;
+}
+
+.explain{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 120px;
+    margin-top: 80px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+}
+
+.explain2{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 120px;
+    margin-bottom: 100px;
+    margin-left: 150px;
+}
