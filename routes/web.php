@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/profileedit', function () {
+    return view('profileedit');
+});
+Route::get('/showedit', function () {
+    return view('showedit');
+});
