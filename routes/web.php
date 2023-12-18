@@ -16,7 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/index', function () {
+    return view('index');
+});
+Route::get('/create', function () {
+    return view('create');
+});
+Route::get('/profile', function () {
+    return view('profile');
+});
+Route::get('/show', function () {
+    return view('show');
+});
+Route::get('/like', function () {
+    return view('like');
+});
 Route::get('/profileedit', function () {
     return view('profileedit');
 });

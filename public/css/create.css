@@ -1,0 +1,13 @@
+.titlebox{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    padding: 5px 10px;
+}
+
+.postimage{
+    width: 300px;
+    height: 200px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 4px 0 #5f5f5f;
+}
