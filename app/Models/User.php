@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'country_id',
+        'occupation_id',
     ];
 
     /**
@@ -41,4 +43,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
+
+    function country()
+    {
+        return $this->belongsTo('App\Models\Country');
+    }
+
+    function occupation()
+    {
+        return $this->belongsTo('App\Models\Occupation');
+    }
 }
