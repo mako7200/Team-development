@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Country;
+use App\Models\Occupation;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -41,6 +43,14 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $countries = Country::all();
+        $occupations = Occupation::all();
+
+        return view('auth.register', compact('countries', 'occupations'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -53,6 +63,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'country_id' => ['required'],
+            'occupation_id' => ['required'],
         ]);
     }
 
@@ -68,6 +80,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'country_id' => $data['country_id'], // 選択された国のIDを保存
+            'occupation_id' => $data['occupation_id'], // 選択された職種のIDを保存
         ]);
     }
 }
