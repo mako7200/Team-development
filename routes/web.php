@@ -31,6 +31,9 @@ Route::get('/show', function () {
 Route::get('/like', function () {
     return view('like');
 });
+Route::get('/search', function () {
+    return view('search');
+});
 Route::get('/profileedit', function () {
     return view('profileedit');
 });

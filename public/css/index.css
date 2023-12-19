@@ -11,12 +11,12 @@ body{
     display: flex;
     flex-direction: row;
     gap: 50px;
-    /* background-image: url(../img/indexmain2.jpg);
+    background-image: url(../images/indexmain2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
     top: 0;
-    left: 0; */
+    left: 0;
 }
 
 .navigation{
