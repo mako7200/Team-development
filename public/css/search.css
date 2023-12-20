@@ -35,7 +35,7 @@ body::after{
 }
 
 .navigation{
-    background: linear-gradient(to bottom, #FF8379, #FFFFFF);
+    background: linear-gradient(to bottom, #fc7c72, #FFFFFF);
     height: 100vh;
     border-right: 2px solid black;
     opacity: 0.8;
@@ -45,6 +45,10 @@ body::after{
 nav{
     padding-top: 30px;
     padding-right: 40px;
+}
+
+.nav-link{
+    background-color: transparent !important;
 }
 
 ul > li{
@@ -64,7 +68,7 @@ ul > li{
 
 .searchpage{
     /* margin: 40px 70px 40px 500px; */
-    margin: 40px 350px 40px 650px;
+    margin: 40px 350px 40px 620px;
 }
 
 li > .word-size{
@@ -116,6 +120,3 @@ div > .switch-page{
     height: 30px;
 }
 
-.nav-link{
-    background-color: transparent !important;
-}
