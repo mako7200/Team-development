@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -70,9 +70,12 @@
         </div>
     </div>
 </div>
-@endsection --}}
+@endsection
 
-<!DOCTYPE html>
+
+{{-- ✅以下はゆうやのコード --}}
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -103,4 +106,4 @@
         </div>
     </main>
 </body>
-</html>
+</html> --}}

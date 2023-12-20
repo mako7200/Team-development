@@ -45,12 +45,16 @@
                 <div>
                     <div class="searchpage">
                         <form action="">
-                            <div class="searchbar">
-                                <label for="searchInput">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </label>
-                                <input type="search" id="searchInput">
-                                <button type="submit">検索</button>
+                            <div class="search-box">
+                                <div class="background-color">
+                                    <label for="searchInput">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </label>
+                                    <input type="search" id="searchInput" class="input-search">
+                                </div>
+                                <div>
+                                    <button type="submit" class="button-submit">検索</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -61,12 +65,16 @@
                 <div>
                     <div class="searchpage">
                         <form action="">
-                            <div class="searchbar">
-                                <label for="searchInput">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </label>
-                                <input type="search" id="searchInput">
-                                <button type="submit">検索</button>
+                            <div class="search-box">  
+                                <div class="background-color">                  
+                                    <label for="searchInput">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </label>
+                                    <input type="search" id="searchInput" class="input-search">
+                                </div>
+                                <div>
+                                    <button type="submit" class="button-submit">検索</button>
+                                </div>
                             </div>
                         </form>
                     </div>

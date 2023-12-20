@@ -46,9 +46,9 @@ Route::post('/users/search', [App\Http\Controllers\UserController::class, 'searc
 // Route::get('/like', function () {
 //     return view('like');
 // });
-// Route::get('/search', function () {
-//     return view('search');
-// });
+Route::get('/posts/search', function () {
+    return view('posts.search');
+});
 // Route::get('/profileedit', function () {
 //     return view('profileedit');
 // });
