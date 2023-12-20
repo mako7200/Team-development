@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('avatar');   //アバター
             $table->unsignedBigInteger('country_id'); // countriesテーブルのIDを参照する外部キー
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->unsignedBigInteger('occupation_id'); // occupationsテーブルのIDを参照する外部キー
