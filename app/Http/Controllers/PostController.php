@@ -55,33 +55,33 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    // //投稿検索
-    // function search(Request $request)
-    // {
-    //     $countryId = $request->input('country_id');
-    //     $occupationId = $request->input('occupation_id');
+    //投稿検索
+    function search(Request $request)
+    {
+        $countryId = $request->input('country_id');
+        $occupationId = $request->input('occupation_id');
 
-    //     // タグ一覧を取得
-    //     $countries = Country::all();
-    //     $occupations = Occupation::all();
+        // タグ一覧を取得
+        $countries = Country::all();
+        $occupations = Occupation::all();
 
-    //     // 選択されたタグに関連する投稿を取得
-    //     $postsQuery = Post::query();
+        // 選択されたタグに関連する投稿を取得
+        $postsQuery = Post::query();
 
-    //     if ($countryId) {
-    //         $postsQuery->where('country_id', $countryId);
-    //     }
+        if ($countryId) {
+            $postsQuery->where('country_id', $countryId);
+        }
 
-    //     if ($companyId) {
-    //         $postsQuery->where('occupation_id', $occupationId);
-    //     }
+        if ($occupationId) {
+            $postsQuery->where('occupation_id', $occupationId);
+        }
 
-    //     $posts = $postsQuery->get();
+        $posts = $postsQuery->get();
 
-    //     return view('posts.index', [
-    //         'posts' => $posts,
-    //         'countries' => $countries,
-    //         'occupations' => $occupations
-    //     ]);
-    // }
+        return view('posts.index', [
+            'posts' => $posts,
+            'countries' => $countries,
+            'occupations' => $occupations
+        ]);
+    }
 }

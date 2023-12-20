@@ -21,9 +21,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
-// Route::post('/posts/search', [App\Http\Controllers\PostController::class, 'search'])->name('posts.search');
+Route::post('/posts/search', [App\Http\Controllers\PostController::class, 'search'])->name('posts.search');
 Route::get('/posts/create', [App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::post('/users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
 
 
 

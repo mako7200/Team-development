@@ -12,50 +12,52 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    // 自分以外のユーザーを表示
-    // public function index()
-    // {
-    //     $loggedInUser = Auth::user(); // ログインしているユーザーの情報を取得
 
-    //     // ログインユーザー以外のユーザーを取得
-    //     $users = User::where('id', '!=', $loggedInUser->id)
-    //         ->with('country', 'occupation')
-    //         ->orderBy('id', 'DESC')
-    //         ->paginate(15);
+    // 自分以外のユーザーの表示
+    function index()
+    {
+        $loggedInUser = Auth::user();
 
-    //     $countries = Country::all();
-    //     $occupations = Occupation::all();
+        $users = User::where('id', '!=', $loggedInUser->id)
+            ->with('country', 'occupation')
+            ->orderBy('id', 'DESC')
+            ->paginate(15);
 
-    //     return view('users.users', compact('users', 'countries', 'occupations'));
-    // }
+        $countries = Country::all();
+        $occupations = Occupation::all();
 
-    // ユーザー検索
-    // function search(Request $request)
-    // {
-    //     $countryId = $request->input('country_id');
-    //     $occupationId = $request->input('occupation_id');
+        return view('users.users', compact('users', 'countries', 'occupations'));
+    }
 
-    //     // タグ一覧を取得
-    //     $countries = Country::all();
-    //     $occupations = Occupation::all();
+    // ユーザー検索機能
+    function search(Request $request)
+    {
+        $countryId = $request->input('country_id');
+        $occupationId = $request->input('occupation_id');
 
-    //     // 選択されたタグに関連する投稿を取得
-    //     $usersQuery = User::query();
+        $loggedInUser = Auth::user();
 
-    //     if ($countryId) {
-    //         $usersQuery->where('country_id', $countryId);
-    //     }
+        $countries = Country::all();
+        $occupations = Occupation::all();
 
-    //     if ($companyId) {
-    //         $usersQuery->where('occupation_id', $occupationId);
-    //     }
+        $usersQuery = User::where('id', '!=', $loggedInUser->id);
 
-    //     $users = $usersQuery->get();
+        if ($countryId) {
+            $usersQuery->where('country_id', $countryId);
+        }
 
-    //     return view('users.users', [
-    //         'users' => $users,
-    //         'countries' => $countries,
-    //         'occupations' => $occupations
-    //     ]);
-    // }
+        if ($occupationId) {
+            $usersQuery->where('occupation_id', $occupationId);
+        }
+
+        $users = $usersQuery->get();
+
+        return view('users.users', [
+            'users' => $users,
+            'countries' => $countries,
+            'occupations' => $occupations
+        ]);
+    }
+
+
 }

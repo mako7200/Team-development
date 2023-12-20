@@ -25,15 +25,40 @@
         </div>   
         <main>
             <div class="entire">
+                <div class="kensaku">検索フォーム</div>
+                <div>
+                   <form action="{{ route('posts.search') }}" method="POST">
+                    @csrf
+                    <select name="country_id">
+                        <option value="">国を選択してください</option>
+                        @foreach($countries as $country)
+                            <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                        @endforeach
+                    </select>
+                
+                    <select name="occupation_id">
+                        <option value="">会社を選択してください</option>
+                        @foreach($occupations as $occupation)
+                            <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                        @endforeach
+                    </select>
+                
+                    <span>
+                        <button>検索</button>
+                    </span>
+                </form>
                 <div class="card-page">
                     <div class="cards">
+                        @foreach($posts as $post)
                         <div class="postcard">
                             <div class="author"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">username</div>
-                            <h4>title</h4>
+                            <h4>title:{{ $post->title }}</h4>
                             <div class="content">
-                                <p class="contenttext">content10~15</p>
+                                <p class="contenttext">content:{{ $post->content }}</p>
                                 <a href="" class="more">show more...</a>
                             </div>
+                            <div>国のタグ：{{ $post->country->country_name }}</div>
+                            <div>企業のタグ：{{ $post->occupation->occupation_name }}</div>
                         </div>
                         <div class="react">
                             <div class="count">
@@ -45,47 +70,9 @@
                                 <p>1</p>
                             </div>
                         </div>
+                        @endforeach
                     </div>
     
-                    <div class="cards">
-                        <div class="postcard">
-                            <div class="author"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">username</div>
-                            <h4>title</h4>
-                            <div class="content">
-                                <p>content10~15</p>
-                                <a href="" class="more">show more...</a>
-                            </div>
-                        </div>
-                        <div class="react">
-                            <div class="count">
-                                <i class="fa-regular fa-heart mark"></i><p>2</p>
-                            </div>
-                            <div class="count">
-                                <i class="fa-regular fa-comment mark"></i><p>1</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="cards">
-                        <div class="postcard">
-                            <div class="author"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">username</div>
-                            <h4>title</h4>
-                            <div class="content">
-                                <p>content10~15</p>
-                                <a href="" class="more">show more...</a>
-                            </div>
-                        </div>
-                        <div class="react">
-                            <div class="count">
-                                <i class="fa-regular fa-heart mark"></i>
-                                <p>2</p>
-                            </div>
-                            <div class="count">
-                                <i class="fa-regular fa-comment mark"></i>
-                                <p>1</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </main>
