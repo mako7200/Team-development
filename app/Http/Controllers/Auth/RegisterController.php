@@ -62,6 +62,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'avatar' => ['required', 'image'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'country_id' => ['required'],
             'occupation_id' => ['required'],
@@ -76,9 +77,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $avatar = request()->file('avatar')->getClientOriginalName();
+        request()->file('avatar')->storeAs('public/images', $avatar);
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'avatar' => $avatar,
             'password' => Hash::make($data['password']),
             'country_id' => $data['country_id'], // 選択された国のIDを保存
             'occupation_id' => $data['occupation_id'], // 選択された職種のIDを保存
