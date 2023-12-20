@@ -43,8 +43,8 @@
 
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div>
-                    <form action="">
-                        <div class="searchpage">
+                    <div class="searchpage">
+                        <form action="">
                             <div class="searchbar">
                                 <label for="searchInput">
                                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -52,15 +52,15 @@
                                 <input type="search" id="searchInput">
                                 <button type="submit">検索</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
 
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div>
-                    <form action="">
-                        <div class="searchpage">
+                    <div class="searchpage">
+                        <form action="">
                             <div class="searchbar">
                                 <label for="searchInput">
                                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -68,8 +68,8 @@
                                 <input type="search" id="searchInput">
                                 <button type="submit">検索</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
