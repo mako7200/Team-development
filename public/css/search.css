@@ -80,6 +80,18 @@ div > .switch-page{
     margin-left: 250px;
 }
 
+.kensaku{
+    margin-top: 40px;
+    margin-left: 250px;
+    margin-bottom: 30px;
+}
+
+.kensaku-bar{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
 .search-box{
     display: flex;
     flex-direction: row;
