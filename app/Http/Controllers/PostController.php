@@ -23,7 +23,7 @@ class PostController extends Controller
     
         return view('posts.index', compact('posts', 'countries','occupations'));
     }
-    
+
     //投稿作成
     function create()
     {
@@ -85,11 +85,13 @@ class PostController extends Controller
         ]);
     }
 
-    //✅詳細
-    function show($id)
-    {
-        $post = Post::find($id);
 
-        return view('posts.search', compact('post'));
-    }
+     //✅詳細
+    // function show($id)
+    // {
+    //     $post = Post::find($id);
+
+    //     return view('posts.show', compact('post'));
+    // }
+    
 }
