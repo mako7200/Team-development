@@ -78,18 +78,12 @@ class PostController extends Controller
 
         $posts = $postsQuery->get();
 
-        return view('posts.index', [
+        return view('users.search', [
             'posts' => $posts,
             'countries' => $countries,
             'occupations' => $occupations
         ]);
     }
 
-    //✅詳細
-    function show($id)
-    {
-        $post = Post::find($id);
 
-        return view('posts.show', compact('post'));
-    }
 }
