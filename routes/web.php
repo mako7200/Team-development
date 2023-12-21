@@ -63,9 +63,9 @@ Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->nam
 // Route::get('/like', function () {
 //     return view('like');
 // });
-Route::get('/posts/search', function () {
-    return view('posts.search');
-});
+// Route::get('/posts/search', function () {
+//     return view('posts.search');
+// });
 // Route::get('/profileedit', function () {
 //     return view('profileedit');
 // });

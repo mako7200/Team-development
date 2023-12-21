@@ -62,7 +62,43 @@
             </div>
 
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                {{-- <div>
+
+                <div class="kensaku">
+                    <div>
+                    <form action="{{ route('posts.search') }}" method="POST" class="kensaku-bar">
+                        @csrf
+                        @if(isset($countries)) {{-- $countriesが定義しているかどうか確認している --}}
+                        <select name="country_id" class="country-bar">
+                            <option value="">国を選択してください</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                            @endforeach
+                        </select>
+                        @endif
+                        
+                        @if(isset($occupations))  {{-- $occupationsが定義されているかどうか確認している --}}
+                        <select name="occupation_id" class="occupation-bar">
+                            <option value="">会社を選択してください</option>
+                            @foreach($occupations as $occupation)
+                                <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                            @endforeach
+                        </select>
+                        @endif
+                        
+                            <div class="button-box">
+                                <button class="button">検索</button>
+                            </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+  {{-- <div>
                     <div class="searchpage">
                         <form action="">
                             <div class="search-box">  
@@ -79,36 +115,3 @@
                         </form>
                     </div>
                 </div> --}}
-
-                <div class="kensaku">
-                    <div>
-                    <form action="{{ route('posts.search') }}" method="POST" class="kensaku-bar">
-                        @csrf
-                        @if(isset($countries)) {{-- $countriesが定義しているかどうか確認している --}}
-                        <select name="country_id">
-                            <option value="">国を選択してください</option>
-                            @foreach($countries as $country)
-                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
-                            @endforeach
-                        </select>
-                        @endif
-                        
-                        @if(isset($occupations))  {{-- $occupationsが定義されているかどうか確認している --}}
-                        <select name="occupation_id">
-                            <option value="">会社を選択してください</option>
-                            @foreach($occupations as $occupation)
-                                <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
-                            @endforeach
-                        </select>
-                        @endif
-                        
-                            <div class="button">
-                                <button>検索</button>
-                            </div>
-                    </form>
-                    </div>
-                </div>
-        </div>
-    </div>
-</body>
-</html>
