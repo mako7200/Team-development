@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
 </head>
 <body>
-    <div><i class="fa-solid fa-xmark"></i></div>
+    <div><a href="{{ route('posts.index') }}"><i class="fa-solid fa-xmark"></i></a></div>
     
-    <form action="">
+    <form action="{{ route('posts.store') }}" method="POST">
+        @csrf
         <div>
             <div>
                 <input type="text" id="title" class="titlebox">

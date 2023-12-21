@@ -84,4 +84,12 @@ class PostController extends Controller
             'occupations' => $occupations
         ]);
     }
+
+    //✅詳細
+    function show($id)
+    {
+        $post = Post::find($id);
+
+        return view('posts.show', compact('post'));
+    }
 }

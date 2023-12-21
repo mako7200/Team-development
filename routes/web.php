@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,30 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
-Route::post('/posts/search', [App\Http\Controllers\PostController::class, 'search'])->name('posts.search');
+//新規投稿
 Route::get('/posts/create', [App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
+
+//一覧表示
+Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
+
+//新規投稿保存
 Route::post('/posts', [App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
+
+//いいね一覧
+
+//詳細
+Route::get('/posts/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
+
+//詳細編集
+Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
+
+//検索
+Route::post('/posts/search', [App\Http\Controllers\PostController::class, 'search'])->name('posts.search');
+
+//ユーザー一覧
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+
+//ユーザー検索
 Route::post('/users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
 
 
