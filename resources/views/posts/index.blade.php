@@ -15,7 +15,7 @@
                 <ul>
                     <li><a href="" class="list-a">ユーザー名</a></li>
                     <li><a href="" class="list-a"><i class="fa-solid fa-house"></i></a></li>
-                    <li><a href="" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
+                    <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                     <li><a href="" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
                     <li><a href="" class="list-a"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     <li><a href="" class="list-a"><i class="fa-solid fa-heart"></i></a></li>

@@ -85,15 +85,5 @@ class PostController extends Controller
         ]);
     }
 
-    // public function showSearchView()
-    // {
-    //     $countries = Country::all();
-    //     $occupations = Occupation::all();
-    //     // $posts = Post::with('country','occupation')
-    //     //     ->orderBy('id', 'DESC')
-    //     //     ->paginate(15);
-    
-    //     return view('posts.index', compact( 'countries','occupations'));
-    //     // 'posts',
-    // }
+
 }
