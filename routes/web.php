@@ -25,7 +25,7 @@ Route::post('/posts/search', [App\Http\Controllers\PostController::class, 'searc
 Route::get('/posts/create', [App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-Route::post('/users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
+Route::get('/users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
 
 
 

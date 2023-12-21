@@ -78,10 +78,22 @@ class PostController extends Controller
 
         $posts = $postsQuery->get();
 
-        return view('posts.index', [
+        return view('users.search', [
             'posts' => $posts,
             'countries' => $countries,
             'occupations' => $occupations
         ]);
     }
+
+    // public function showSearchView()
+    // {
+    //     $countries = Country::all();
+    //     $occupations = Occupation::all();
+    //     // $posts = Post::with('country','occupation')
+    //     //     ->orderBy('id', 'DESC')
+    //     //     ->paginate(15);
+    
+    //     return view('posts.index', compact( 'countries','occupations'));
+    //     // 'posts',
+    // }
 }

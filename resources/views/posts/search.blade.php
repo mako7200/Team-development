@@ -42,7 +42,7 @@
         <div class="tab-content" id="myTabContent">
 
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div>
+                {{-- <div>
                     <div class="searchpage">
                         <form action="">
                             <div class="search-box">
@@ -57,6 +57,30 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div> --}}
+                <div class="kensaku">検索フォーム</div>
+                    <div>
+                    <form action="{{ route('users.search') }}" method="POST">
+                        @csrf
+                        <select name="country_id">
+                            <option value="">国を選択してください</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                            @endforeach
+                        </select>
+                        
+                        <select name="occupation_id">
+                            <option value="">会社を選択してください</option>
+                            @foreach($occupations as $occupation)
+                                <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                            @endforeach
+                        </select>
+                        
+                        <span>
+                            <button>検索</button>
+                        </span>
+                    </form>
                     </div>
                 </div>
             </div>
