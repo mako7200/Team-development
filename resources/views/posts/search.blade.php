@@ -91,6 +91,31 @@
                     </form>
                     </div>
                 </div>
+
+                {{-- <div class="search-results">
+                    <h2>検索結果</h2>
+            
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th> --}}
+                                {{-- <th>Content</th> --}}
+                                {{-- <th>Country</th>
+                                <th>Occupation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($posts as $post)
+                                <tr>
+                                    <td>{{ $post->title }}</td> --}}
+                                    {{-- <td>{{ $post->content }}</td> --}}
+                                    {{-- <td>{{ $post->country->country_name }}</td>
+                                    <td>{{ $post->occupation->occpation_name }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table> --}}
+                </div>
             </div>
         </div>
     </div>
