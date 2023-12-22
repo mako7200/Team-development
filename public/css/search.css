@@ -146,3 +146,7 @@ div > .switch-page{
     width: 50px;
     height: 30px;
 }
+
+.search-results{
+    margin-left: 250px;
+}
