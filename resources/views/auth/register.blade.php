@@ -174,7 +174,7 @@
                                     <div class="third-block">
                                         {{-- 国タグ --}}
                                         <div class="row mb-3">
-                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Country (国名)※') }}</label>
+                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Country (国名)') }}</label>
                                             <div class="col-md-6">
                                                 <select class="form-select" id="countries" name="country_id" >
                                                     <option>タグを選択してください</option>
@@ -187,7 +187,7 @@
                                         
                                         {{-- 職種タグ --}}
                                         <div class="row mb-3">
-                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Occupation (職業)※') }}</label>
+                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Occupation (職業)') }}</label>
                                             <div class="col-md-6">
                                                 <select class="form-select" id="occupations" name="occupation_id" >
                                                     <option>タグを選択してください</option>
