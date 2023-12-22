@@ -26,8 +26,8 @@
         <main>
             <div class="entire">
                 <div class="card-page">
+                    @foreach($posts as $post)
                     <div class="cards">
-                        @foreach($posts as $post)
                         <div class="postcard">
                             <div class="author"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">username</div>
                             <h4>title:{{ $post->title }}</h4>
@@ -48,8 +48,8 @@
                                 <p>1</p>
                             </div>
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
 
             </div>
