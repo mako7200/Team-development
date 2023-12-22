@@ -30,13 +30,7 @@ Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->nam
 //新規投稿保存
 Route::post('/posts', [App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
 
-
-// いいねを作成
-Route::get('/posts/{post_id}/likes', [App\Http\Controllers\LikeController::class, 'store']);
-
-// いいねを取り消す
-Route::get('/likes/{like_id}', [App\Http\Controllers\LikeController::class, 'destroy']);
-
+//いいね一覧
 
 //詳細
 Route::get('/posts/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
