@@ -14,10 +14,10 @@
         <nav>
             <ul>
                 <li><a href="" class="list-a">ユーザー名</a></li>
-                <li><a href="" class="list-a"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
                 <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                 <li><a href="" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
-                <li><a href="" class="list-a"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <li><a href="{{ route('posts.search') }}" class="list-a"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                 <li><a href="" class="list-a"><i class="fa-solid fa-heart"></i></a></li>
                 <li>アプリ名</li>
             </ul>
@@ -29,7 +29,7 @@
                 <div class="username"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">ユーザー名</div>
 
                 <div>
-                    <h4>タイトル</h4>
+                    <h4>タイトル：</h4>
                     <div>
                         <i class="fa-solid fa-eraser"></i>
                     </div>
@@ -39,8 +39,9 @@
                 </div>
 
                 <div class="content">
-                    <p>content <br> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, dolore nemo. Tempore nobis, aliquid quia sequi assumenda quod vitae sed ipsum. Possimus animi dolorum deleniti. Reprehenderit obcaecati labore necessitatibus impedit!</p>
+                    <p>内容 <br> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, dolore nemo. Tempore nobis, aliquid quia sequi assumenda quod vitae sed ipsum. Possimus animi dolorum deleniti. Reprehenderit obcaecati labore necessitatibus impedit!</p>
                     <div><img src="../img/seedtech70期生徒.jpg" alt="" class="image"></div>
+                    <p>投稿日時：</p>   {{-- ✅ゆうやへ：ここに投稿日時を記載したよ！ --}}
                 </div>
             </div>
 
