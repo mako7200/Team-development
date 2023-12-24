@@ -84,14 +84,20 @@ class PostController extends Controller
             'occupations' => $occupations
         ]);
     }
+    
+    //✅検索ページ表示
+    function searchShow(Request $request)
+    {
+        return view('posts.search');
+    }
 
 
      //✅詳細
-    // function show($id)
-    // {
-    //     $post = Post::find($id);
+    function show($id)
+    {
+        $post = Post::find($id);
 
-    //     return view('posts.show', compact('post'));
-    // }
+        return view('posts.show', compact('post'));
+    }
     
 }
