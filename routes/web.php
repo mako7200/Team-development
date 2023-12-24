@@ -32,14 +32,20 @@ Route::post('/posts', [App\Http\Controllers\PostController::class, 'store'])->na
 
 //いいね一覧
 
+
+
+//検索
+Route::post('/posts/search', [App\Http\Controllers\PostController::class, 'search'])->name('posts.search');
+
+//検索結果を表示する
+Route::get('/posts/search', [App\Http\Controllers\PostController::class, 'searchShow']);
+
 //詳細
 Route::get('/posts/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
 
 //詳細編集
 Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
 
-//検索
-Route::post('/posts/search', [App\Http\Controllers\PostController::class, 'search'])->name('posts.search');
 
 //ユーザー一覧
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
