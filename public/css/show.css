@@ -63,3 +63,56 @@ ul > li{
     width: 200px;
     height: 180px;
 }
+
+/* コメントボタン （候補①：ぬるぬる） */
+.button{
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color: #98c4bf;
+    border: solid 1px #98c4bf;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 40px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.button:hover{
+    animation: hoverShake 0.3s linear 3;
+    background-color: #abdfac;
+}
+@keyframes hoverShake{
+    0% {transform: skew(0deg, 0deg);}
+    25% {transform: skew(1deg, 1deg);}
+    75% {transform: skew(-1deg, -1deg);}
+    100% {transform: skew(0deg, 0deg);}
+}
+
+/* コメントボタン（候補②：立体） */
+/* ひろやのCSS */
+.btn {
+    height: 40px;
+    display: inline-block;
+    padding: 0.8em 3em;
+    margin: 10px auto;
+    background-color: #7fda80; /* 背景色 */
+    box-shadow: 0 5px 0 #46d548; /* 影の太さ・色 */
+    border: solid 0.5px #46d548;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: #7fda80;
+}
+
+.btn:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
