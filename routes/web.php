@@ -61,6 +61,10 @@ Route::get('/show',[App\Http\Controllers\UserController::class, 'create'])->name
 //コメント保存ルート
 Route::post('/show', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
 
+//✅プロフィール表示
+Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('posts.profile');
+
+//✅いいね一覧
 
 
 //ゆうやが書いたRoute
