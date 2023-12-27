@@ -50,6 +50,9 @@ Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edi
 //ユーザー一覧
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
+//ユーザー検索
+Route::post('/users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
+
 
 
 
