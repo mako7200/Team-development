@@ -65,7 +65,7 @@ ul > li{
 }
 
 /* コメントボタン （候補①：ぬるぬる） */
-.button{
+/* .button{
     display: block;
     width: 100px;
     height: 40px;
@@ -88,7 +88,7 @@ ul > li{
     25% {transform: skew(1deg, 1deg);}
     75% {transform: skew(-1deg, -1deg);}
     100% {transform: skew(0deg, 0deg);}
-}
+} */
 
 /* コメントボタン（候補②：立体） */
 /* ひろやのCSS */
@@ -106,13 +106,8 @@ ul > li{
     text-decoration: none;
 }
 
-.btn:hover {
-    color: #fff;
-    background-color: #7fda80;
-}
-
 .btn:active {
     box-shadow: none;
-    transform: translateY(5px);
+    transform: translateY(4px);
 }
 
