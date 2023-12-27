@@ -55,19 +55,20 @@
                         <div class="image-box">
                             <img src="../img/seedtech70期生徒.jpg" alt="" class="image">
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
 
+            {{-- コメントエリア --}}
             <div class="comment-area">
                 <div class="commenttext">
-                    <form action="}" method="post">
+                    <form action="{{ route('comments.store') }}" method="post">
                         @csrf
-                        <input type="hidden" name="pos_id" value="">
+                        {{-- <input type="hidden" name="post_id" value="{{ $post->id }}"> --}}
                         <div>
                             <label class="comment" for="title">コメント</label>
-                            <textarea class="commentbox" rows="5" name="comment-body" id="title"></textarea>
+                            <textarea class="commentbox" rows="5" name="body" id="title"></textarea>
                         </div>
 
                         <div class="btn-box">
@@ -76,9 +77,17 @@
                     </form>
                  </div>
 
+                 
                  <div class="view">
                     <div class="commentlist">コメント一覧</div>
-                    <div class="commentbox2">ここにアバター、ユーザー <br> textしたコメントを閲覧できるようにします<br>イメージはこんな感じです</div>
+                    <div class="commentbox2">
+                        @if($post && $post->comments)
+                        @foreach($post->comments as $comment)
+                        <p>{{ $comment->user->name }}：{{ $comment->body }}</p><br>
+                        <p>{{ $comment->formattedCreatedAt }}</p>
+                        @endforeach
+                        @endif
+                    </div>
                  </div>
             </div>
         </div>
