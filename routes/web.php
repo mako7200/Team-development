@@ -55,6 +55,11 @@ Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->nam
 //ユーザー検索
 Route::post('/users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
 
+//コメント投稿ルート
+Route::get('/show',[App\Http\Controllers\UserController::class, 'create'])->name('comments.create');
+
+//コメント保存ルート
+Route::post('/show', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
 
 
 
