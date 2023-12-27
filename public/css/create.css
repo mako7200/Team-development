@@ -1,13 +1,122 @@
+body{
+    background-color: #F8F6F6;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: right;
+    padding: 30px 30px 0 0;
+}
+
+.cancel-btn{
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: #F7EAEA;
+    border: black 1px solid;
+    border-radius: 10px;
+    width: 100px;
+    padding: 6px;
+    position: relative;
+    top: 30px;
+    left: 250px;
+    box-shadow: 2px 3px 3px #6a6a6a;
+}
+
+.cancel-btn:active{
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+.createpage{
+    position: absolute;
+    top: 24%;
+    left: 20%;
+
+}
+
 .titlebox{
     border: none;
     outline: none;
     border-bottom: 1px solid black;
     padding: 5px 10px;
+    background-color: #F8F6F6;
+    width: 30vw;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.image{
+    font-size: 40px;
+    margin-left: 90px;
+    color: black;
+    display: inline-block;
+    text-shadow: 2px 3px 3px #6a6a6a;
+}
+
+.image:active{
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+.box1{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 80px;
+}
+
+.box2{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40px;
+    gap: 120px;
+}
+
+.text-content{
+    width: 33vw;
+    height: 30vh;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .postimage{
-    width: 300px;
-    height: 200px;
+    width: 350px;
+    height: 300px;
     border-radius: 30px;
     box-shadow: 5px 5px 4px 0 #5f5f5f;
+}
+
+.box3{
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+    margin-bottom: 40px;
+    gap: 40px;
+}
+
+.choose{
+    background-color:mintcream;
+}
+
+.button{
+    display: flex;
+    justify-content: right;
+}
+
+.btn{
+    background-color: #7fda80; /* 背景色 */
+    box-shadow: 0 3px 0 #46d548; /* 影の太さ・色 */
+    border: solid 0.5px #46d548;
+    border-radius: 10px;
+    /* color: #fff; */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:active {
+    box-shadow: none;
+    transform: translateY(4px);
 }
