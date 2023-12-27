@@ -62,13 +62,18 @@
 
             <div class="comment-area">
                 <div class="commenttext">
-                    <p class="comment">コメント</p>
-                    <div class="commentbox">コメントコメントコメント</div>
+                    <form action="}" method="post">
+                        @csrf
+                        <input type="hidden" name="pos_id" value="">
+                        <div>
+                            <label class="comment" for="title">コメント</label>
+                            <textarea class="commentbox" rows="5" name="comment-body" id="title"></textarea>
+                        </div>
 
-                    <div class="btn-box">
-                        <button type="submit" class="btn">コメント</button>
-                    </div>
-
+                        <div class="btn-box">
+                            <button type="submit" class="btn">コメント</button>
+                        </div>
+                    </form>
                  </div>
 
                  <div class="view">
