@@ -13,7 +13,7 @@
         <div class="navigation">
             <nav>
                 <ul>
-                    <li><a href="" class="list-a">ユーザー名：{{ Auth::user()->name }}</a></li>
+                    <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a">ユーザー名：{{ Auth::user()->name }}</a></li>
                     <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                     <li><a href="" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
@@ -29,11 +29,11 @@
                     @foreach($posts as $post)
                     <div class="cards">
                         <div class="postcard">
-                            <div class="author"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">username:{{ $post->user->name }}</div>
-                            <h4>title:{{ $post->title }}</h4>
+                            <div class="author"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">投稿者:{{ $post->user->name }}</div>
+                            <h4>タイトル:{{ $post->title }}</h4>
                             <div class="content">
-                                <p class="contenttext">content:{{ $post->content }}</p>
-                                <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">show more...</a>
+                                <p class="contenttext">内容:{{ $post->content }}</p>
+                                <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
                             </div>
                             <div>国のタグ：{{ $post->country->country_name }}</div>
                             <div>企業のタグ：{{ $post->occupation->occupation_name }}</div>
