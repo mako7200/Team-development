@@ -1,7 +1,7 @@
-html{
+/* html{
     height: 100%;
     width: 100%;
-}
+} */
 
 body{
     position: relative;
@@ -12,17 +12,15 @@ body{
     display: flex;
     flex-direction: row;
     gap: 50px;
-    background-image: url(../img/samplebackground2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: fixed;
+    background-color: #F8F6F6;
+    /* position: fixed;
     top: 0;
-    left: 0;
+    left: 0; */
 }
 
 
 .navigation{
-    background-color: white;
+    background: linear-gradient(to bottom, #fc7c72, #FFFFFF);
     height: 100vh;
     border-right: 2px solid black;
     opacity: 0.8;
@@ -50,7 +48,16 @@ ul > li{
 }
 
 .showpage{
-    margin: 40px 70px 40px 450px;
+    margin: 40px 0 40px 450px;
+
+}
+
+.show-card{
+    margin-top: 90px;
+    padding: 40px;
+    background-color: white;
+    width: 60vw;
+    height: 55vh;
 }
 
 .avatar{
@@ -59,11 +66,94 @@ ul > li{
     border-radius: 50%;
 }
 
-.image{
-    width: 200px;
-    height: 180px;
+.username{
+    font-size: 20px;
 }
 
+.creatat{
+    padding-right: 30px;
+}
+
+.main-content{
+    width: 100%;
+    padding: 40px;
+}
+
+.row1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.edit-delete{
+    display: flex;
+    gap: 30px;
+}
+
+a{
+    color: black;
+    display: inline-block;
+}
+
+a:active{
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+.icon-shadow{
+    text-shadow: 2px 3px 3px #6a6a6a;
+}
+
+.stamp{
+    font-size: 30px;
+}
+
+.row3{
+    display: flex;
+   
+    width: 100%;
+    gap: 60px;
+    margin-top: 40px;
+    /* margin-left: 40px; */
+}
+
+.content{
+    width: 50%;
+    font-size: 15px;
+    overflow: scroll;
+}
+
+.image-box{
+    width: 50%;
+    height: 25vh;
+    background-color: aqua;
+    /* border: 1px solid black; */
+    border-radius: 20px;
+    box-shadow: 5px 5px 2px #6a6a6a;
+}
+
+.comment-area{
+    margin-top: 40px;
+    width: 100%;
+}
+
+.comment{
+    font-size: 18px;
+}
+
+.commentbox{
+    border: 1px solid black;
+    background-color: white;
+    height: 80px;
+    overflow: scroll;
+}
 /* コメントボタン （候補①：ぬるぬる） */
 /* .button{
     display: block;
@@ -90,18 +180,24 @@ ul > li{
     100% {transform: skew(0deg, 0deg);}
 } */
 
+.btn-box{
+    display: flex;
+    justify-content: end;
+}
+
 /* コメントボタン（候補②：立体） */
 /* ひろやのCSS */
 .btn {
+    font-size: 15px;
+    width: 120px;
     height: 40px;
     display: inline-block;
-    padding: 0.8em 3em;
-    margin: 10px auto;
+    margin: 15px 0 0 0;
     background-color: #7fda80; /* 背景色 */
-    box-shadow: 0 5px 0 #46d548; /* 影の太さ・色 */
+    box-shadow: 0 3px 0 #46d548; /* 影の太さ・色 */
     border: solid 0.5px #46d548;
     border-radius: 10px;
-    color: #fff;
+    /* color: #fff; */
     cursor: pointer;
     text-decoration: none;
 }
@@ -111,3 +207,13 @@ ul > li{
     transform: translateY(4px);
 }
 
+.commentlist{
+    font-size: 18px;
+}
+
+.commentbox2{
+    border: 1px solid black;
+    background-color: white;
+    height: 50vh;
+    overflow: scroll;
+}
