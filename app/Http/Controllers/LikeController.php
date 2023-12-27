@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
-        //✅いいね保存処理を記述
+        //✅いいね保存処理
         public function store(Request $request)
         {
             $like = new Like();     //Likeテーブル作成
@@ -16,14 +16,14 @@ class LikeController extends Controller
             $like->user_id = Auth::user()->id;
             $like->save();
     
-            return redirect('/like');
+            return redirect()->route('posts.index');
         }
     
-        //✅いいねの取り消し
+        //✅いいね削除
         public function destroy(Request $request)
         {
             $like = like::find($request->like_id);
             $like->delete();
-            return redirect('/like');
+            return redirect()->route('posts.index');
         }
 }

@@ -38,6 +38,7 @@ class PostController extends Controller
         $request->validate([
             'title'=>'required|max:20',
             'content'=>'required',
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'country_id'=>'required',
             'occupation_id'=>'required',
         ]);
@@ -50,6 +51,16 @@ class PostController extends Controller
         $post->occupation_id = $request->input(["occupation_id"]);
         $post->user_id = Auth::id(); // ログインユーザーのIDを取得
 
+        //画像アップロード処理
+        $imagePath = null;
+        if ($request->hasFile('image')){
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/images',$imageName);
+            $imagePath = 'images/' . $imageName;
+        }
+
+        
         $post->save();
 
         return redirect()->route('posts.index');
