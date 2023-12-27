@@ -14,11 +14,11 @@
             <div class="navigation">
                 <nav>
                     <ul>
-                        <li><a href="" class="list-a">ユーザー名：{{ Auth::user()->name }}</a></li>
-                        <li><a href="" class="list-a"><i class="fa-solid fa-house"></i></a></li>
-                        <li><a href="" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
+                        <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a">ユーザー名：{{ Auth::user()->name }}</a></li>
+                        <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
+                        <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                         <li><a href="" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
-                        <li><a href="" class="list-a"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        <li><a href="{{ route('posts.search') }}" class="list-a"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                         <li><a href="" class="list-a"><i class="fa-solid fa-heart"></i></a></li>
                         <li>アプリ名</li>
                     </ul>
@@ -28,7 +28,7 @@
                 <div class="profilepage">
                     <div class="user">
                         <div><img src="../img/seedtech70期生徒.jpg" alt="" class="myavatar"></div>
-                        <div class="username">ユーザー名</div>
+                        <div class="username">ユーザー名：{{ Auth::user()->name }}</div>
                     </div>
                     <div class="hashtag">#アフリカ　＃エンジニア</div>
                     <div class="buttons">
@@ -39,11 +39,11 @@
                 <div class="card-page">
                     <div class="cards">
                         <div class="postcard">
-                            <div class="author"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">username</div>
-                            <h4>title</h4>
+                            <div class="author"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">ユーザー名</div>
+                            <h4>タイトル</h4>
                             <div class="content">
-                                <p class="contenttext">content10~15</p>
-                                <a href="" class="more">show more...</a>
+                                <p class="contenttext">内容（10~15文字）</p>
+                                <a href="" class="more">もっと見る...</a>
                             </div>
                         </div>
                         <div class="react">

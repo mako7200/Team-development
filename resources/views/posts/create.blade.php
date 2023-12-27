@@ -55,7 +55,8 @@
                         @endforeach
                     </select>
                 </div>
-
+                
+                {{-- ✅画像の保存が未完成 --}}
                 <div>
                     <label for="image">{{ __('投稿画像') }}</label>
                     <input type="file" id="image" name="image" required accept="image/*">

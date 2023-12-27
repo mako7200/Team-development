@@ -59,5 +59,19 @@ class UserController extends Controller
         ]);
     }
 
+    //✅プロフィール詳細
+    function show($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            return view('profile', ['user' => $user]);
+        } else {
+            // ユーザーが見つからない場合は、適切なエラーハンドリングを行うか、リダイレクトさせるなどの処理を追加
+            return redirect()->route('profile');
+        }
+
+        redirect('posts.profile');
+    }
 
 }
