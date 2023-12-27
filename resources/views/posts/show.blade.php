@@ -26,35 +26,54 @@
     <main>
         <div class="showpage">
             <div class="show-card">
-                <div class="username"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">ユーザー名</div>
+                <div class="row1">
+                    <div class="username"><img src="" alt="" class="avatar">　ユーザー名</div>
+                    <p class="creatat">投稿日時：</p>
+                 </div>
 
-                <div>
-                    <h4>タイトル：</h4>
-                    <div>
-                        <i class="fa-solid fa-eraser"></i>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-trash-can"></i>
-                    </div>
-                </div>
+                <div class="main-content">
+                    <div class="row2">
+                        <h4>タイトル：</h4>
 
-                <div class="content">
-                    <p>内容 <br> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, dolore nemo. Tempore nobis, aliquid quia sequi assumenda quod vitae sed ipsum. Possimus animi dolorum deleniti. Reprehenderit obcaecati labore necessitatibus impedit!</p>
-                    <div><img src="../img/seedtech70期生徒.jpg" alt="" class="image"></div>
-                    <p>投稿日時：</p>   {{-- ✅ゆうやへ：ここに投稿日時を記載したよ！ --}}
+                        <div class="edit-delete">
+                            <div>
+                                <a href="
+                                "><i class="fa-solid fa-eraser stamp icon-shadow"></i></a>
+                            </div>
+                            <div>
+                                <a href=""><i class="fa-solid fa-trash-can stamp icon-shadow"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row3">
+
+                        <div class="content">
+                            <strong>内容：</strong> <br> おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお
+                         </div>
+
+                        <div class="image-box">
+                            <img src="../img/seedtech70期生徒.jpg" alt="" class="image">
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
             <div class="comment-area">
                 <div class="commenttext">
-                    <p>コメント</p>
+                    <p class="comment">コメント</p>
                     <div class="commentbox">コメントコメントコメント</div>
-                    <button type="submit" class="btn">コメント</button>
-            
+
+                    <div class="btn-box">
+                        <button type="submit" class="btn">コメント</button>
+                    </div>
+
                  </div>
+
                  <div class="view">
                     <div class="commentlist">コメント一覧</div>
-                    <div class="commentbox2">ここにアバター、ユーザー <br> textしたコメントを閲覧できるようにします</div>
+                    <div class="commentbox2">ここにアバター、ユーザー <br> textしたコメントを閲覧できるようにします<br>イメージはこんな感じです</div>
                  </div>
             </div>
         </div>
