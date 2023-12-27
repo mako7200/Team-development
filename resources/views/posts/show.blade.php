@@ -49,8 +49,8 @@
                 <div class="commenttext">
                     <p>コメント</p>
                     <div class="commentbox">コメントコメントコメント</div>
-                    <button type="submit" class="button">コメント</button>
-                    <a href="" class="btn">コメント</a>
+                    <button type="submit" class="btn">コメント</button>
+            
                  </div>
                  <div class="view">
                     <div class="commentlist">コメント一覧</div>

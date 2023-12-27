@@ -133,7 +133,7 @@ i{
     height: 40px;
     display: inline-block;
     padding: 0.8em 3em;
-    margin: 10px auto;
+    margin: 30px auto;
     background-color: #7fda80; /* 背景色 */
     box-shadow: 0 5px 0 #46d548; /* 影の太さ・色 */
     border: solid 0.5px #46d548;
@@ -150,5 +150,6 @@ i{
 
 .btn:active {
     box-shadow: none;
-    transform: translateY(5px);
+    /* transform: translate(00px);ボタンを垂直に5pxおろすプロパティ */
+    transform: translateY(4px);
 }

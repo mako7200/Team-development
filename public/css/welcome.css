@@ -4,12 +4,29 @@ body{
 }
 
 .homeview{
-    background-image: url(../img/welcome2.jpg);
+    /* background-image: url(../images/welcome2.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     height: 100vh;
     margin: 0;
     padding: 0;
+    z-index: 0;
+}
+
+.homeview::after{
+    content: " ";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* 背景画像のぼやけはこっちに画像を貼る */
+    filter: blur(5px);
+    background-image: url(../images/welcome2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .topimage{
