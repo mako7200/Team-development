@@ -60,8 +60,15 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Occupation');
     }
 
-    public function likes()     //likeモデルとのリレーション
+    //Likeモデルとのリレーション
+    public function likes()
     {
         return $this->hasMany('App\Models\Like');
+    }
+
+    //Commentモデルとのリレーション
+        function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
     }
 }

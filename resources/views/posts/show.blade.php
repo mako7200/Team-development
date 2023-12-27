@@ -27,13 +27,13 @@
         <div class="showpage">
             <div class="show-card">
                 <div class="row1">
-                    <div class="username"><img src="" alt="" class="avatar">　ユーザー名</div>
+                    <div class="username"><img src="" alt="" class="avatar">ユーザー名：{{ $post->user->name }}</div>
                     <p class="creatat">投稿日時：</p>
                  </div>
 
                 <div class="main-content">
                     <div class="row2">
-                        <h4>タイトル：</h4>
+                        <h4>タイトル：{{ $post->title }}</h4>
 
                         <div class="edit-delete">
                             <div>
@@ -49,7 +49,7 @@
                     <div class="row3">
 
                         <div class="content">
-                            <strong>内容：</strong> <br> おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお
+                            <strong>内容:{{ $post->content }}</strong> <br> 「ここに投稿内容が表示される」
                          </div>
 
                         <div class="image-box">
@@ -65,7 +65,7 @@
                 <div class="commenttext">
                     <form action="{{ route('comments.store') }}" method="post">
                         @csrf
-                        {{-- <input type="hidden" name="post_id" value="{{ $post->id }}"> --}}
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
                         <div>
                             <label class="comment" for="title">コメント</label>
                             <textarea class="commentbox" rows="5" name="body" id="title"></textarea>
@@ -81,12 +81,21 @@
                  <div class="view">
                     <div class="commentlist">コメント一覧</div>
                     <div class="commentbox2">
-                        @if($post && $post->comments)
+                        {{-- @if($post && $post->comments)
                         @foreach($post->comments as $comment)
                         <p>{{ $comment->user->name }}：{{ $comment->body }}</p><br>
                         <p>{{ $comment->formattedCreatedAt }}</p>
                         @endforeach
-                        @endif
+                        @endif --}}
+                        @foreach ($post->comments as $comment)
+                        <div class="card mt-3">
+                            <h5 class="card-header">投稿者：{{ $comment->user->name }}</h5>
+                            <div class="card-body">
+                                <h5 class="card-title">投稿日時：{{ $comment->created_at }}</h5>
+                                <p class="card-text">内容：{{ $comment->body }}</p>
+                            </div>
+                        </div>
+                      @endforeach
                     </div>
                  </div>
             </div>

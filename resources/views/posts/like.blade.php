@@ -32,8 +32,8 @@
                         <div class="author"><img src="../img/avatarsample.jpg" alt="" class="avatar">ユーザー名：{{ $post->user->name }}</div>
                         <h4>タイトル：{{ $post->title }}</h4>
                         <div class="content">
-                            <p class="contenttext">投稿</p>
-                            <a href="" class="more">もっと見る</a>
+                            <p class="contenttext">内容:{{ $post->content }}</p>
+                            <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
                         </div>
                     </div>
                     <div class="react">
