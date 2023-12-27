@@ -39,9 +39,16 @@
                             <div>企業のタグ：{{ $post->occupation->occupation_name }}</div>
                         </div>
                         <div class="react">
+                            {{-- ✅いいね機能 --}}
                             <div class="count">
-                                <a href="#"><i class="fa-regular fa-heart mark"></i></a>
-                                <p>2</p>
+                                <div style="padding:10px 40px">
+                                    @if($post->likedBy(Auth::user())->count() >0)
+                                    <a href="/likes/{{ $post->likedBy(Auth::user())->firstOrfail()->id }}"><i class="fa-solid fa-heart"></i></a>
+                                    @else
+                                    <a href="/posts/{{ $post->id }}/likes"><i class="fa-regular fa-heart"></i></a>
+                                    @endif
+                                    {{ $post->likes->count() }}   <!-- いいねの数をカウント -->
+                                </div>
                             </div>
                             <div class="count">
                                 <a href="#"><i class="fa-regular fa-comment mark"></i></a>

@@ -22,6 +22,7 @@ class Posts extends Migration
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->unsignedBigInteger('occupation_id'); // occupationsテーブルのIDを参照する外部キー
             $table->foreign('occupation_id')->references('id')->on('occupations')->onDelete('cascade');
+            $table->string('image')->nullable();//画像
             $table->timestamps();
         });
     }
