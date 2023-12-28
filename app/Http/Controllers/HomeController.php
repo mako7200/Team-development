@@ -33,4 +33,9 @@ class HomeController extends Controller
         // チャットユーザ選択画面を表示
         return view('chat_user_select' , compact('users'));
     }
+
+    public function index2()
+    {
+        return view('home');
+    }
 }

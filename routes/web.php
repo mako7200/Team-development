@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Auth;
 // 既存のRoute
 Route::get('/', function () {return view('welcome');});
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //新規投稿
@@ -68,6 +67,8 @@ Route::get('/likes/{like_id}', [App\Http\Controllers\LikeController::class, 'des
 Route::get('likes', [App\Http\Controllers\LikeController::class, 'index'])->name('likes.index');
 
 use App\Http\Controllers\ChatController;
+Route::get('/chat', [App\Http\Controllers\HomeController::class, 'index'])->name('chat.select');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index2'])->name('home');
 Route::get('/chat/{receive}', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
 Route::post('/chat/send', [App\Http\Controllers\ChatController::class, 'store'])->name('chatSend');
 
