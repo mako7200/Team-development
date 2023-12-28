@@ -29,7 +29,7 @@
                     @foreach($posts as $post)
                     <div class="cards">
                         <div class="postcard">
-                            <div class="author"><img src="../img/seedtech70期生徒.jpg" alt="" class="avatar">投稿者:{{ $post->user->name }}</div>
+                            <div class="author"><img src="/storage/{{ $post->image }}" alt="" class="avatar">投稿者:{{ $post->user->name }}</div>
                             <h4>タイトル:{{ $post->title }}</h4>
                             <div class="content">
                                 <p class="contenttext">内容:{{ $post->content }}</p>

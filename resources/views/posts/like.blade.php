@@ -38,7 +38,7 @@
                     </div>
                     <div class="react">
                         <div class="count">
-                            <a href="#"><i class="fa-regular fa-heart mark"></i></a>
+                            <a href="#"><i class="fa-solid fa-heart mark"></i></a>
                             {{ $post->likes->count() }}
                         </div>
                         <div class="count">
