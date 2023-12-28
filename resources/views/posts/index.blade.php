@@ -29,10 +29,10 @@
                     @foreach($posts as $post)
                     <div class="cards">
                         <div class="postcard">
-                            <div class="author"><img src="/storage/#" alt="" class="avatar">投稿者:{{ $post->user->name }}</div>
-                            <h4>タイトル:{{ $post->title }}</h4>
+                            <div class="author"><img src="/storage/#" alt="" class="avatar">{{ $post->user->name }}</div>
+                            <h4>『{{ $post->title }}』</h4>
                             <div class="content">
-                                <p class="contenttext">内容:{{ $post->content }}</p>
+                                <p class="contenttext">{{ $post->content }}</p>
                                 <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
                             </div>
                             <div>国のタグ：{{ $post->country->country_name }}</div>
@@ -52,9 +52,10 @@
                             </div>
                             <div class="count">
                                 <a href="#"><i class="fa-regular fa-comment mark"></i></a>
-                                <p>1</p>
+                                {{ $post->comments->count() }}   <!-- コメントの数をカウント -->
                             </div>
                         </div>
+                        <p>{{ $post->created_at }}</p>
                     </div>
                     @endforeach
                 </div>

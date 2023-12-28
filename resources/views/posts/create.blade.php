@@ -28,19 +28,21 @@
                         <label for="image"><i class="fa-regular fa-image"></i></label>
                         <input type="file" id="image" style="display: none;">
                     </div> --}}
-                    {{-- ✅画像の保存が未完成 --}}
-                    <div>
-                        <label for="image" style="display: none">{{ __('投稿画像') }}</label>
-                        <label for="image"><i class="fa-regular fa-image image"></i></label>
-                        <input type="file" id="image" name="image" required accept="image/*" style="display: none;">
-                    </div>
                 </div>
 
                 <div class="box2">
                     <label for="content" style="display: none">内容:</label>
                     <textarea id="content" name="content" required class="text-content"></textarea>
+                    
+                    {{-- ✅投稿画像の表示 --}}
+                    <div>
+                        <label for="image" style="display: none">{{ __('投稿画像') }}</label>
+                        <label for="image"><i class="fa-regular fa-image image"></i></label>
+                        <input type="file" id="image" name="image" required accept="image/*" style="display: none;">
+                    </div>
                     {{-- ここに反映する画像挿入 --}}
-                    <div><img src="../img/airplane.jpg" alt="" class="postimage"></div>
+                    <div><img src="#" alt="" class="postimage"></div>
+
                 </div>
 
                 <div class="box3">

@@ -124,6 +124,19 @@
                                                 </div>
                                             </div>
 
+                                            {{-- ✅アバター --}}
+                                            <div class="row mb-3">
+                                                <label for="avatar" class="myavatar"><i class="fa-solid fa-camera" style="">{{ __('プロフィール画像') }}</i></label>
+                                                <div class="col-md-6">
+                                                    <input id="avatar" type="file" class="@error('avatar') is-invalid @enderror" name="avatar">
+                                                    @error('avatar')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
                                             {{-- パスワード --}}
                                             <div class="row mb-3">
                                                 <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password (パスワード)※') }}</label>
@@ -136,6 +149,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
+
                                         </div>
 
                                         {{-- ここに画像選択後に反映されるimage置いてください！！  classはmyavatarで--}}
@@ -149,24 +163,6 @@
                                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password (パスワード確認)※') }}</label>
                                             <div class="col-md-6">
                                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                            </div>
-                                        </div>
-
-                                        {{-- アバター --}}
-                                        <div>
-                                            <div class="camera">
-                                            <label for="avatar" class="image"><i class="fa-solid fa-camera" style=""></i></label>
-                                            {{-- {{ __('プロフィール画像（サイズは1024Kbyteまで）') }} --}}
-
-                                            <div class="col-md-6">
-                                                <input id="avatar" type="file" class="@error('avatar') is-invalid @enderror" name="avatar" style="display: none">
-
-                                                @error('avatar')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
                                             </div>
                                         </div>
                                     </div>
