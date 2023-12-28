@@ -27,7 +27,7 @@
         <div class="showpage">
             <div class="show-card">
                 <div class="row1">
-                    <div class="username"><img src="" alt="" class="avatar">ユーザー名：{{ $post->user->name }}</div>
+                    <div class="username"><img src="/storage/#" alt="" class="avatar">ユーザー名：{{ $post->user->name }}</div>
                     <p class="creatat">投稿日時：</p>
                  </div>
 
@@ -53,7 +53,7 @@
                          </div>
 
                         <div class="image-box">
-                            <img src="../img/seedtech70期生徒.jpg" alt="" class="image">
+                            <img src="/storage/{{ $post->image }}" alt="" class="image">
                         </div>
 
                     </div>
@@ -95,7 +95,7 @@
                                 <p class="card-text">内容：{{ $comment->body }}</p>
                             </div>
                         </div>
-                      @endforeach
+                        @endforeach
                     </div>
                  </div>
             </div>
