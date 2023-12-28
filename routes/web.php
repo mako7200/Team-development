@@ -67,30 +67,7 @@ Route::get('/likes/{like_id}', [App\Http\Controllers\LikeController::class, 'des
 //いいね一覧
 Route::get('likes', [App\Http\Controllers\LikeController::class, 'index'])->name('likes.index');
 
-
-//ゆうやが書いたRoute
-// Route::get('/index', function () {
-//     return view('index');
-// });
-// Route::get('/create', function () {
-//     return view('create');
-// });
-// Route::get('/profile', function () {
-//     return view('profile');
-// });
-// Route::get('/show', function () {
-//     return view('show');
-// });
-// Route::get('/like', function () {
-//     return view('like');
-// });
-// Route::get('/posts/search', function () {
-//     return view('posts.search');
-// });
-// Route::get('/profileedit', function () {
-//     return view('profileedit');
-// });
-// Route::get('/showedit', function () {
-//     return view('showedit');
-// });
+use App\Http\Controllers\ChatController;
+Route::get('/chat/{receive}', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
+Route::post('/chat/send', [App\Http\Controllers\ChatController::class, 'store'])->name('chatSend');
 
