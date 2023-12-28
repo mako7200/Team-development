@@ -11,16 +11,30 @@ body{
     display: flex;
     flex-direction: row;
     gap: 50px;
-    background-image: url(../img/indexmain2.jpg);
+    background-image: url(../images/airplane.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 30% 100%;
+    background-color: #F8F6F6;
+    background-position: right;
     position: fixed;
     top: 0;
     left: 0;
 }
 
+body::after{
+    content: " ";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: block;
+}
+
 .navigation{
-    background-color: white;
+    background: linear-gradient(to bottom, #fc7c72, #FFFFFF);
     height: 100vh;
     border-right: 2px solid black;
     opacity: 0.8;
@@ -47,11 +61,15 @@ ul > li{
     color: black;
 }
 
+ul > li > a:hover{
+    background-color: rgb(232, 20, 179);
+}
+
 .card-page{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 120px;
-    margin: 40px 70px 40px 500px;
+    margin: 40px 70px 40px 450px;
 }
 
 .cards{
@@ -92,11 +110,11 @@ h4{
 
 .contenttext{
     position: relative;
+    /* display: inline-block; */
     background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(255, 255, 255, 0) 80%);
     background-clip: text; /* テキストに対して背景をクリップする */
     -webkit-background-clip: text; /* Safari に対するプレフィックス */
     color: transparent; /* テキストを透明にする */
-    /* display: inline-block; */
 }
 
 .more{
@@ -117,8 +135,15 @@ h4{
     padding-right: 10px;
 }
 
-div > .mark{
+.mark{
     font-size: 25px;
     vertical-align: middle;
     padding-right: 5px;
+    background-color: white;
 }
+
+.post-index{
+    z-index: 10;
+}
+
+
