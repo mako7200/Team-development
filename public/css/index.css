@@ -61,6 +61,10 @@ ul > li{
     color: black;
 }
 
+ul > li > a:hover{
+    background-color: rgb(232, 20, 179);
+}
+
 .card-page{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
