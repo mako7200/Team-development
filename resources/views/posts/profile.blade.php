@@ -32,10 +32,14 @@
                                 <div><img src="{{ asset('../images/seedtech70期生徒.jpg') }}" alt="" class="myavatar"></div>
                                 <div class="username">　{{ Auth::user()->name }}</div>
                             </div>
-                            <div class="hashtag">#{{ $post->country->country_name }}　＃{{ $post->occupation->occupation_name }}</div>
-                            <div class="buttons">
-                                <div>編集</div>
-                                <div>ログアウト</div>
+                            <div class="sub-box">
+                                <div class="hashtag">
+                                    #{{ $post->country->country_name }}　#{{ $post->occupation->occupation_name }}
+                                </div>
+                                <div class="buttons">
+                                    <a class="edit">編集</a>
+                                    <a class="logout">ログアウト</a>
+                                </div>
                             </div>
                         </div>
                     @endif
@@ -52,11 +56,11 @@
                             </div>
                             <div class="react">
                                 <div class="count">
-                                    <a href="#"><i class="fa-regular fa-heart mark"></i></a>
+                                    <a href="#"><i class="fa-regular fa-heart"></i></a>
                                     <p>2</p>
                                 </div>
                                 <div class="count">
-                                    <a href="#"><i class="fa-regular fa-comment mark"></i></a>
+                                    <a href="#"><i class="fa-regular fa-comment"></i></a>
                                     <p>1</p>
                                 </div>
                             </div>
