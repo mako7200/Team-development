@@ -67,8 +67,8 @@ ul > li{
 }
 
 .searchpage{
-    /* margin: 40px 70px 40px 500px; */
-    margin: 40px 350px 40px 620px;
+    margin: 40px 70px 40px 500px;
+    /* margin: 40px 350px 40px 620px; */
 }
 
 li > .word-size{
@@ -77,12 +77,12 @@ li > .word-size{
 }
 
 div > .switch-page{
-    margin-left: 250px;
+    margin-left: 300px;
 }
 
 .kensaku{
     margin-top: 40px;
-    margin-left: 250px;
+    margin-left: 300px;
     margin-bottom: 30px;
 }
 
