@@ -37,8 +37,20 @@
                                     #{{ $post->country->country_name }}　#{{ $post->occupation->occupation_name }}
                                 </div>
                                 <div class="buttons">
+                                    {{-- 編集機能 --}}
                                     <a class="edit">編集</a>
-                                    <a class="logout">ログアウト</a>
+                                    {{-- ログアウト機能 --}}
+                                    <a class="logout" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                        {{ __('ログアウト') }}
+                                    </a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        
+                                    </a>
                                 </div>
                             </div>
                         </div>

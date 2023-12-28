@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            {{-- コメントエリア --}}
+            {{-- コメント機能 --}}
             <div class="comment-area">
                 <div class="commenttext">
                     <form action="{{ route('comments.store') }}" method="post">
@@ -72,14 +72,14 @@
                         </div>
 
                         <div class="btn-box">
-                            <button type="submit" class="btn">コメント</button>
+                            <button type="submit" class="btn">投稿する</button>
                         </div>
                     </form>
                 </div>
 
                 
                 <div class="view">
-                    <div class="commentlist">コメント一覧</div>
+                    <div class="commentlist">コメント</div>
                     <div class="commentbox2">
                         @foreach ($post->comments->sortByDesc('created_at') as $comment)   <!--コメントを「最新順」に表示-->
                         <div class="card mt-3">
