@@ -24,6 +24,7 @@
         </nav>
     </div>   
     <main>
+        <div><img src="{{ asset('../images/airplane.jpg') }}" alt="" class="background-image"></div>
         <div class="entire">
             <div class="card-page">
                 @foreach($posts as $post)
