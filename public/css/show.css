@@ -97,12 +97,12 @@ ul > li{
     gap: 30px;
 }
 
-a{
+a > .stamp{
     color: black;
     display: inline-block;
 }
 
-a:active{
+a > .stamp:active{
     box-shadow: none;
     transform: translateY(5px);
 }
@@ -153,31 +153,6 @@ a:active{
     width: 50vw;
     overflow: scroll;
 }
-/* コメントボタン （候補①：ぬるぬる） */
-/* .button{
-    display: block;
-    width: 100px;
-    height: 40px;
-    background-color: #98c4bf;
-    border: solid 1px #98c4bf;
-    border-radius: 25px;
-    text-align: center;
-    line-height: 40px;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.button:hover{
-    animation: hoverShake 0.3s linear 3;
-    background-color: #abdfac;
-}
-@keyframes hoverShake{
-    0% {transform: skew(0deg, 0deg);}
-    25% {transform: skew(1deg, 1deg);}
-    75% {transform: skew(-1deg, -1deg);}
-    100% {transform: skew(0deg, 0deg);}
-} */
 
 .btn-box{
     display: flex;

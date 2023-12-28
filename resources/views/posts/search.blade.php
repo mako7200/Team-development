@@ -18,7 +18,7 @@
         <div class="navigation">
             <nav>
                 <ul>
-                    <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a">ユーザー名：{{ Auth::user()->name }}</a></li>
+                    <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a">{{ Auth::user()->name }}</a></li>
                     <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                     <li><a href="" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
@@ -31,10 +31,10 @@
         <div class="switch-page">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active word-size" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ユーザー</a>
+                    <a class="nav-link active word-size" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">投稿検索</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link word-size" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">国名・職業</a>
+                    <a class="nav-link word-size" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">国名・職業検索</a>
                 </li>
             </ul>
         </div>
