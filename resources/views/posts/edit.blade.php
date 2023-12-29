@@ -11,10 +11,11 @@
 <body>
     <main>
         <div class="cancel-btn">
-            <a href="">キャンセル</a>
+            <a href="{{ route('posts.show', $post->id) }}">キャンセル</a>
         </div>
-        <form action="" methid="">
-            @csrf
+        <form action="{{ route('posts.update', $post->id) }}" method="POST">
+        @csrf
+        @method('put')
             <div class="edit-form">
                 <div class="title-edit">
                     <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title" 

@@ -36,11 +36,10 @@
                 <h4>『{{ $post->title }}』</h4>
 
                         <div class="edit-delete">
-                            {{-- ログインユーザー本人のみに「削除・編集ボタン」を表示 --}}
+                            {{-- ログインユーザー本人のみに「編集・削除ボタン」を表示 --}}
                             @if(Auth::check()  && $post->user_id == Auth::user()->id)
                             <div>
-                                <a href="
-                                "><i class="fa-solid fa-eraser stamp icon-shadow"></i></a>
+                                <a href="{{ route('posts.edit', $post->id) }}"><i class="fa-solid fa-eraser stamp icon-shadow"></i></a>
                             </div>
                             <div>
                                 <form action="{{ route('posts.destroy', $post->id) }}" method="post">
