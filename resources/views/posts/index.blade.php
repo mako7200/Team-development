@@ -13,10 +13,10 @@
         <div class="navigation">
             <nav>
                 <ul>
-                    <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a">{{ Auth::user()->name }}</a></li>
+                    <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">{{ Auth::user()->name }}</a></li>
                     <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
-                    <li><a href="{{ route('chat.select') }}" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
+                    <li><a href="" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
                     <li><a href="{{ route('posts.search') }}" class="list-a"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     <li><a href="{{ route('likes.index') }}" class="list-a"><i class="fa-solid fa-heart"></i></a></li>
                     <li>アプリ名</li>
@@ -30,29 +30,32 @@
                     @foreach($posts as $post)
                     <div class="cards">
                         <div class="postcard">
-                            <div class="author"><img src="/storage/#" alt="" class="avatar">{{ $post->user->name }}</div>
-                            <h4>『{{ $post->title }}』</h4>
+                            <div class="author"><img src="/storage/#" alt="" class="avatar"> {{ $post->user->name }}</div>
+                            <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
                             <div class="content">
-                                <p class="contenttext">{{ $post->content }}</p>
-                                <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
+                                <p class="contenttext">{{ mb_substr($post->content, 0, 15, 'UTF-8') }}{{ mb_strlen($post->content, 'UTF-8') > 15 ? '...' : '' }}</p>
                             </div>
-                            <div>国のタグ：{{ $post->country->country_name }}</div>
-                            <div>企業のタグ：{{ $post->occupation->occupation_name }}</div>
+                                <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
+                            <div class="hashtag">
+                                <div class="hash">#{{ $post->country->country_name }}</div>
+                                <div class="hash">#{{ $post->occupation->occupation_name }}</div>
+                            </div>
                         </div>
                         <div class="react">
                             {{-- ✅いいね機能 --}}
                             <div class="count">
-                                <div style="padding:10px 40px">
+                                <div>
                                     @if($post->likedBy(Auth::user())->count() >0)
-                                    <a href="/likes/{{ $post->likedBy(Auth::user())->firstOrfail()->id }}"><i class="fa-solid fa-heart"></i></a>
+                                    <a href="/likes/{{ $post->likedBy(Auth::user())->firstOrfail()->id }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
                                     @else
-                                    <a href="/posts/{{ $post->id }}/likes"><i class="fa-regular fa-heart"></i></a>
+                                    <a href="/posts/{{ $post->id }}/likes" class="like"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
                                     @endif
                                     {{ $post->likes->count() }}   <!-- いいねの数をカウント -->
                                 </div>
                             </div>
                             <div class="count">
-                                <a href="#"><i class="fa-regular fa-comment mark"></i></a>
+                                {{-- <a href="#"></a> --}}
+                                <i class="fa-regular fa-comment mark"></i>
                                 {{ $post->comments->count() }}   <!-- コメントの数をカウント -->
                             </div>
                         </div>
