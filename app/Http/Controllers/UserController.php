@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Country;
 use App\Models\Occupation;
+use Faker\Provider\UserAgent;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -67,41 +68,49 @@ class UserController extends Controller
     //     if ($user) {
     //         return view('profile', ['user' => $user]);
     //     } else {
-            // ユーザーが見つからない場合は、適切なエラーハンドリングを行うか、リダイレクトさせるなどの処理を追加
-//             return redirect()->route('profile');
-//         }
+    // ユーザーが見つからない場合は、適切なエラーハンドリングを行うか、リダイレクトさせるなどの処理を追加
+    //             return redirect()->route('profile');
+    //         }
 
-//         redirect('posts.profile');
-//     }
-
-
+    //         redirect('posts.profile');
+    //     }
 
 
-function show($id)
-{
-    $user = User::find($id);
 
-    if (!$user){
-        return redirect()->route('not_found_page');
+
+    function show($id)
+    {
+
+        $user = User::find($id);
+        if (!$user){
+            return redirect()->route('not_found_page');
+        }
+
+        $posts = $user -> posts;
+        $post = $posts -> first();
+
+        // return view('posts.profile', ['user' => $user, 'posts' => $posts 'post' => $post]);
+        return view('posts.profile', ['user' => $user, 'posts' => $posts, 'post' => $post]);
     }
 
-    $posts = $user -> posts;
-    $post = $posts -> first();
 
-    // return view('posts.profile', ['user' => $user, 'posts' => $posts 'post' => $post]);
-    return view('posts.profile', ['user' => $user, 'posts' => $posts, 'post' => $post]);
-}
+    function posts(User $user)
+    {
+        $posts = $user->posts;
+        $post = $posts->first(); 
+
+        return view('posts.profile',[
+            'user'=>$user,
+            'posts'=>$posts, //$postsをビューに渡す
+            'post'=>$post,
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('profile_edit', ['user' => $user]);
+    }
 
 
-function posts(User $user)
-{
-    $posts = $user->posts;
-    $post = $posts->first(); 
-
-    return view('posts.profile',[
-        'user'=>$user,
-        'posts'=>$posts, //$postsをビューに渡す
-        'post'=>$post,
-    ]);
-}
 }

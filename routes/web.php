@@ -62,6 +62,7 @@ Route::post('/show', [App\Http\Controllers\CommentController::class, 'store'])->
 
 //プロフィール表示
 Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('posts.profile');
+Route::get('/profile_edit/{id}',[App\Http\Controllers\UserController::class, 'edit'])->name('profile_edit');
 
 //プロフィール編集
 Route::get('/profile_edit/{id}',[App\Http\Controllers\UserController::class, 'edit'])->name('profile_edit');
