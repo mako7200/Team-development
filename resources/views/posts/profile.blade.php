@@ -60,22 +60,23 @@
                         <div class="cards">
                             <div class="postcard">
                                 <div class="author"><img src="{{ asset('../images/seedtech70期生徒.jpg') }}" alt="" class="avatar">{{ $user->name }}</div>
-                                <h4>{{ $post->title }}</h4>
+                                <h4>『{{ $post->title }}』</h4>
                                 <div class="content">
-                                    <p class="contenttext">コンテンツ{{ $post->body }}</p>
-                                    <a href="" class="more">もっと見る...</a>
+                                    <p class="contenttext">{{ $post->content }}</p>    <!--✅ゆうやへ：$post->bodyじゃなくて、$post->contentにしたらできたよ！-->
+                                    <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
                                 </div>
                             </div>
                             <div class="react">
                                 <div class="count">
-                                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                    <p>2</p>
+                                    <a href="#"><i class="fa-solid fa-heart mark"></i></a>
+                                    {{ $post->likes->count() }}
                                 </div>
                                 <div class="count">
-                                    <a href="#"><i class="fa-regular fa-comment"></i></a>
-                                    <p>1</p>
+                                    <a href="#"><i class="fa-regular fa-comment mark"></i></a>
+                                    {{ $post->comments->count() }}
                                 </div>
                             </div>
+                            <p>{{ $post->created_at }}</p>
                         </div>
                         @endforeach
                     </div>
