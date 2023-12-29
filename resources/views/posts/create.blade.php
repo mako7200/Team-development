@@ -23,23 +23,19 @@
                     
                     <label for="title" style="display: none">タイトル:</label>
                     <input type="text" id="title" name="title" class='titlebox' required>
-                    <!-- <div><i class="fa-regular fa-image"></i></div> -->
-                    {{-- <div>
-                        <label for="image"><i class="fa-regular fa-image"></i></label>
-                        <input type="file" id="image" style="display: none;">
-                    </div> --}}
-                </div>
-
-                <div class="box2">
-                    <label for="content" style="display: none">内容:</label>
-                    <textarea id="content" name="content" required class="text-content"></textarea>
-                    
+            
                     {{-- ✅投稿画像の表示 --}}
                     <div>
                         <label for="image" style="display: none">{{ __('投稿画像') }}</label>
                         <label for="image"><i class="fa-regular fa-image image"></i></label>
                         <input type="file" id="image" name="image" required accept="image/*" style="display: none;">
                     </div>
+                </div>
+
+                <div class="box2">
+                    <label for="content" style="display: none">内容:</label>
+                    <textarea id="content" name="content" required class="text-content"></textarea>
+                    
                     {{-- ここに反映する画像挿入 --}}
                     <div><img src="#" alt="" class="postimage"></div>
 

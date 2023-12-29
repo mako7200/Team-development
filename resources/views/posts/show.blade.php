@@ -27,7 +27,7 @@
         <div class="showpage">
             <div class="show-card">
                 <div class="row1">
-                    <div class="username"><img src="/storage/#" alt="" class="avatar">{{ $post->user->name }}</div>
+                    <div class="username"><img src="/storage/#" alt="" class="avatar">　{{ $post->user->name }}</div>
                     <p class="creatat">{{ $post->created_at }}</p>
                 </div>
 
@@ -36,13 +36,22 @@
                 <h4>『{{ $post->title }}』</h4>
 
                         <div class="edit-delete">
+                            {{-- もし、詳細投稿のものがユーザー自身のものであれば、、、 --}}
+                            @if(Auth::check()  && $post->user_id == Auth::user()->id)
                             <div>
                                 <a href="
                                 "><i class="fa-solid fa-eraser stamp icon-shadow"></i></a>
                             </div>
                             <div>
-                                <a href=""><i class="fa-solid fa-trash-can stamp icon-shadow"></i></a>
+                                <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                    <button type="submit" class="delete" onclick="return confirm('本当に削除してもよろしいですか？')">
+                                    <i class="fa-solid fa-trash-can stamp icon-shadow"></i>
+                                    </button>
+                                </form>
                             </div>
+                            @endif
                         </div>
                     </div>
 
@@ -82,11 +91,11 @@
                     <div class="commentlist">コメント</div>
                     <div class="commentbox2">
                         @foreach ($post->comments->sortByDesc('created_at') as $comment)   <!--コメントを「最新順」に表示-->
-                        <div class="card mt-3">
-                            <h5 class="card-header">{{ $comment->user->name }}</h5>
-                            <div class="card-body">
-                                <h6 class="card-title">{{ $comment->created_at }}</h6>
-                                <p class="card-text">{{ $comment->body }}</p>
+                        <div class="small-box">
+                            <h5 class="card-header"><strong>{{ $comment->user->name }}</strong>　{{ $comment->body }}</h5>
+                            <div class="post-time">
+                                <h6 class="card-time">{{ $comment->created_at }}</h6>
+                                {{-- <p class="card-text"></p> --}}
                             </div>
                         </div>
                         @endforeach
