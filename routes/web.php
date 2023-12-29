@@ -70,7 +70,7 @@ Route::get('/likes/{like_id}', [App\Http\Controllers\LikeController::class, 'des
 Route::get('likes', [App\Http\Controllers\LikeController::class, 'index'])->name('likes.index');
 
 //チャット選択画面
-Route::get('/chat', [App\Http\Controllers\HomeController::class, 'index2'])->name('chat.select');
+Route::get('/select', [App\Http\Controllers\HomeController::class, 'select'])->name('chat.select');
 
 //チャット表示
 Route::get('/chat/{receive}', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
