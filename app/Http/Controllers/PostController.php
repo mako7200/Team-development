@@ -67,6 +67,14 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
+    //投稿削除
+    function destroy($id)
+    {
+        $post = Post::find($id);
+        $post -> delete();
+        return redirect() -> route('posts.index');
+    }
+
     //投稿検索
     function search(Request $request)
     {
