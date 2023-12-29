@@ -63,6 +63,9 @@ Route::post('/show', [App\Http\Controllers\CommentController::class, 'store'])->
 //プロフィール表示
 Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('posts.profile');
 
+//プロフィール編集
+Route::get('/profile_edit/{id}',[App\Http\Controllers\UserController::class, 'edit'])->name('profile_edit');
+
 //いいね保存処理
 Route::get('/posts/{post_id}/likes', [App\Http\Controllers\LikeController::class, 'store'])->name('likes.store');
 
@@ -73,7 +76,7 @@ Route::get('/likes/{like_id}', [App\Http\Controllers\LikeController::class, 'des
 Route::get('likes', [App\Http\Controllers\LikeController::class, 'index'])->name('likes.index');
 
 //チャット選択画面
-Route::get('/select', [App\Http\Controllers\HomeController::class, 'select'])->name('chat.select');
+Route::get('/select', [App\Http\Controllers\ChatController::class, 'select'])->name('chat.select');
 
 //チャット表示
 Route::get('/chat/{receive}', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
