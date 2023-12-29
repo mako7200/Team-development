@@ -7,6 +7,8 @@
     <title>プロフィール編集ページ</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/show.edit.css') }}">
+    <script src="{{ asset('js/edit.js') }}"></script>   <!--✅edit.jsの読み込み-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   <!--✅jQueryの読み込み-->
 </head>
 <body>
     <main>
@@ -29,9 +31,13 @@
 
                 </div>
                 <div class="image-edit">
-                    <input id="image" type="file" class="form-control" name="image">
+                    {{-- <input id="image" type="file" class="form-control" name="image"> --}}
                     {{-- value="{{ $todo->image }}" onchange="previewImage(this)"> --}}
-                    
+                    {{-- ✅画像の表示 --}}
+                    <input id="image" type="file" class="form-control" name="image" value="{{ $post->image }}" onchange="previewImage(this)">
+                    @if($post->image)
+                    <img id="image-preview" alt="" src="{{ asset('storage/' . $post->image) }}" style="max-width: 100%; max-height: 200px;">
+                    @endif
                 </div>
                 <div class="upload-btn">
                     <button type="submit" class="btn btn-primary">編集</button>
@@ -43,6 +49,13 @@
             </div>
         </form>
     </main>
-    
+    {{-- ✅ライトボックスの導入（画像表示） --}}
+<script src="{{ asset ('js/lightbox-plus-jquery.js') }}"></script>
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
+    });
+</script>
 </body>
 </html>

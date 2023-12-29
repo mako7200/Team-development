@@ -6,6 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/show.css') }}">
+    <script src="{{ asset('js/show.js') }}"></script>   <!--✅show.jsの読み込み-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   <!--✅jQueryの読み込み-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
 </head>
 <body>
@@ -59,7 +61,7 @@
                         <div class="content">
                             <strong>{{ $post->content }}</strong>
                         </div>
-
+                        {{-- ✅画像の表示 --}}
                         <div class="image-box">
                             <img src="/storage/{{ $post->image }}" alt="" class="image">
                         </div>
@@ -108,5 +110,13 @@
         </div>
     </main>
 </div>
+{{-- ✅ライトボックスの導入（画像表示） --}}
+<script src="{{ asset ('js/lightbox-plus-jquery.js') }}"></script>
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        });
+    </script>
 </body>
 </html>
