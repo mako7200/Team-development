@@ -120,4 +120,28 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
     
+    //✅投稿詳細の編集
+    function edit($id)
+    {
+        $post = Post::find($id);
+
+        return view('posts.edit',compact('post'));
+    }
+
+    //✅投稿詳細の更新
+    function update(Request $request,$id)
+    {
+        $post = Post::find($id);
+
+        $post->title = $request->input(["title"]);
+        $post->content = $request->input(["content"]);
+        $post->image = $request->input(["image"]);   //✅$postに画像を格納。※画像の格納がうまくいかない、調整中。
+        // $post->country_id = $request->input(["country_id"]);         ✅ゆうやがedit.blade.phpの編集が終わり次第、コメントアウトを外す
+        // $post->occupation_id = $request->input(["occupation_id"]);   ✅ゆうやがedit.blade.phpの編集が終わり次第、コメントアウトを外す
+        // $post->user_id = Auth::id();
+
+        $post->save();
+
+        return view('posts.show', compact('post'));
+    }
 }

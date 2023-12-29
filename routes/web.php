@@ -36,11 +36,14 @@ Route::post('/posts/search', [App\Http\Controllers\PostController::class, 'searc
 //検索結果を表示する
 Route::get('/posts/search', [App\Http\Controllers\PostController::class, 'searchShow']);
 
-//詳細
+//投稿詳細
 Route::get('/posts/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
 
-//詳細編集
+//投稿詳細の編集
 Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
+
+//✅投稿詳細の更新
+Route::put('/posts/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
 
 //投稿削除
 Route::delete('/posts/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
