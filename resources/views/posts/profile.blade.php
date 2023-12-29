@@ -57,12 +57,12 @@
                     @endif
                     <div class="card-page">
                         @foreach($posts as $post)
-                        <div class="cards">
+                        {{-- <div class="cards">
                             <div class="postcard">
                                 <div class="author"><img src="{{ asset('../images/seedtech70期生徒.jpg') }}" alt="" class="avatar">{{ $user->name }}</div>
                                 <h4>『{{ $post->title }}』</h4>
                                 <div class="content">
-                                    <p class="contenttext">{{ $post->content }}</p>    <!--✅ゆうやへ：$post->bodyじゃなくて、$post->contentにしたらできたよ！-->
+                                    <p class="contenttext">{{ $post->content }}</p>  
                                     <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
                                 </div>
                             </div>
@@ -74,6 +74,39 @@
                                 <div class="count">
                                     <a href="#"><i class="fa-regular fa-comment mark"></i></a>
                                     {{ $post->comments->count() }}
+                                </div>
+                            </div>
+                            <p>{{ $post->created_at }}</p>
+                        </div> --}}
+                        <div class="cards">
+                            <div class="postcard">
+                                <div class="author"><img src="/storage/#" alt="" class="avatar"> {{ $post->user->name }}</div>
+                                <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
+                                <div class="content">
+                                    <p class="contenttext">{{ mb_substr($post->content, 0, 15, 'UTF-8') }}{{ mb_strlen($post->content, 'UTF-8') > 15 ? '...' : '' }}</p>
+                                </div>
+                                    <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
+                                <div class="hashtag2">
+                                    <div class="hash">#{{ $post->country->country_name }}</div>
+                                    <div class="hash">#{{ $post->occupation->occupation_name }}</div>
+                                </div>
+                            </div>
+                            <div class="react">
+                                {{-- ✅いいね機能 --}}
+                                <div class="count">
+                                    <div>
+                                        @if($post->likedBy(Auth::user())->count() >0)
+                                        <a href="/likes/{{ $post->likedBy(Auth::user())->firstOrfail()->id }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
+                                        @else
+                                        <a href="/posts/{{ $post->id }}/likes" class="like"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
+                                        @endif
+                                        {{ $post->likes->count() }}   <!-- いいねの数をカウント -->
+                                    </div>
+                                </div>
+                                <div class="count">
+                                    {{-- <a href="#"></a> --}}
+                                    <i class="fa-regular fa-comment mark"></i>
+                                    {{ $post->comments->count() }}   <!-- コメントの数をカウント -->
                                 </div>
                             </div>
                             <p>{{ $post->created_at }}</p>

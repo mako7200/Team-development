@@ -16,7 +16,8 @@ class LikeController extends Controller
             $like->post_id = $request->post_id;
             $like->user_id = Auth::user()->id;
             $like->save();
-    
+            
+            if($request->has(''))
             return redirect()->route('posts.index');
         }
     
@@ -29,13 +30,13 @@ class LikeController extends Controller
         }
 
         //✅いいね一覧表示
-        public function index()
-        {
+        // public function index()
+        // {
             // ログイン中のユーザーがいいねした投稿を取得
-            $likedPosts = Like::where('user_id', auth()->id())->pluck('post_id');
+            // $likedPosts = Like::where('user_id', auth()->id())->pluck('post_id');
             // 対応する投稿を取得
-            $posts = Post::whereIn('id', $likedPosts)->get();
+        //     $posts = Post::whereIn('id', $likedPosts)->get();
 
-            return view('posts.like', compact('posts'));
-        }
+        //     return view('posts.like', compact('posts'));
+        // }
 }
