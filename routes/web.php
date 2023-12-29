@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 // 既存のRoute
 Route::get('/', function () {return view('welcome');});
 Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //新規投稿
@@ -40,7 +41,6 @@ Route::get('/posts/{id}', [App\Http\Controllers\PostController::class, 'show'])-
 
 //詳細編集
 Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
-
 
 //ユーザー一覧
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
@@ -66,9 +66,12 @@ Route::get('/likes/{like_id}', [App\Http\Controllers\LikeController::class, 'des
 //いいね一覧
 Route::get('likes', [App\Http\Controllers\LikeController::class, 'index'])->name('likes.index');
 
-use App\Http\Controllers\ChatController;
-Route::get('/chat', [App\Http\Controllers\HomeController::class, 'index'])->name('chat.select');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index2'])->name('home');
+//チャット選択画面
+Route::get('/chat', [App\Http\Controllers\HomeController::class, 'index2'])->name('chat.select');
+
+//チャット表示
 Route::get('/chat/{receive}', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
+
+//チャット送信
 Route::post('/chat/send', [App\Http\Controllers\ChatController::class, 'store'])->name('chatSend');
 

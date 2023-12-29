@@ -24,7 +24,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
+    {
+        return view('home');
+    }
+
+    public function index2()
     {
         $user = Auth::user();
  
@@ -32,10 +38,5 @@ class HomeController extends Controller
         $users = User::where('id' ,'<>' , $user->id)->get();
         // チャットユーザ選択画面を表示
         return view('chat_user_select' , compact('users'));
-    }
-
-    public function index2()
-    {
-        return view('home');
     }
 }
