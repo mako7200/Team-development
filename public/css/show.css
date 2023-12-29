@@ -110,6 +110,7 @@ a > .stamp{
     display: inline-block;
 }
 
+/* editボタン用now */
 a > .stamp:active{
     box-shadow: none;
     transform: translateY(5px);
@@ -121,6 +122,17 @@ a > .stamp:active{
 
 .stamp{
     font-size: 30px;
+}
+
+.delete{
+    border: none;
+    background-color: #F8F6F6;
+}
+
+/* 削除ボタン用now */
+.delete:active{
+    box-shadow: none;
+    transform: translateY(5px);
 }
 
 .row3{
@@ -158,8 +170,12 @@ a > .stamp:active{
 
 .commentbox{
     height: 80px;
-    width: 50vw;
+    width: 60vw;
     overflow: scroll;
+    font-size: 17px;
+    padding: 10px;
+    border: none;
+    outline: none;
 }
 
 .btn-box{
@@ -194,8 +210,17 @@ a > .stamp:active{
 }
 
 .commentbox2{
-    border: 1px solid black;
+    /* border: 1px solid gray; */
     background-color: white;
-    height: 50vh;
+    height: 40vh;
     overflow: scroll;
+    padding: 20px;
+}
+
+.small-box{
+    margin-bottom: 25px;
+}
+
+.card-time{
+    color: gray;
 }

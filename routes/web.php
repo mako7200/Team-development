@@ -41,6 +41,8 @@ Route::get('/posts/{id}', [App\Http\Controllers\PostController::class, 'show'])-
 //詳細編集
 Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
 
+//投稿削除
+Route::delete('/posts/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
 
 //ユーザー一覧
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
