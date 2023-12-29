@@ -27,7 +27,7 @@
         <div class="showpage">
             <div class="show-card">
                 <div class="row1">
-                    <div class="username"><img src="/storage/#" alt="" class="avatar">　{{ $post->user->name }}</div>
+                    <div class="username"><img src="/storage/#" alt="" class="avatar">{{ $post->user->name }}</div>
                     <p class="creatat">{{ $post->created_at }}</p>
                 </div>
 
@@ -36,7 +36,7 @@
                 <h4>『{{ $post->title }}』</h4>
 
                         <div class="edit-delete">
-                            {{-- もし、詳細投稿のものがユーザー自身のものであれば、、、 --}}
+                            {{-- ログインユーザー本人のみに「削除・編集ボタン」を表示 --}}
                             @if(Auth::check()  && $post->user_id == Auth::user()->id)
                             <div>
                                 <a href="
@@ -46,7 +46,7 @@
                                 <form action="{{ route('posts.destroy', $post->id) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                    <button type="submit" class="delete" onclick="return confirm('本当に削除してもよろしいですか？')">
+                                    <button type="submit" class="delete" onclick="return confirm('本当に削除しますか？')">
                                     <i class="fa-solid fa-trash-can stamp icon-shadow"></i>
                                     </button>
                                 </form>
@@ -77,6 +77,10 @@
                         <input type="hidden" name="post_id" value="{{ $post->id }}">
                         <div>
                             <label class="comment" for="title"></label>
+                            {{-- コメント未記入で送信した場合、バリデーションエラーメッセージ表示 --}}
+                            @error('body')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <textarea class="commentbox" rows="5" name="body" id="title" placeholder="コメントを書き込む"></textarea>
                         </div>
 
@@ -92,7 +96,7 @@
                     <div class="commentbox2">
                         @foreach ($post->comments->sortByDesc('created_at') as $comment)   <!--コメントを「最新順」に表示-->
                         <div class="small-box">
-                            <h5 class="card-header"><strong>{{ $comment->user->name }}</strong>　{{ $comment->body }}</h5>
+                            <h5 class="card-header"><strong>{{ $comment->user->name }}</strong>{{ $comment->body }}</h5>
                             <div class="post-time">
                                 <h6 class="card-time">{{ $comment->created_at }}</h6>
                                 {{-- <p class="card-text"></p> --}}

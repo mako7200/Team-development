@@ -24,6 +24,11 @@ function create($post_id)
 
 function store(Request $request)
 {
+    $request->validate(                                 //バリデーション
+        ['body' => 'required',],                        //bodyは必須
+        ['body.required' => '※ コメントが未記入です', ]    // 任意のエラーメッセージ
+    );
+
     $post = Post::find($request -> post_id);
     $comment = new Comment;
     $comment -> body = $request -> body;
