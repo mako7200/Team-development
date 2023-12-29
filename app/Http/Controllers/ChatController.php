@@ -10,6 +10,19 @@ use App\Events\ChatMessageReceived;
 
 class ChatController extends Controller
 {
+
+    //チャットユーザー選択画面
+    public function select()
+    {
+        $user = Auth::user();
+ 
+        // ログイン者以外のユーザを取得する
+        $users = User::where('id' ,'<>' , $user->id)->get();
+        // チャットユーザ選択画面を表示
+        return view('chats.select' , compact('users'));
+    }
+
+    //ここから下はチャットページ
     public function __construct()
     {
     }
@@ -34,7 +47,7 @@ class ChatController extends Controller
  
         $messages = $query->get();
  
-        return view('chat' , compact('param' , 'messages'));
+        return view('chats.chat' , compact('param' , 'messages'));
     }
  
     /**
