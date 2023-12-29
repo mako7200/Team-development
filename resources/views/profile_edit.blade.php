@@ -24,29 +24,23 @@
             <div class="edit-form">
                 <div class="avatar-edit">
                     <div class="avatar">
-                        <img src="{{ asset('storage/' . $user->avatar) }}" class="avatar"  style="max-width: 100%; max-height: 200px;">
+                        @auth
+                            <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" class="avatar"  style="max-width: 100%; max-height: 200px;">
+                        @endauth
                         <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" onchange="previewAvatar(this)"> 
                         @if($user->avatar)
                         <img id="avatar-preview" alt="" src="{{ asset('storage/' . $user->avatar) }}" style="max-width: 100%; max-height: 200px;"> 
                         @endif
-                        {{-- onclick="changeAvatar(this)" --}}
                     </div>
                 </div>
                 
                 
                 <div class="name_edit">
-                    <label for="name" style="display: none">タイトル:</label>
-                    <input type="text" id="name" name="name" class='namebox' required>
-                    {{-- value="{{ $todo->title }}"> --}}
+                    <label for="name" style="display: none">名前:</label>
+                    <input type="text" id="name" name="name"  value="{{ $user->name }}" class='namebox' required>
                 </div>
                 <div class="hash-tagbox">
                     #アフリカ
-                </div>
-                <div class="background-imagebox">
-                    <input id="image" type="file" class="form-control" name="image">
-                     {{-- value="{{ $todo->image }}" onchange="previewImage(this)"> --}}
-                    
-
                 </div>
                 <div class="upload-btn">
                     <button type="submit" class="btn btn-primary">編集完了</button>

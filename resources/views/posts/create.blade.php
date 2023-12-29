@@ -28,7 +28,7 @@
                     <div>
                         <label for="image" style="display: none">{{ __('投稿画像') }}</label>
                         <label for="image"><i class="fa-regular fa-image image"></i></label>
-                        <input type="file" id="image" name="image" required accept="image/*" style="display: none;">
+                        <input type="file" id="image" name="image" style="display: none;">
                     </div>
                 </div>
 
