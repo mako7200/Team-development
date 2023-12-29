@@ -59,10 +59,10 @@
                         @foreach($posts as $post)
                         <div class="cards">
                             <div class="postcard">
-                                <div class="author"><img src="{{ asset('../images/seedtech70期生徒.jpg') }}" alt="" class="avatar">ユーザー名</div>
-                                <h4>タイトル</h4>
+                                <div class="author"><img src="{{ asset('../images/seedtech70期生徒.jpg') }}" alt="" class="avatar">{{ $user->name }}</div>
+                                <h4>{{ $post->title }}</h4>
                                 <div class="content">
-                                    <p class="contenttext">内容（10~15文字）</p>
+                                    <p class="contenttext">コンテンツ{{ $post->body }}</p>
                                     <a href="" class="more">もっと見る...</a>
                                 </div>
                             </div>
