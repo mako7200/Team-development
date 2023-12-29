@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "push.js": "^1.0.12"
+        "push.js": "^1.0.12",
+        "pusher-js": "^8.4.0-rc2"
     }
 }
