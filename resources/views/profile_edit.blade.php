@@ -25,36 +25,42 @@
                 <div class="avatar-edit">
                     <div class="avatar">
                         @auth
-<<<<<<< HEAD
-                            <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" class="avatar">
+                            <img src="{{ asset('storage/'. Auth::user()->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
                         @endauth
 
-=======
-                            <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" class="avatar"  style="max-width: 100%; max-height: 200px;">
-                        @endauth
->>>>>>> 32c8386c9f593c5380b94463f4c5922022da8c8b
                         <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" onchange="previewAvatar(this)"> 
                         @if($user->avatar)
                         <img id="avatar-preview" alt="" src="{{ asset('storage/' . $user->avatar) }}" style="max-width: 100%; max-height: 200px;"> 
                         @endif
                     </div>
                 </div>
-                
-                
                 <div class="name_edit">
                     <label for="name" style="display: none">名前:</label>
                     <input type="text" id="name" name="name"  value="{{ $user->name }}" class='namebox' required>
                 </div>
                 <div class="hash-tagbox">
-                    #アフリカ
+                    <div>
+                        <label for="countries">国タグ:</label>
+                        <select class="form-select choose" id="countries" name="country_id" >
+                            <option>タグを選択してください</option>
+                            @foreach($countries as $country)
+                            <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="occupations">企業タグ:</label>
+                        <select class="form-select choose" id="occupations" name="occupation_id" >
+                            <option>タグを選択してください</option>
+                            @foreach($occupations as $occupation)
+                            <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="upload-btn">
                     <button type="submit" class="btn btn-primary">編集完了</button>
                 </div>
-
-                
-
-
             </div>
         </form>
     </main>

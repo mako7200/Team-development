@@ -108,13 +108,13 @@ class UserController extends Controller
     }
 
     public function edit($id)
-{
-    $user = User::findOrFail($id);
-    $countries = Country::all(); // 適切なクエリで国データを取得する
-    $occupations = Occupation::all(); // 適切なクエリで職業データを取得する
+    {
+        $user = User::findOrFail($id);
+        $countries = Country::all(); // 適切なクエリで国データを取得する
+        $occupations = Occupation::all(); // 適切なクエリで職業データを取得する
 
-    return view('profile_edit', compact('user', 'countries', 'occupations'));
-}
+        return view('profile_edit', compact('user', 'countries', 'occupations'));
+    }
 
 
     public function update(Request $request, $id)
@@ -155,7 +155,7 @@ class UserController extends Controller
         $user->save();
 
         // リダイレクト先
-        return redirect()->route('profile_edit', ['user' => $user]);
+        return redirect()->route('posts.profile', ['id' => $user->id]);
 
     }
 
