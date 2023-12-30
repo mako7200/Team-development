@@ -22,7 +22,7 @@
                 <div class="box1">
                     
                     <label for="title" style="display: none">タイトル:</label>
-                    <input type="text" id="title" name="title" class='titlebox' required>
+                    <input type="text" id="title" name="title" class='titlebox' required placeholder="タイトル">
             
                     {{-- ✅投稿画像の表示 --}}
                     <div>
@@ -38,7 +38,6 @@
                     
                     {{-- ここに反映する画像挿入 --}}
                     <div><img src="#" alt="" class="postimage"></div>
-
                 </div>
 
                 <div class="box3">
