@@ -29,7 +29,9 @@
                     @if(isset($user))
                         <div class="profilepage">
                             <div class="user">
-                                <div><img src="{{ asset('../images/seedtech70期生徒.jpg') }}" alt="" class="myavatar"></div>
+                                @auth
+                                    <div><img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="myavatar"></div>
+                                @endauth
                                 <div class="username">　{{ Auth::user()->name }}</div>
                             </div>
                             <div class="sub-box">
