@@ -19,21 +19,25 @@
         <div class="cancel-btn">
             <a href="javascript:history.back();">キャンセル</a>
         </div>
-        @auth
-        <form action="{{ route('user.update' ,['id' => Auth::id()]) }}" method="POST" enctype="multipart/form-data">
+        <form id="editForm" action="{{ route('user.update' ,['id' => Auth::id()]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="edit-form">
                 <div class="avatar-edit">
                     <div class="avatar">
-
                         {{-- 既存の画像表示 --}}
-                            @if(Auth::user()->avatar)
-                                <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                        @auth
+                            @if($user->avatar)
+                                <img src="{{ asset('storage/images/' . $user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
                             @endif
+                        @endauth
 
+                        {{-- 変更予定画像表示 --}}
                         <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" onchange="previewAvatar(this)"> 
+
                         @if($user->avatar)
-                        <img id="avatar-preview" alt="" src="{{ asset('storage/' . $user->avatar) }}" style="max-width: 100%; max-height: 200px;"> 
+                            <img id="avatar-preview" alt="" src="{{ asset('storage/images' . $user->avatar) }}" style="max-width: 100%; max-height: 200px;"> 
+                        @else
+                            <img id="avatar-preview" src="" alt="" style="max-width: 100%; max-height: 200px;">
                         @endif
                     </div>
                 </div>
@@ -45,18 +49,24 @@
                     <div>
                         <label for="countries">国タグ:</label>
                         <select class="form-select choose" id="countries" name="country_id" >
-                            <option>タグを選択してください</option>
+                            <option value="" selected>タグを選択してください</option>
                             @foreach($countries as $country)
-                            <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                            <option value="{{ $country->id }}"
+                                @if($selectedCountry== $country->id) 
+                                selected @endif>
+                                {{ $country->country_name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div>
                         <label for="occupations">企業タグ:</label>
                         <select class="form-select choose" id="occupations" name="occupation_id" >
-                            <option>タグを選択してください</option>
+                            <option value="" selected>タグを選択してください</option>
                             @foreach($occupations as $occupation)
-                            <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                            <option value="{{ $occupation->id }}" 
+                                @if($selectedOccupation == $occupation->id) 
+                                selected @endif>
+                                {{ $occupation->occupation_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -66,7 +76,6 @@
                 </div>
             </div>
         </form>
-        @endauth
     </main>
     <script src="{{ asset ('js/lightbox-plus-jquery.js') }}"></script>
     <script>

@@ -60,25 +60,8 @@ class UserController extends Controller
             'occupations' => $occupations
         ]);
     }
-
+    
     //✅プロフィール詳細
-    // function show($id)
-    // {
-    //     $user = User::find($id);
-
-    //     if ($user) {
-    //         return view('profile', ['user' => $user]);
-    //     } else {
-    // ユーザーが見つからない場合は、適切なエラーハンドリングを行うか、リダイレクトさせるなどの処理を追加
-    //             return redirect()->route('profile');
-    //         }
-
-    //         redirect('posts.profile');
-    //     }
-
-
-
-
     function show($id)
     {
 
@@ -113,7 +96,11 @@ class UserController extends Controller
         $countries = Country::all(); // 適切なクエリで国データを取得する
         $occupations = Occupation::all(); // 適切なクエリで職業データを取得する
 
-        return view('profile_edit', compact('user', 'countries', 'occupations'));
+        //ユーザーが既に選択している国と企業の情報を取得
+        $selectedCountry = $user->country_id;
+        $selectedOccupation = $user->occupation_id;
+
+        return view('profile_edit', compact('user', 'countries', 'occupations','selectedCountry','selectedOccupation'));
     }
 
 
@@ -127,30 +114,30 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->name =$request->input('name');
-        $user->avatar = $request->input('avatar');
         $user->country_id = $request->input(["country_id"]);
         $user->occupation_id = $request->input(["occupation_id"]);
         
 
-        // アバターがアップロードされた場合のみ処理
+        // 画像のアップロード処理
         if ($request->hasFile('avatar')) {
-            $user->avatar = $request->file('avatar')->store('public/images');
+            // 古い画像が存在する場合、それを削除
+            if ($user->avatar) {
+                Storage::delete('public/images' . $user->avatar);
+            }
+
+            //新しい画像をstorage ディレクトリに保存
+            $imagePath = $request->file('avatar')->store('public/images');
+
+            //新しい画像のパスをデータベースに保存
+            $user->avatar = basename($imagePath);
         }
-
-        // // 画像のアップロード処理
-        // if ($request->hasFile('avatar')) {
-        //     // 古い画像が存在する場合、それを削除
-        //     if ($user->avatar) {
-        //         Storage::delete('public/' . $user->avatar);
-        //     }
-
-        //     $imagePath = $request->file('image')->store('public/images');
-        //     $user->image = 'images/' . basename($imagePath);
-        // }elseif ($request->has('remove_image')) {
-        //     //古い画像を削除する処理
-        //     Storage::delete('public/' . $user->image);
-        //     $user->avatar = null;
-        // }
+        if ($request->has('remove_image')) {
+            //古い画像を削除する処理
+            if($user->avatar){
+                Storage::delete('public/images' . $user->avatar);
+                $user->avatar = null;
+            }
+        }
 
         $user->save();
 
