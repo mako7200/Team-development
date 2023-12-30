@@ -11,10 +11,10 @@ body{
     display: flex;
 }
 
+/* ナビバー */
 .navigation{
     background: linear-gradient(to bottom, #fc7c72, #FFFFFF);
-    height: 100vh; 
-    uki
+    height: 100vh;
     border-right: 2px solid black;
     opacity: 0.8;
     position: fixed;
@@ -53,9 +53,45 @@ ul > li{
    transform: scale(1.2);
 }
 
-.select-page{
+/* チャット */
+.chat {
     flex: 1;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    text-align: center;
     margin-left: 200px; /* ナビゲーションの幅分を空ける */
+}
+
+#room {
+    height: 90vh;
+    overflow-y: auto;
+    margin-right: 10px;
+    margin-left: 10px;
+    word-wrap: break-word;
+    display: ;
+    justify-content: space-between;
+}
+
+.send{
+    text-align: right;
+    color: white;
+    background-color: #87cdfa;
+    border-radius: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.receive{
+    text-align: left;
+    background-color: #dcdcdc;
+    border-radius: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.send_form {
+    display: flex;
+    flex-direction: column-reverse; /* 送信フォームのボタンを下側に配置 */
+    width: 80%;
+    margin: auto;
 }
