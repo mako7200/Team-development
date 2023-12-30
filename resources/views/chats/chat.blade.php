@@ -44,7 +44,7 @@
                 @foreach($messages as $key => $message)
                     {{--   送信したメッセージ  --}}
                     @if($message->send == \Illuminate\Support\Facades\Auth::id())
-                        <div class="send">
+                        <div class="message send">
                             <p>{{$message->message}}</p>
                         </div>
             
@@ -52,7 +52,7 @@
             
                     {{--   受信したメッセージ  --}}
                     @if($message->receive == \Illuminate\Support\Facades\Auth::id())
-                        <div class="receive">
+                        <div class="message receive">
                             <p>{{$message->message}}</p>
                         </div>
                     @endif
@@ -60,7 +60,7 @@
             </div>
             
             <form class="send_form">
-        <textarea name="message" placeholder="メッセージを入力" ></textarea>
+                <textarea name="message" placeholder="メッセージを入力" ></textarea>
                 {{-- <button  id="btn_send" onclick='send()'>送信</button> --}}
             </form>
         
