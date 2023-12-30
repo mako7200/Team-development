@@ -46,9 +46,9 @@
                             <div class="count">
                                 <div>
                                     @if($post->likedBy(Auth::user())->count() >0)
-                                    <a href="{{ route('likes.destroy', ['like_id' => $post->likedBy(Auth::user())->firstOrFail()->id, 'from_index' => true]) }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
+                                    <a href="/likes/{{ $post->likedBy(Auth::user())->firstOrfail()->id }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
                                     @else
-                                    <a href="{{ route('likes.store', ['post_id' => $post->id, 'from_index' => true]) }}"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
+                                    <a href="/posts/{{ $post->id }}/likes" class="like"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
                                     @endif
                                     {{ $post->likes->count() }}   <!-- いいねの数をカウント -->
                                 </div>

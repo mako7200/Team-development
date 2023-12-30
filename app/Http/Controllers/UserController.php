@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Models\Occupation;
 use Faker\Provider\UserAgent;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
@@ -107,9 +108,55 @@ class UserController extends Controller
     }
 
     public function edit($id)
+{
+    $user = User::findOrFail($id);
+    $countries = Country::all(); // 適切なクエリで国データを取得する
+    $occupations = Occupation::all(); // 適切なクエリで職業データを取得する
+
+    return view('profile_edit', compact('user', 'countries', 'occupations'));
+}
+
+
+    public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        return view('profile_edit', ['user' => $user]);
+        $request->validate([
+            'name' => ['string','max:30'],
+            'avatar' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            
+        ],);
+
+        $user = User::find($id);
+        $user->name =$request->input('name');
+        $user->avatar = $request->input('avatar');
+        $user->country_id = $request->input(["country_id"]);
+        $user->occupation_id = $request->input(["occupation_id"]);
+        
+
+        // アバターがアップロードされた場合のみ処理
+        if ($request->hasFile('avatar')) {
+            $user->avatar = $request->file('avatar')->store('public/images');
+        }
+
+        // // 画像のアップロード処理
+        // if ($request->hasFile('avatar')) {
+        //     // 古い画像が存在する場合、それを削除
+        //     if ($user->avatar) {
+        //         Storage::delete('public/' . $user->avatar);
+        //     }
+
+        //     $imagePath = $request->file('image')->store('public/images');
+        //     $user->image = 'images/' . basename($imagePath);
+        // }elseif ($request->has('remove_image')) {
+        //     //古い画像を削除する処理
+        //     Storage::delete('public/' . $user->image);
+        //     $user->avatar = null;
+        // }
+
+        $user->save();
+
+        // リダイレクト先
+        return redirect()->route('profile_edit', ['user' => $user]);
+
     }
 
 

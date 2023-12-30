@@ -19,14 +19,20 @@
         <div class="cancel-btn">
             <a href="javascript:history.back();">キャンセル</a>
         </div>
-        <form action="" method="">
+        <form action="{{ route('user.update' ,['id' => Auth::id()]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="edit-form">
                 <div class="avatar-edit">
                     <div class="avatar">
                         @auth
+<<<<<<< HEAD
+                            <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" class="avatar">
+                        @endauth
+
+=======
                             <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" class="avatar"  style="max-width: 100%; max-height: 200px;">
                         @endauth
+>>>>>>> 32c8386c9f593c5380b94463f4c5922022da8c8b
                         <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" onchange="previewAvatar(this)"> 
                         @if($user->avatar)
                         <img id="avatar-preview" alt="" src="{{ asset('storage/' . $user->avatar) }}" style="max-width: 100%; max-height: 200px;"> 
