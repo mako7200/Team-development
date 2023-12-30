@@ -26,19 +26,21 @@
             </div> 
             <main>
                 <div class="whole-page">
-                    @if(isset($post))
+                    @if(isset($user))
                         <div class="profilepage">
                             <div class="user">
-                                <div><img src="{{ asset('../images/seedtech70期生徒.jpg') }}" alt="" class="myavatar"></div>
+                                @auth
+                                    <div><img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="myavatar"></div>
+                                @endauth
                                 <div class="username">　{{ Auth::user()->name }}</div>
                             </div>
                             <div class="sub-box">
                                 <div class="hashtag">
-                                    #{{ $post->country->country_name }}　#{{ $post->occupation->occupation_name }}
+                                    #{{ $user->country->country_name }}　#{{ $user->occupation->occupation_name }}
                                 </div>
                                 <div class="buttons">
                                     {{-- 編集機能 --}}
-                                    <a class="edit">編集</a>
+                                    <a class="edit" href="{{ route('profile_edit' ,['id' => Auth::id()]) }}" >編集</a>
                                     {{-- ログアウト機能 --}}
                                     <a class="logout" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
