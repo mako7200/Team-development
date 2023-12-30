@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="buttons">
                                     {{-- 編集機能 --}}
-                                    <a class="edit">編集</a>
+                                    <a class="edit" href="{{ route('profile_edit' ,['id' => Auth::id()]) }}" >編集</a>
                                     {{-- ログアウト機能 --}}
                                     <a class="logout" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

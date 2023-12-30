@@ -62,10 +62,10 @@ Route::post('/show', [App\Http\Controllers\CommentController::class, 'store'])->
 
 //プロフィール表示
 Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('posts.profile');
-Route::get('/profile_edit/{id}',[App\Http\Controllers\UserController::class, 'edit'])->name('profile_edit');
 
 //プロフィール編集
 Route::get('/profile_edit/{id}',[App\Http\Controllers\UserController::class, 'edit'])->name('profile_edit');
+Route::post('/profile_edit/{id}/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
 //いいね保存処理
 Route::get('/posts/{post_id}/likes', [App\Http\Controllers\LikeController::class, 'store'])->name('likes.store');
