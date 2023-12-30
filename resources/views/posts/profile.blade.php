@@ -30,7 +30,9 @@
                         <div class="profilepage">
                             <div class="user">
                                 @auth
-                                    <div><img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="myavatar"></div>
+                                    @if($user->avatar)
+                                        <img src="{{ asset('storage/images/' . $user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                                    @endif
                                 @endauth
                                 <div class="username">　{{ Auth::user()->name }}</div>
                             </div>
@@ -47,7 +49,6 @@
                                                 document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
-        
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf
                                             </form>
