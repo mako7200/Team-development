@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="buttons">
                                     {{-- 編集機能 --}}
-                                    <a class="edit" href="{{ route('profile_edit' ,['id' => Auth::id()]) }}" >編集</a>
+                                    <a class="edit">編集</a>
                                     {{-- ログアウト機能 --}}
                                     <a class="logout" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -96,11 +96,12 @@
                                 <div class="count">
                                     <div>
                                         @if($post->likedBy(Auth::user())->count() >0)
-                                        <a href="/likes/{{ $post->likedBy(Auth::user())->firstOrfail()->id }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
+                                        <a href="{{ route('likes.destroy', ['like_id' => $post->likedBy(Auth::user())->firstOrFail()->id, 'from_profile' => true]) }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
                                         @else
-                                        <a href="/posts/{{ $post->id }}/likes" class="like"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
+                                        <a href="{{ route('likes.store', ['post_id' => $post->id, 'from_profile' => true]) }}" class="like"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
                                         @endif
                                         {{ $post->likes->count() }}   <!-- いいねの数をカウント -->
+                                        @php Log::info('Likes count: ' . $post->likes->count()); @endphp
                                     </div>
                                 </div>
                                 <div class="count">
