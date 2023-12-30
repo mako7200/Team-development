@@ -19,14 +19,17 @@
         <div class="cancel-btn">
             <a href="javascript:history.back();">キャンセル</a>
         </div>
+        @auth
         <form action="{{ route('user.update' ,['id' => Auth::id()]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="edit-form">
                 <div class="avatar-edit">
                     <div class="avatar">
-                        @auth
-                            <img src="{{ asset('storage/'. Auth::user()->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
-                        @endauth
+
+                        {{-- 既存の画像表示 --}}
+                            @if(Auth::user()->avatar)
+                                <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                            @endif
 
                         <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" onchange="previewAvatar(this)"> 
                         @if($user->avatar)
@@ -63,6 +66,7 @@
                 </div>
             </div>
         </form>
+        @endauth
     </main>
     <script src="{{ asset ('js/lightbox-plus-jquery.js') }}"></script>
     <script>
