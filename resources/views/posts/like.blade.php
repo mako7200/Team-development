@@ -30,7 +30,14 @@
                 @foreach($posts as $post)
                 <div class="cards">
                     <div class="postcard">
-                        <div class="author"><img src="../img/avatarsample.jpg" alt="" class="avatar">{{ $post->user->name }}</div>
+                        <div class="author">
+                            @auth
+                                @if($post->user->avatar)
+                                    <img src="{{ asset('storage/images/' . $post->user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                                @endif
+                            @endauth
+                            {{ $post->user->name }}
+                        </div>
                         <h4>『{{ $post->title }}』</h4>
                         <div class="content">
                             <p class="contenttext">{{ $post->content }}</p>

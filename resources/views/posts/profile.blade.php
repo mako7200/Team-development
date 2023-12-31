@@ -60,30 +60,16 @@
                     @endif
                     <div class="card-page">
                         @foreach($posts as $post)
-                        {{-- <div class="cards">
-                            <div class="postcard">
-                                <div class="author"><img src="{{ asset('../images/seedtech70期生徒.jpg') }}" alt="" class="avatar">{{ $user->name }}</div>
-                                <h4>『{{ $post->title }}』</h4>
-                                <div class="content">
-                                    <p class="contenttext">{{ $post->content }}</p>  
-                                    <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
-                                </div>
-                            </div>
-                            <div class="react">
-                                <div class="count">
-                                    <a href="#"><i class="fa-solid fa-heart mark"></i></a>
-                                    {{ $post->likes->count() }}
-                                </div>
-                                <div class="count">
-                                    <a href="#"><i class="fa-regular fa-comment mark"></i></a>
-                                    {{ $post->comments->count() }}
-                                </div>
-                            </div>
-                            <p>{{ $post->created_at }}</p>
-                        </div> --}}
                         <div class="cards">
                             <div class="postcard">
-                                <div class="author"><img src="/storage/#" alt="" class="avatar"> {{ $post->user->name }}</div>
+                                <div class="author">
+                                    @auth
+                                        @if($user->avatar)
+                                            <img src="{{ asset('storage/images/' . $user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                                        @endif
+                                    @endauth
+                                    {{ $post->user->name }}
+                                </div>
                                 <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
                                 <div class="content">
                                     <p class="contenttext">{{ mb_substr($post->content, 0, 15, 'UTF-8') }}{{ mb_strlen($post->content, 'UTF-8') > 15 ? '...' : '' }}</p>
