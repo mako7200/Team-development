@@ -30,7 +30,14 @@
                     @foreach($posts as $post)
                     <div class="cards">
                         <div class="postcard">
-                            <div class="author"><img src="/storage/#" alt="" class="avatar"> {{ $post->user->name }}</div>
+                            <div class="author">
+                                @auth
+                                    @if($post->user->avatar)
+                                        <img src="{{ asset('storage/images/' . $post->user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                                    @endif
+                                @endauth
+                                {{ $post->user->name }}
+                            </div>
                             <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
                             <div class="content">
                                 <p class="contenttext">{{ mb_substr($post->content, 0, 15, 'UTF-8') }}{{ mb_strlen($post->content, 'UTF-8') > 15 ? '...' : '' }}</p>
