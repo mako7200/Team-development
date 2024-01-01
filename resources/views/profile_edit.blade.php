@@ -7,6 +7,7 @@
     <title>プロフィール編集ページ</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/profile.edit.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
     <script src="{{ asset('js/profile_edit.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
@@ -16,36 +17,55 @@
         <h1>アプリ名</h1>
     </header>
     <main>
-        <div class="cancel-btn">
-            <a href="javascript:history.back();">キャンセル</a>
+        <div>
+            <a href="javascript:history.back();" class="cancel-btn">キャンセル</a>
         </div>
         <form id="editForm" action="{{ route('user.update' ,['id' => Auth::id()]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="edit-form">
-                <div class="avatar-edit">
-                    <div class="avatar">
-                        {{-- 既存の画像表示 --}}
-                        @auth
-                            @if($user->avatar)
-                                <img src="{{ asset('storage/images/' . $user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
-                            @endif
-                        @endauth
+            <div class="profile-editpage">
+
+                
+                <div class="box1">
+                    <div class="change-avatar">
+                        <div>
+                            {{-- 既存の画像表示 --}}
+                            @auth
+                                <label for="avatar">
+                                @if($user->avatar)
+                                    <img src="{{ asset('storage/images/' . $user->avatar) }}" class="avatar" >
+                                @endif
+                                </label>
+                            @endauth
+                        </div>
 
                         {{-- 変更予定画像表示 --}}
-                        <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" onchange="previewAvatar(this)"> 
+                        <div class="sub-box">
+                            <div>
+                                {{-- <label for="avatar"><i class="fa-regular fa-image image"></i></label> --}}
+                                <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" onchange="previewAvatar(this)" style="display: none">
+                            </div>
+                            <div class="point">
+                                →
+                            </div>
+                        </div>
 
-                        @if($user->avatar)
-                            <img id="avatar-preview" alt="" src="{{ asset('storage/images' . $user->avatar) }}" style="max-width: 100%; max-height: 200px;"> 
-                        @else
-                            <img id="avatar-preview" src="" alt="" style="max-width: 100%; max-height: 200px;">
-                        @endif
+                        <div class="after-image">
+                            @if($user->avatar)
+                                <img id="avatar-preview" alt="" src="{{ asset('storage/images' . $user->avatar) }}" class="avatar"> 
+                            @else
+                                <img id="avatar-preview" src="" alt=""  class="avatar" style=" border-radius: 80%;
+                                width: 200px; height: 400px;">
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="namebox">
+                        <label for="name" style="display: none">名前:</label>
+                        <input type="text" id="name" name="name"  value="{{ $user->name }}" class='name' required>
                     </div>
                 </div>
-                <div class="name_edit">
-                    <label for="name" style="display: none">名前:</label>
-                    <input type="text" id="name" name="name"  value="{{ $user->name }}" class='namebox' required>
-                </div>
-                <div class="hash-tagbox">
+                
+                <div class="box2">
                     <div>
                         <label for="countries">国タグ:</label>
                         <select class="form-select choose" id="countries" name="country_id" >
@@ -71,8 +91,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="upload-btn">
-                    <button type="submit" class="btn btn-primary">編集完了</button>
+                <div class="button">
+                    <button type="submit" class="btn">編集完了</button>
                 </div>
             </div>
         </form>

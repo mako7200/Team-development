@@ -8,7 +8,7 @@ div > .app-name{
     display: flex;
     flex-direction: row;
     justify-content: right;
-    border-bottom: 5px solid #FF99A6;
+    border-bottom: 5px solid #80D9FF;
     height: 70px;
     font-size: 30px;
     display: flex;
