@@ -11,14 +11,24 @@ body{
     display: flex;
     flex-direction: row;
     gap: 50px; 
-    background-image: url(../images/graph.jpg);
+    background-color: #F8F6F6;
+    /* background-image: url(../images/graph.jpg);
     background-color: rgba(255, 255, 255, 0.5);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     position: relative;
     top: 0;
     left: 0;
     z-index: 0;
+}
+
+.background-image{
+    width: 30%;
+    height: 100%;
+    z-index: -1;
+    position: fixed;
+    right: 0;
+    opacity: 0.5;
 }
 
 /* bodyの上にレイヤーを貼るcss */
@@ -30,7 +40,7 @@ body::after{
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.6);
+    /* background-color: rgba(255, 255, 255, 0.6); */
     display: block;
 }
 
@@ -64,6 +74,15 @@ ul > li{
 .list-a{
     text-decoration: none;
     color: black;
+    transition: font-size 0.3s ease-in-out;
+    transform-origin: center;
+    font-size: 30px
+}
+
+.list-a:hover{
+   transform: scale(1.2);
+   color: black;
+   text-decoration: none;
 }
 
 .searchpage{
