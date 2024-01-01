@@ -34,7 +34,7 @@
                                         <img src="{{ asset('storage/images/' . $user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
                                     @endif
                                 @endauth
-                                <div class="username">　{{ Auth::user()->name }}</div>
+                                <div class="myname">　{{ Auth::user()->name }}</div>
                             </div>
                             <div class="sub-box">
                                 <div class="hashtag">
@@ -68,8 +68,12 @@
                                             <img src="{{ asset('storage/images/' . $user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
                                         @endif
                                     @endauth
-                                    {{ $post->user->name }}
+                                    <div class="username">{{ $post->user->name }}</div>
                                 </div>
+
+                                <p class="create">{{ $post->created_at }}</p>
+                                <hr>
+
                                 <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
                                 <div class="content">
                                     <p class="contenttext">{{ mb_substr($post->content, 0, 15, 'UTF-8') }}{{ mb_strlen($post->content, 'UTF-8') > 15 ? '...' : '' }}</p>
@@ -99,7 +103,6 @@
                                     {{ $post->comments->count() }}   <!-- コメントの数をカウント -->
                                 </div>
                             </div>
-                            <p>{{ $post->created_at }}</p>
                         </div>
                         @endforeach
                     </div>

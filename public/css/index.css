@@ -108,6 +108,12 @@ main{
     border-radius: 50%;
 }
 
+.username{
+    font-size: 20px;
+    margin-left: 13px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .create{
     text-align: right;
 }

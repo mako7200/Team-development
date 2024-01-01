@@ -14,7 +14,9 @@
     <script src="search.js"></script>
 </head>
 <body>
+    
     <div class="whole-page">
+        
         <div class="navigation">
             <nav>
                 <ul>
@@ -29,6 +31,7 @@
             </nav>
         </div> 
         <div class="switch-page">
+            <div><img src="{{ asset('../images/search.blade.jpg') }}" alt="" class="background-image"></div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active word-size" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">投稿検索</a>

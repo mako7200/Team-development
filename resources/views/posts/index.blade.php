@@ -36,7 +36,7 @@
                                         <img src="{{ asset('storage/images/' . $post->user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
                                     @endif
                                 @endauth
-                                {{ $post->user->name }}
+                                <div class="username">{{ $post->user->name }}</div>
                             </div>
 
                             <p class="create">{{ $post->created_at }}</p>

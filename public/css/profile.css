@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    height: 200vh;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -37,9 +37,24 @@ ul > li{
     align-items: center;
 }
 
+.name{
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .list-a{
     text-decoration: none;
     color: black;
+    transition: font-size 0.3s ease-in-out;
+    transform-origin: center;
+    font-size: 30px
+}
+
+.list-a:hover{
+    transform: scale(1.2);
+ }
+
+ main{
+    overflow-y: auto;
 }
 
 img{
@@ -83,7 +98,18 @@ img{
     border-radius: 70%;
 }
 
-.username{
+.create{
+    text-align: right;
+}
+
+h4{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.myname{
     font-size: 42px;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -160,7 +186,7 @@ img{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 150px;
-    margin: 100px 70px 40px 255px;
+    margin: 40px 70px 40px 250px;
 }
 
 .cards{
@@ -197,6 +223,12 @@ img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+.username{
+    font-size: 20px;
+    margin-left: 13px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 h4{
