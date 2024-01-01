@@ -29,7 +29,7 @@ body.appear .splashbg{
     transform: scaleY(0);
     background-color: #80D9FF;/*伸びる背景色の設定*/
 	animation-name:PageAnime;
-	animation-duration:1.2s;
+	animation-duration:0.8s;
 	animation-timing-function:ease-in-out;
 	animation-fill-mode:forwards;
 
@@ -62,7 +62,7 @@ body.appear .splashbg{
 /*bodyにappearクラスがついたら出現*/
 body.appear #container{
 	animation-name:PageAnimeAppear;
-	animation-duration:1s;
+	animation-duration:0.5s;
 	animation-delay: 0.8s;
 	animation-fill-mode:forwards;
 	opacity: 0;

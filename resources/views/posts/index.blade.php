@@ -38,6 +38,10 @@
                                 @endauth
                                 {{ $post->user->name }}
                             </div>
+
+                            <p class="create">{{ $post->created_at }}</p>
+                            <hr>
+
                             <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
                             <div class="content">
                                 <p class="contenttext">{{ mb_substr($post->content, 0, 15, 'UTF-8') }}{{ mb_strlen($post->content, 'UTF-8') > 15 ? '...' : '' }}</p>
