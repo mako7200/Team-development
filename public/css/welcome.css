@@ -1,21 +1,110 @@
+/*ローディング画面のためのCSS*/
+#splash {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #80D9FF;
+	z-index: 9999999;
+	text-align:center;
+	color:#fff;
+}
+
+/*画面遷移のためのCSS*/
+
+/*画面遷移アニメーション*/
+.splashbg{
+    display: none;
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear .splashbg{
+    display: block;
+    content: "";
+    position:fixed;
+	z-index: 999;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+	left: 0;
+    transform: scaleY(0);
+    background-color: #80D9FF;/*伸びる背景色の設定*/
+	animation-name:PageAnime;
+	animation-duration:1.2s;
+	animation-timing-function:ease-in-out;
+	animation-fill-mode:forwards;
+
+}
+
+@keyframes PageAnime{
+	0% {
+		transform-origin:bottom;
+		transform:scaleY(0);
+	}
+	50% {
+		transform-origin:bottom;
+		transform:scaleY(1);
+	}
+	50.001% {
+		transform-origin:top;
+	}
+	100% {
+		transform-origin:top;
+		transform:scaleY(0);
+	}
+}
+
+/*画面遷移の後現れるコンテンツ設定*/
+
+#container{
+	opacity: 0;/*はじめは透過0に*/
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear #container{
+	animation-name:PageAnimeAppear;
+	animation-duration:1s;
+	animation-delay: 0.8s;
+	animation-fill-mode:forwards;
+	opacity: 0;
+}
+
+@keyframes PageAnimeAppear{
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity: 1;
+}
+}
+
+#splash-logo {
+    font-size: 35px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 body{
     margin: 0;
     padding: 0;
 }
 
+main{
+    margin-bottom: 60px;
+}
+
 .homeview{
-    /* background-image: url(../images/welcome2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover; */
     height: 100vh;
     margin: 0;
     padding: 0;
+    position: relative;
     z-index: 0;
+    overflow: hidden;
 }
 
 .homeview::after{
     content: " ";
-    z-index: -1;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -24,9 +113,109 @@ body{
     /* 背景画像のぼやけはこっちに画像を貼る */
     filter: blur(5px);
     background-image: url(../images/welcome2.jpg);
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
     background-size: cover;
     background-position: center;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.register-login{
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    display: flex;
+    justify-content: right;
+    gap: 50px;
+    /* margin-right: 40px;
+    margin-top: 40px; */
+}
+
+.button{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(255, 240, 200, 0.7);
+    width: 130px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    border-radius: 50%;
+    transition: font-size 0.5s ease-in-out;
+    transform-origin: center;
+}
+
+.button:hover{
+    transform: scale(1.2);
+}
+
+.button:active{
+    transform: translateY(4px);
+}
+
+h1{
+    font-size: 55px;
+    position: relative;
+    top: 250px;
+    left: 480px;
+}
+
+.scrolldown{
+    /*描画位置※位置は適宜調整してください*/
+	position:absolute;
+	bottom:1%;
+	right:50%;
+    /*矢印の動き1秒かけて永遠にループ*/
+	animation: arrowmove 1s ease-in-out infinite;
+}
+
+/*下からの距離が変化して全体が下→上→下に動く*/
+@keyframes arrowmove{
+      0%{bottom:1%;}
+      50%{bottom:3%;}
+     100%{bottom:1%;}
+ }
+
+/*Scrollテキストの描写*/
+.scrolldown span{
+    /*描画位置*/
+	position: absolute;
+	left:-20px;
+	bottom:10px;
+    /*テキストの形状*/
+	color: #eee;
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
+	/*縦書き設定*/
+	-ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+
+/* 矢印の描写 */
+.scrolldown:before {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 0;
+    right: -6px;
+    /*矢印の形状*/
+    width: 1px;
+    height: 20px;
+    background: #eee;
+    transform: skewX(-31deg);
+}
+
+.scrolldown:after{
+	content:"";
+    /*描画位置*/
+	position: absolute;
+	bottom:0;
+	right:0;
+    /*矢印の形状*/
+	width:1px;
+	height: 50px;
+	background:#eee;
 }
 
 .topimage{
@@ -57,7 +246,7 @@ body{
     flex-direction: row;
     align-items: center;
     gap: 120px;
-    margin-top: 80px;
+    /* margin-top: 30px; */
     margin-bottom: 100px;
     margin-right: 150px;
 }
@@ -69,4 +258,12 @@ body{
     gap: 120px;
     margin-bottom: 100px;
     margin-left: 150px;
+}
+
+.footer{
+    margin: 0;
+    background-color: #80D9FF;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
 }

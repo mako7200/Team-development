@@ -21,18 +21,25 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style> 
+
     </head>
     <body class="antialiased">
+        <div id="splash">
+        <div id="splash-logo">読み込み中...</div>
+        </div>
+        <div class="splashbg"></div><!---画面遷移用-->
+        <div id="container">
         <header class="homeview">
             @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <div class="register-login">
+                    {{-- hidden fixed top-0 right-0 px-6 py-4 sm:block --}}
                     @auth
-                        <a href="{{ url('/posts') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        <a href="{{ url('/posts') }}" class="button">Home</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="button">ログイン</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('register') }}" class="button">登録</a>
                         @endif
                     @endauth
                 </div>
@@ -40,11 +47,12 @@
             <div class="viewpage">
                 <h1>アプリ名</h1>
             </div>
+            <div class="scrolldown"><span>Scroll</span></div>
         </header>
         <main>
             <div class="detail">
                 <div class="explain">
-                    <div><img src="../images/welcome.jpg" alt="" class="topimage"></div>
+                    <div><img src="../images/welcome.jpg" alt="" class="topimage" id="targetimage"></div>
                     <div class="words"><p class="appeal">【留学生必見！】</p> 
                         3分の2の学生は国外へ憧れを持って海外で働きたいという気持ちを持ったことはありませんか？
                     </div>
@@ -54,12 +62,18 @@
                         新しい自分を切り開くための交流アプリへようこそ <br>
                         ここでは自分と向き合い、世界中で活躍している人から情報を交換できるアプリです
                     </div>
-                    <div><img src="../images/welcome3.jpg" alt="" class="topimage"></div>
+                    <div><img src="../images/welcome3.jpg" alt="" class="topimage" id="changeimage2"></div>
                 </div>
             </div>
+            
         </main>
         <footer>
-
+            <p class="footer">Nexseed70th©︎2023teamproject</p>
         </footer>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+
+        <script src="{{ asset('js/welcome.js') }}"></script>
     </body>
 </html>
