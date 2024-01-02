@@ -81,6 +81,12 @@
                         {{-- ✅画像の表示 --}}
                         @if(isset($post))
                         <div class="image-box">
+                            @auth
+                        @if($post->image)
+                        <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image"></div>
+                        @endif
+                        @endauth
+                        @endif
                     </div>
                     
                 </div>
