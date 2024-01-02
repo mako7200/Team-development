@@ -124,19 +124,6 @@
                                                 </div>
                                             </div>
 
-                                            {{-- ✅アバター --}}
-                                            <div class="row mb-3">
-                                                <label for="avatar" class="myavatar"><i class="fa-solid fa-camera" style="">{{ __('プロフィール画像') }}</i></label>
-                                                <div class="col-md-6">
-                                                    <input id="avatar" type="file" class="@error('avatar') is-invalid @enderror" name="avatar">
-                                                    @error('avatar')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
                                             {{-- パスワード --}}
                                             <div class="row mb-3">
                                                 <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password (パスワード)※') }}</label>
@@ -163,6 +150,21 @@
                                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password (パスワード確認)※') }}</label>
                                             <div class="col-md-6">
                                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                            </div>
+                                        </div>
+
+                                            {{-- ✅アバター {{ __('写真アイコン') }}, <i class="fa-solid fa-camera" style=""></i>--}}
+                                        <div class="row mb-3">
+                                            <div class="chooseimg">
+                                                <label for="avatar" class="myavatar">{{ __('写真アイコン') }}</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="avatar" style="display: none" type="file" class="@error('avatar') is-invalid @enderror" name="avatar">
+                                                @error('avatar')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
