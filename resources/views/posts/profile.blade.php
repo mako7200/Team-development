@@ -88,18 +88,23 @@
                                 {{-- ✅いいね機能 --}}
                                 <div class="count">
                                     <div>
-                                        @if($post->likedBy(Auth::user())->count() >0)
+                                        {{-- @if($post->likedBy(Auth::user())->count() >0)
                                         <a href="{{ route('likes.destroy', ['like_id' => $post->likedBy(Auth::user())->firstOrFail()->id, 'from_profile' => true]) }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
                                         @else
                                         <a href="{{ route('likes.store', ['post_id' => $post->id, 'from_profile' => true]) }}" class="like"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
-                                        @endif
-                                        {{ $post->likes->count() }}   <!-- いいねの数をカウント -->
+                                        @endif --}}
+                                        {{-- <i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
+                                        {{ $post->likes->count() }}   <!-- いいねの数をカウント --> --}}
+                                        <i class="fa-regular fa-heart{{ $post->likes->count() > 0 ? ' fa-solid' : '' }}" style="font-size: 18px"></i>
+                                        {{ $post->likes->count() }}   <!--いいねの数をカウント-->
+
                                         @php Log::info('Likes count: ' . $post->likes->count()); @endphp
                                     </div>
                                 </div>
                                 <div class="count">
                                     {{-- <a href="#"></a> --}}
-                                    <i class="fa-regular fa-comment mark"></i>
+                                    {{-- <i class="fa-regular fa-comment mark"></i> --}}
+                                    <i class="fa-regular fa-comment mark{{ $post->comments->count() > 0 ? ' fas blue' : '' }}"></i>
                                     {{ $post->comments->count() }}   <!-- コメントの数をカウント -->
                                 </div>
                             </div>

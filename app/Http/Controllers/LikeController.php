@@ -62,7 +62,7 @@ class LikeController extends Controller
         } elseif ($request->has('from_profile')) {
             return redirect()->route('posts.profile', ['id' => $postId]);
         } else {
-            return redirect()->route('posts.like', ['id' => $postId]);
+            return redirect()->route('likes.index', ['id' => $postId]);
         }
     }
 }
