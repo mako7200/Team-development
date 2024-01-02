@@ -13,16 +13,11 @@
         <div class="navigation">
             <nav>
                 <ul>
-                    {{-- <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">{{ Auth::user()->name }}</a></li>   <!--ログインユーザーの名前を表示--> --}}
-                    <li>
-                        <a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">
-                            <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="avatar">
-                        </a>
-                    </li>
+                    <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">{{ Auth::user()->name }}</a></li>
                     <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                     <li><a href="{{ route('chat.select') }}" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
-                    <li><a href="{{ route('posts.search') }}" class="list-a"><i class="fa-solid fa-user"></i></a></li>
+                    <li><a href="{{ route('users.index') }}" class="list-a"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     <li><a href="{{ route('likes.index') }}" class="list-a"><i class="fa-solid fa-heart"></i></a></li>
                     <li>アプリ名</li>
                 </ul>
@@ -49,7 +44,7 @@
 
                             <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
                             <div class="content">
-                                <p class="contenttext">{!! nl2br(e(mb_substr(explode("\n", $post->content)[0], 0, 15, 'UTF-8'))) !!}{{!! nl2br(e(mb_strlen($post->content, 'UTF-8'))) > 15 ? '...' : '' }}</p>   {{-- 改行を反映＋1行目かつ15文字以内のみに反映 --}}
+                                <p class="contenttext">{{ mb_substr($post->content, 0, 15, 'UTF-8') }}{{ mb_strlen($post->content, 'UTF-8') > 15 ? '...' : '' }}</p>
                             </div>
                                 <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
                             <div class="hashtag">
