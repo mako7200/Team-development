@@ -13,7 +13,11 @@
         <div class="navigation">
             <nav>
                 <ul>
-                    <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">{{ Auth::user()->name }}</a></li>
+                    <li>
+                        <a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">
+                            <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="avatar">
+                        </a>
+                    </li>
                     <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                     <li><a href="{{ route('chat.select') }}" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
@@ -24,32 +28,35 @@
             </nav>
         </div>   
         <main>
-            <div><img src="{{ asset('../images/airplane.jpg') }}" alt="" class="background-image"></div>
+            <div class="glass-box"><img src="{{ asset('../images/airplane.jpg') }}" alt="" class="background-image"></div>
             
             {{-- 投稿検索 --}}
-            <h2 class="title">投稿検索</h2>
+            {{-- <h2 class="title">投稿検索</h2> --}}
             <div class="kensaku">
-                <form action="{{ route('posts.search') }}" method="POST" class="select-bar">
-                    @csrf
-                    <select name="country_id" class="select">
-                        <option value="">国を選択してください</option>
-                        @foreach($countries as $country)
-                            <option value="{{ $country->id }}">{{ $country->country_name }}</option>
-                        @endforeach
-                    </select>
-                
-                    <select name="occupation_id" class="select">
-                        <option value="">会社を選択してください</option>
-                        @foreach($occupations as $occupation)
-                            <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
-                        @endforeach
-                    </select>
-                
-                    <div>
-                        <button class="button">検索</button>
-                    </div>
-                 </form>
-             </div>
+                <div><i class="fa-solid fa-magnifying-glass glass"></i></div>
+                <div>
+                    <form action="{{ route('posts.search') }}" method="POST" class="select-bar">
+                        @csrf
+                        <select name="country_id" class="select">
+                            <option value="">国を選択してください</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                            @endforeach
+                        </select>
+                    
+                        <select name="occupation_id" class="select">
+                            <option value="">会社を選択してください</option>
+                            @foreach($occupations as $occupation)
+                                <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                            @endforeach
+                        </select>
+                    
+                        <div>
+                            <button class="button">検索</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <div class="entire">
                 <div class="card-page">
@@ -65,7 +72,7 @@
                                 <div class="username">{{ $post->user->name }}</div>
                             </div>
 
-                            <p class="create">{{ $post->created_at }}</p>
+                            <p class="create">{{ $post->created_at->format('m/d H:i') }}</p>
                             <hr>
 
                             <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
