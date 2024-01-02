@@ -36,16 +36,19 @@
                     @auth
                     <label for="avatar">
                     @if($post->user->avatar)
-                    <div class="username"><img src="{{ asset('storage/images/' . $post->user->avatar) }}" alt="" class="avatar"> {{ $post->user->name }}</div>
+                    <div class="username">
+                        <img src="{{ asset('storage/images/' . $post->user->avatar) }}" alt="" class="avatar">
+                        <p class="showname">{{ $post->user->name }}</p>
+                    </div>
                     @endif
                     </label>
                     @endauth
-                    <p class="creatat">{{ $post->created_at }}</p>
+                    <p class="creatat">{{ $post->created_at->format('m/d H:i') }}</p>
                 </div>
 
                 <div class="main-content">
                     <div class="row2">
-                <h4>『{{ $post->title }}』</h4>
+                    <h3>『{{ $post->title }}』</h3>
 
                         <div class="edit-delete">
                             {{-- ログインユーザー本人のみに「編集・削除ボタン」を表示 --}}
@@ -65,6 +68,10 @@
                             @endif
                         </div>
                     </div>
+                    <div class="hashtag">
+                        <div class="hash">#{{ $post->country->country_name }}</div>
+                        <div class="hash">#{{ $post->occupation->occupation_name }}</div>
+                    </div>
 
                     <div class="row3">
 
@@ -74,18 +81,8 @@
                         {{-- ✅画像の表示 --}}
                         @if(isset($post))
                         <div class="image-box">
-                        @auth
-                        @if($post->image)
-                        <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image"></div>
-                        @endif
-                        @endauth
-                        @endif
-
                     </div>
-                    <div class="hashtag">
-                        <div class="hash">#{{ $post->country->country_name }}</div>
-                        <div class="hash">#{{ $post->occupation->occupation_name }}</div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -122,7 +119,7 @@
                                 <div class="comment-body">
                                     <p>{!! nl2br(e($comment->body)) !!}</p>   <!--改行も表示-->
                                     <div class="post-time">
-                                    <h6 class="card-time">{{ $comment->created_at }}</h6>
+                                    <h6 class="card-time">{{ $comment->created_at->format('m/d H:i') }}</h6>
                                     </div>
                                 </div>
                             </h5>
