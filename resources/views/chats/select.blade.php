@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>select</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
 </head>
@@ -25,11 +26,10 @@
                     <li>アプリ名</li>
                 </ul>
             </nav>
-        </div>  
+        </div>
 
         {{--  チャット可能ユーザ一覧  --}}
         <div class="select-page">
-            {{-- <div class="karabako"></div> --}}
 
             <div class="select">
                 <table class="table">
