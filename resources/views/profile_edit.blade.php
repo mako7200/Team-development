@@ -41,7 +41,6 @@
                         {{-- 変更予定画像表示 --}}
                         <div class="sub-box">
                             <div>
-                                {{-- <label for="avatar"><i class="fa-regular fa-image image"></i></label> --}}
                                 <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" onchange="previewAvatar(this)" style="display: none">
                             </div>
                             <div class="point">
