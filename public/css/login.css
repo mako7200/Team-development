@@ -24,10 +24,22 @@ a{
 }
 
 .close{
-    font-size: 60px;
+    font-size: 50px;
+    /* transition: font-size 0.3s ease-in-out;
+    transform-origin: center; */
     position: relative;
     top: 60px;
     left: 300px;
+}
+
+.fa-solid:hover{
+    transform: scale(1.1);
+    text-shadow: 0 3px 4px #6a6a6a;
+}
+
+.fa-solid:active{
+    box-shadow: none;
+    transform: translateY(4px);
 }
 
 .card{
@@ -148,6 +160,7 @@ i{
 .btn:hover {
     color: #fff;
     background-color: #7fda80;
+    transform: scale(1.1);
 }
 
 .btn:active {

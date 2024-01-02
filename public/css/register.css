@@ -24,10 +24,22 @@ a{
 }
 
 .close{
-    font-size: 60px;
+    font-size: 50px;
+    /* transition: font-size 0.3s ease-in-out;
+    transform-origin: center; */
     position: relative;
     top: 60px;
     left: 300px;
+}
+
+.fa-solid:hover{
+    transform: scale(1.1);
+    text-shadow: 0 3px 4px #6a6a6a;
+}
+
+.fa-solid:active{
+    box-shadow: none;
+    transform: translateY(4px);
 }
 
 .card{
@@ -82,7 +94,7 @@ i{
     font-size: 30px;
 }
 
-.camera{
+/* .camera{
     background-color: white;
     border: 1px solid black;
     border-radius: 60px;
@@ -91,7 +103,7 @@ i{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .third-block{
     display: flex;
@@ -99,9 +111,37 @@ i{
     gap: 40px;
 }
 
+.chooseimg{
+    height: 25px;
+    line-height: 30px;
+    display: inline-block;
+    padding: 8px 8px;
+    margin: 30px auto;
+    background-color: #1b86f2; /* 背景色 */
+    box-shadow: 0 5px 0 #1b86f2; /* 影の太さ・色 */
+    border: solid 0.5px #1b86f2;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.chooseimg:hover{
+    color: #fff;
+    background-color: #1b86f2;
+    transform: scale(1.1);
+}
+
+.chooseimg:active{
+    box-shadow: none;
+    /* transform: translate(00px);ボタンを垂直に5pxおろすプロパティ */
+    transform: translateY(4px);
+}
+
 .myavatar{
-    width: 25vw;
-    height: 30vh;
+    font-size: 15px;
+    margin: 0 auto 0 auto;
+    cursor: pointer;
 }
 
 .form-select{
@@ -116,17 +156,6 @@ i{
     display: flex;
     justify-content: right;
 }
-
-/* ゆうやのCSS */
-/* .btn{
-    background-color: #CBCBCB;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-top: 40px;
-    width: 65px;
-    height: 40px;
-    cursor: pointer;
-} */
 
 /* ひろやのCSS */
 .btn {
@@ -146,6 +175,7 @@ i{
 .btn:hover {
     color: #fff;
     background-color: #7fda80;
+    transform: scale(1.1);
 }
 
 .btn:active {

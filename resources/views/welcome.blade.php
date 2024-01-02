@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
         <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -34,12 +35,12 @@
                 <div class="register-login">
                     {{-- hidden fixed top-0 right-0 px-6 py-4 sm:block --}}
                     @auth
-                        <a href="{{ url('/posts') }}" class="button">Home</a>
+                        <a href="{{ url('/posts') }}" class="button home">Home</a>
                     @else
-                        <a href="{{ route('login') }}" class="button">ログイン</a>
+                        <a href="{{ route('login') }}" class="button login">ログイン</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="button">登録</a>
+                            <a href="{{ route('register') }}" class="button register">登録</a>
                         @endif
                     @endauth
                 </div>
@@ -49,10 +50,12 @@
             </div>
             <div class="scrolldown"><span>Scroll</span></div>
         </header>
+        <span></span>
         <main>
             <div class="detail">
                 <div class="explain">
-                    <div><img src="../images/welcome.jpg" alt="" class="topimage" id="targetimage"></div>
+                    <div><img src="../images/welcome.jpg" alt="" class="topimage" id="targetimage">
+                    </div>
                     <div class="words"><p class="appeal">【留学生必見！】</p> 
                         3分の2の学生は国外へ憧れを持って海外で働きたいという気持ちを持ったことはありませんか？
                     </div>
