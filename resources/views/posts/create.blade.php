@@ -26,10 +26,10 @@
             
                     {{-- ✅投稿画像の表示 --}}
                     <div>
-                        <label for="image" style="display: none">{{ __('投稿画像') }}</label>
-                        <label for="image"><i class="fa-regular fa-image image"></i></label>
-                        <input type="file" id="image" name="image" style="display: none;">
+                        {{-- <label for="image"><i class="fa-regular fa-image image"></i></label> --}}
+                        <input type="file" id="image" name="image" style="display: none;" onchange="displayImage()">
                     </div>
+                    
                 </div>
 
                 <div class="box2">
@@ -37,7 +37,16 @@
                     <textarea id="content" name="content" required class="text-content"></textarea>
                     
                     {{-- ここに反映する画像挿入 --}}
-                    <div><img src="#" alt="" class="postimage"></div>
+                    <div class="edit-image">
+                        <img src="#" alt="" id="selectedImage">
+                        <div id="hiddenBlock" class="hidden">
+                        <!-- ここに非表示にしたいコンテンツを追加 -->
+                        {{-- このブロックは画像が選択されたときに <br>
+                        非表示にされます。 --}}
+                        <i class="fa-regular fa-images"></i>
+                        <label for="image"><div class="image">写真を選択</div></label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="box3">
@@ -62,9 +71,34 @@
                 </div>
                     
                 <div class="button"><button type="submit" class="btn">投稿する</button></div>
-
             </div>
         </form>
     </main>
+
+    <script>
+        function displayImage(){
+            var input = document.getElementById('image');
+            var image = document.getElementById('selectedImage');
+            var hiddenBlock = document.getElementById('hiddenBlock');
+
+            // ファイルが選択されたか確認
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+            
+
+            // 画像が読み込まれた時の処理
+            reader.onload = function(e){
+                image.src = e.target.result;
+                image.style.display = 'block';
+            };
+
+            // 画像を読み込む
+            reader.readAsDataURL(input.files[0]);
+            } 
+
+            hiddenBlock.style.display = "none";
+        }
+    </script>
+
 </body>
 </html>
