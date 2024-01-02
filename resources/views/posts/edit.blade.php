@@ -20,7 +20,7 @@
             <a href="{{ route('posts.show', $post->id) }}" class="cancel-btn">キャンセル</a>
         </div>
 
-        <form action="{{ route('posts.update', $post->id) }}" method="POST">
+        <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="editpage">
@@ -33,8 +33,6 @@
                         >
 
                         <div>
-                            {{-- <input id="image" type="file" class="form-control" name="image"> --}}
-                            {{-- value="{{ $todo->image }}" onchange="previewImage(this)"> --}}
                             {{-- ✅画像の表示 --}}
                             <label for="image"><i class="fa-regular fa-image image"></i></label>
                             <input id="image" type="file" class="form-control" name="image" value="{{ $post->image }}" onchange="previewImage(this)" style="display: none">
@@ -48,7 +46,7 @@
 
                         <div>
                             @if($post->image)
-                            <img id="image-preview" alt="" src="{{ asset('storage/' . $post->image) }}" class="postimage">
+                            <img id="image-preview" alt="" src="{{ asset('storage/images' . $post->image) }}" class="postimage">
                             {{-- style="max-width: 100%; max-height: 200px;" --}}
                             @endif
                         </div>
@@ -73,11 +71,10 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>
-                 --}}
+                    </div> --}}
+                
                     <div class="button">
-                        <button type="submit" class="btn">編集する
-                        </button>
+                        <button type="submit" class="btn">編集する</button>
                     </div>
 
             </div>

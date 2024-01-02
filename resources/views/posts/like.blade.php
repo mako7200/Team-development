@@ -43,7 +43,7 @@
                             {{ $post->user->name }}
                             
                         </div>
-                        <p class="create">{{ $post->created_at }}</p>
+                        <p class="create">{{ $post->created_at->format('m/d H:i') }}</p>
                         <hr>
 
                         <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
