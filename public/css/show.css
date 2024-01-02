@@ -242,3 +242,12 @@ a > .stamp:active{
     margin-left: 55px;
     font-size: 14px;
 }
+
+.hashtag{
+    margin: auto;
+    
+}
+
+.hash{
+    color: rgb(58, 123, 245);
+}

@@ -117,16 +117,29 @@ class PostController extends Controller
     function show($id)
     {
         $post = Post::find($id);
+        $countries = Country::all(); // 適切なクエリで国データを取得する
+        $occupations = Occupation::all(); // 適切なクエリで職業データを取得する
 
-        return view('posts.show', compact('post'));
+        //ユーザーが既に選択している国と企業の情報を取得
+        $selectedCountry = $post->country_id;
+        $selectedOccupation = $post->occupation_id;
+
+        return view('posts.show', compact('post', 'countries', 'occupations','selectedCountry','selectedOccupation'));
     }
     
     //✅投稿詳細の編集
     function edit($id)
     {
         $post = Post::find($id);
+        $countries = Country::all(); // 適切なクエリで国データを取得する
+        $occupations = Occupation::all(); // 適切なクエリで職業データを取得する
 
-        return view('posts.edit',compact('post'));
+        //ユーザーが既に選択している国と企業の情報を取得
+        $selectedCountry = $post->country_id;
+        $selectedOccupation = $post->occupation_id;
+
+
+        return view('posts.edit',compact('post', 'countries', 'occupations','selectedCountry','selectedOccupation'));
     }
 
     //✅投稿詳細の更新
