@@ -187,3 +187,66 @@ a{
     background-color: white;
 }
 
+/* 検索フォーム */
+.title{
+    margin-top: 30px;
+    margin-left: 300px;
+    font-weight: bold;
+}
+
+.kensaku{
+    margin-top: 40px;
+    margin-left: 350px;
+    margin-bottom: 30px;
+}
+
+.kensaku-bar{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.select-bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.select{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 15vw;
+    height: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.button{
+    width: 70px;
+    height: 30px;
+    line-height: 20px;
+    display: inline-block;
+    padding: 8px 8px;
+    margin: 30px auto;
+    background-color: #1b86f2; /* 背景色 */
+    box-shadow: 0 7px 0 #1b86f2; /* 影の太さ・色 */
+    border: solid 0.5px #1b86f2;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button:hover{
+    color: #fff;
+    background-color: #1b86f2;
+    transform: scale(1.1);
+}
+
+.button:active{
+    box-shadow: none;
+    /* transform: translate(00px);ボタンを垂直に5pxおろすプロパティ */
+    transform: translateY(4px);
+}
