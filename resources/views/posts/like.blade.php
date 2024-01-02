@@ -40,7 +40,7 @@
                                     <a href="{{ route('posts.profile' ,['id' => $post->user->id]) }}"><img src="{{ asset('storage/images/' . $post->user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;"></a>
                                 @endif
                             @endauth
-                            {{ $post->user->name }}
+                            <div class="username">{{ $post->user->name }}</div>
                             
                         </div>
                         <p class="create">{{ $post->created_at->format('m/d H:i') }}</p>
