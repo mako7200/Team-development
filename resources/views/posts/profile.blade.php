@@ -46,6 +46,8 @@
                                 </div>
                                 <div class="buttons">
                                     {{-- 編集機能 --}}
+                                    {{-- ログインユーザー本人のみに「編集・削除ボタン」を表示 --}}
+                                    @if(Auth::check()  && $post->user_id == Auth::user()->id)
                                     <a class="edit" href="{{ route('profile_edit' ,['id' => Auth::id()]) }}" >編集</a>
                                     {{-- ログアウト機能 --}}
                                     <a class="logout" href="{{ route('logout') }}"
@@ -53,6 +55,7 @@
                                                 document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
+                                    @endif
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf
                                             </form>
