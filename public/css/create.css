@@ -48,30 +48,18 @@ h1{
     font-family: 'Times New Roman', Times, serif;
 }
 
-
-.image{
-    font-size: 40px;
-    margin-left: 90px;
-    color: black;
-    display: inline-block;
-    text-shadow: 2px 3px 3px #6a6a6a;
-    cursor: pointer;
-}
-
-.image:hover{
-    transform: scale(1.2);
-}
-
-.image:active{
-    box-shadow: none;
-    transform: translateY(2px);
-}
-
 .box1{
     display: flex;
     flex-direction: row;
     justify-content: left;
     margin-bottom: 80px;
+}
+
+#selectedImage {
+    width: 350px;
+    height: 300px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 4px 0 #5f5f5f;
 }
 
 .box2{
@@ -81,6 +69,10 @@ h1{
     gap: 120px;
 }
 
+.edit-image{
+    height: 30vh;
+}
+
 .text-content{
     width: 33vw;
     height: 30vh;
@@ -88,11 +80,48 @@ h1{
     font-family: 'Times New Roman', Times, serif;
 }
 
-.postimage{
+.hidden{
+    position: relative;
+    top: -300px;
+    background-color: #F8F6F6;
     width: 350px;
     height: 300px;
     border-radius: 30px;
-    box-shadow: 5px 5px 4px 0 #5f5f5f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-images{
+    font-size: 40px;
+    color: black;
+    display: inline-block;
+    text-shadow: 2px 3px 3px #6a6a6a;
+}
+
+.image{
+    margin-top: 20px;
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #1b86f2; /* 背景色 */
+    box-shadow: 0 5px 0 #1b86f2; /* 影の太さ・色 */
+    border: solid 0.5px #1b86f2;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.image:hover{
+    transform: scale(1.2);
+}
+
+.image:active{
+    box-shadow: none;
+    transform: translateY(4px);
 }
 
 .box3{
