@@ -31,7 +31,13 @@
         <div class="showpage">
             <div class="show-card">
                 <div class="row1">
-                    <div class="username"><img src="/storage/#" alt="" class="avatar">{{ $post->user->name }}</div>
+                    @auth
+                    <label for="avatar">
+                    @if($post->user->avatar)
+                    <div class="username"><img src="{{ asset('storage/images/' . $post->user->avatar) }}" alt="" class="avatar"> {{ $post->user->name }}</div>
+                    @endif
+                    </label>
+                    @endauth
                     <p class="creatat">{{ $post->created_at }}</p>
                 </div>
 
@@ -61,7 +67,7 @@
                     <div class="row3">
 
                         <div class="content">
-                            <strong>{{ $post->content }}</strong>
+                            <strong>{!! nl2br(e($post->content)) !!}</strong>   {{-- 改行の反映 --}}
                         </div>
                         {{-- ✅画像の表示 --}}
                         <div class="image-box">
@@ -99,7 +105,7 @@
                     <div class="commentbox2">
                         @foreach ($post->comments->sortByDesc('created_at') as $comment)   <!--コメントを「最新順」に表示-->
                         <div class="small-box">
-                            <h5 class="card-header"><strong>{{ $comment->user->name }}</strong>{{ $comment->body }}</h5>
+                            <h5 class="card-header"><img src="{{ asset('storage/images/' . $comment->user->avatar) }}" class="avatar"><strong> {{ $comment->user->name }}</strong>{{ $comment->body }}</h5>
                             <div class="post-time">
                                 <h6 class="card-time">{{ $comment->created_at }}</h6>
                                 {{-- <p class="card-text"></p> --}}

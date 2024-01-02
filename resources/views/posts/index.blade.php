@@ -44,7 +44,7 @@
 
                             <h4>『{{ mb_substr($post->title, 0, 15, 'UTF-8') }}{{ mb_strlen($post->title, 'UTF-8') > 15 ? '...' : '' }}』</h4>
                             <div class="content">
-                                <p class="contenttext">{{ mb_substr($post->content, 0, 15, 'UTF-8') }}{{ mb_strlen($post->content, 'UTF-8') > 15 ? '...' : '' }}</p>
+                                <p class="contenttext">{!! nl2br(e(mb_substr(explode("\n", $post->content)[0], 0, 15, 'UTF-8'))) !!}{{!! nl2br(e(mb_strlen($post->content, 'UTF-8'))) > 15 ? '...' : '' }}</p>   {{-- 改行を反映＋1行目かつ15文字以内のみに反映 --}}
                             </div>
                                 <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="more">もっと見る...</a>
                             <div class="hashtag">
