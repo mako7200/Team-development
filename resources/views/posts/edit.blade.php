@@ -52,7 +52,7 @@
                         </div>
                     </div>
 
-                    {{-- <div class="box3">
+                    <div class="box3">
                         <div>
                             <label for="countries">国タグ:</label>
                             <select class="form-select choose" id="countries" name="country_id" >
@@ -71,7 +71,7 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div> --}}
+                    </div>
                 
                     <div class="button">
                         <button type="submit" class="btn">編集する</button>

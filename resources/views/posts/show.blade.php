@@ -77,6 +77,10 @@
                         </div>
 
                     </div>
+                    <div class="hashtag">
+                        <div class="hash">#{{ $post->country->country_name }}</div>
+                        <div class="hash">#{{ $post->occupation->occupation_name }}</div>
+                    </div>
                 </div>
             </div>
 
