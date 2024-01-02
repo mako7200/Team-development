@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Country;
 use App\Models\Occupation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
@@ -153,6 +154,27 @@ class PostController extends Controller
         // $post->country_id = $request->input(["country_id"]);         ✅ゆうやがedit.blade.phpの編集が終わり次第、コメントアウトを外す
         // $post->occupation_id = $request->input(["occupation_id"]);   ✅ゆうやがedit.blade.phpの編集が終わり次第、コメントアウトを外す
         // $post->user_id = Auth::id();
+        
+        // 画像のアップロード処理
+        if ($request->hasFile('image')) {
+            // 古い画像が存在する場合、それを削除
+            if ($post->image) {
+                Storage::delete('public/images' . $post->image);
+            }
+
+            //新しい画像をstorage ディレクトリに保存
+            $imagePath = $request->file('image')->store('public/images');
+
+            //新しい画像のパスをデータベースに保存
+            $post->image = basename($imagePath);
+        }
+        if ($request->has('remove_image')) {
+            //古い画像を削除する処理
+            if($post->image){
+                Storage::delete('public/images' . $post->image);
+                $post->image = null;
+            }
+        }
 
         $post->save();
 
