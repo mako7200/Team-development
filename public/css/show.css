@@ -224,3 +224,10 @@ a > .stamp:active{
 .card-time{
     color: gray;
 }
+
+.comment-body{
+    display: flex;
+    flex-direction: column;
+    margin-left: 55px;
+    font-size: 14px;
+}
