@@ -175,7 +175,7 @@
                                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Country (国名)') }}</label>
                                             <div class="col-md-6">
                                                 <select class="form-select" id="countries" name="country_id" >
-                                                    <option>タグを選択してください</option>
+                                                    <option>国をタグを選択してください</option>
                                                     @foreach($countries as $country)
                                                     <option value="{{ $country->id }}">{{ $country->country_name }}</option>
                                                     @endforeach
@@ -188,7 +188,7 @@
                                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Occupation (職業)') }}</label>
                                             <div class="col-md-6">
                                                 <select class="form-select" id="occupations" name="occupation_id" >
-                                                    <option>タグを選択してください</option>
+                                                    <option>職業をタグを選択してください</option>
                                                     @foreach($occupations as $occupation)
                                                     <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
                                                     @endforeach

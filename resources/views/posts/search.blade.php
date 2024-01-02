@@ -20,7 +20,11 @@
         <div class="navigation">
             <nav>
                 <ul>
-                    <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">{{ Auth::user()->name }}</a></li>
+                    <li>
+                        <a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">
+                            <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="avatar">
+                        </a>
+                    </li>
                     <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                     <li><a href="{{ route('chat.select') }}" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
@@ -33,6 +37,7 @@
 
         <div><img src="{{ asset('../images/search.blade.jpg') }}" alt="" class="background-image"></div>
         <div class="usersearch">
+            <h2 class="title">ユーザー検索</h2>
             
 
                 {{-- <div class="kensaku">
@@ -89,34 +94,43 @@
                     </table>
                 </div> --}}
 
-                <div class="kensaku">検索フォーム</div>
-                    <form action="{{ route('users.search') }}" method="POST">
-                        @csrf
-                        <select name="country_id">
-                            <option value="">国を選択してください</option>
-                            @foreach($countries as $country)
-                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
-                            @endforeach
-                        </select>
-                    
-                        <select name="occupation_id">
-                            <option value="">会社を選択してください</option>
-                            @foreach($occupations as $occupation)
-                                <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
-                            @endforeach
-                        </select>
-                    
-                        <span>
-                            <button>検索</button>
-                        </span>
-                    </form>
+                <div class="kensaku">
+                    <div>
+                        <form action="{{ route('users.search') }}" method="POST" class="select-bar">
+                            @csrf
+                            <select name="country_id" class="select">
+                                <option value="">国を選択してください</option>
+                                @foreach($countries as $country)
+                                    <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                                @endforeach
+                            </select>
+                        
+                            <select name="occupation_id" class="select">
+                                <option value="">会社を選択してください</option>
+                                @foreach($occupations as $occupation)
+                                    <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                                @endforeach
+                            </select>
+                        
+                            <div>
+                                <button class="button">検索</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <hr>
 
                     <div class="user">
                         @foreach($users as $user)
                         <div class="user-box">
-                            <div>名前：{{ $user->name }}</div>
-                            <div>国のタグ：{{ $user->country->country_name }}</div>
-                            <div>企業のタグ：{{ $user->occupation->occupation_name }}</div>
+                            <a href="{{ route('posts.profile' ,[$user->id]) }}">
+                                @if($user->avatar)
+                                    <img src="{{ asset('storage/images/' . $user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                                @endif
+                            </a>
+                            <div class="search-name">{{ $user->name }}</div>
+                            <div class="hash">#{{ $user->country->country_name }}</div>
+                            <div class="hash">#{{ $user->occupation->occupation_name }}</div>
                         </div>
                         @endforeach
                     </div>

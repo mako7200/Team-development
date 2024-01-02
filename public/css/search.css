@@ -92,23 +92,24 @@ ul > li{
     border-radius: 50%;
 }
 
+.avatar:hover{
+    transform: scale(1.2);
+}
+
 .searchpage{
     margin: 40px 70px 40px 500px;
     /* margin: 40px 350px 40px 620px; */
 }
 
-li > .word-size{
-    font-size: 25px;
-    color: rgb(45, 44, 44);
-}
-
-div > .switch-page{
+.title{
+    margin-top: 30px;
     margin-left: 300px;
+    font-weight: bold;
 }
 
 .kensaku{
     margin-top: 40px;
-    margin-left: 300px;
+    margin-left: 350px;
     margin-bottom: 30px;
 }
 
@@ -118,61 +119,69 @@ div > .switch-page{
     gap: 30px;
 }
 
-.search-box{
+.select-bar{
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 20px;
 }
 
-.background-color{
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 20px;
-    width: 23vw;
-}
-
-.fa-solid{
-    font-size: 30px;
-    padding-top: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.input-search{
-    border: none;
-    outline: none;
-    width: 18vw;
-    height: 20px;
-    padding-right: 10px;
-    position: relative;
-    bottom: 6px;
-    left: 6px;
-}
-
-.country-bar, .occupation-bar{
+.select{
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
     width: 15vw;
-}
-
-.button-submit{
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: white;
-    width: 50px;
     height: 30px;
+    margin-right: 20px;
+    cursor: pointer;
 }
 
 .button{
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: white;
-    width: 50px;
+    width: 70px;
     height: 30px;
+    line-height: 20px;
+    display: inline-block;
+    padding: 8px 8px;
+    margin: 30px auto;
+    background-color: #1b86f2; /* 背景色 */
+    box-shadow: 0 7px 0 #1b86f2; /* 影の太さ・色 */
+    border: solid 0.5px #1b86f2;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-.search-results{
-    margin-left: 250px;
+.button:hover{
+    color: #fff;
+    background-color: #1b86f2;
+    transform: scale(1.1);
+}
+
+.button:active{
+    box-shadow: none;
+    /* transform: translate(00px);ボタンを垂直に5pxおろすプロパティ */
+    transform: translateY(4px);
+}
+
+.user-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    border-bottom: 1px solid rgba(99, 97, 97, 0.4);
+    padding: 20px 0;
+    
+}
+
+.search-name{
+    margin: auto 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    /* cursor: pointer; */
+}
+
+.hash{
+    margin: auto 0;
+    color: #727272;
 }

@@ -53,7 +53,28 @@
                             @endif
                         </div>
                     </div>
-                
+
+                    {{-- <div class="box3">
+                        <div>
+                            <label for="countries">国タグ:</label>
+                            <select class="form-select choose" id="countries" name="country_id" >
+                                <option>タグを選択してください</option>
+                                @foreach($countries as $country)
+                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
+                            <label for="occupations">企業タグ:</label>
+                            <select class="form-select choose" id="occupations" name="occupation_id" >
+                                <option>タグを選択してください</option>
+                                @foreach($occupations as $occupation)
+                                <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                 --}}
                     <div class="button">
                         <button type="submit" class="btn">編集する
                         </button>
