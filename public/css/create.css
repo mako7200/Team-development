@@ -22,6 +22,7 @@ h1{
     top: 30px;
     left: 250px;
     box-shadow: 2px 3px 3px #6a6a6a;
+    transition: transform 0.3s ease-in-out;
 }
 
 .cancel-btn:active{
@@ -55,6 +56,10 @@ h1{
     display: inline-block;
     text-shadow: 2px 3px 3px #6a6a6a;
     cursor: pointer;
+}
+
+.image:hover{
+    transform: scale(1.2);
 }
 
 .image:active{
@@ -100,6 +105,7 @@ h1{
 
 .choose{
     background-color:mintcream;
+    cursor: pointer;
 }
 
 .button{

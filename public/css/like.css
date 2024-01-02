@@ -172,11 +172,19 @@ h4{
     
 }
 
+a{
+    color: #fc7c72;
+}
+
 .count{
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-right: 10px;
+}
+
+.fa-solid{
+    padding-right: 3px;
 }
 
 .mark{

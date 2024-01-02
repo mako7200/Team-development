@@ -13,7 +13,11 @@
     <div class="navigation">
         <nav>
             <ul>
-                <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">{{ Auth::user()->name }}</a></li>
+                <li>
+                    <a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">
+                        <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="avatar">
+                    </a>
+                </li>
                 <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
                 <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                 <li><a href="{{ route('chat.select') }}" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
@@ -33,7 +37,7 @@
                         <div class="author">
                             @auth
                                 @if($post->user->avatar)
-                                    <img src="{{ asset('storage/images/' . $post->user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                                    <a href="{{ route('posts.profile' ,['id' => $post->user->id]) }}"><img src="{{ asset('storage/images/' . $post->user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;"></a>
                                 @endif
                             @endauth
                             {{ $post->user->name }}
@@ -57,12 +61,12 @@
                             @if($post->likedBy(Auth::user())->count() >0)
                                 <a href="{{ route('likes.destroy', ['like_id' => $post->likedBy(Auth::user())->firstOrFail()->id, 'from_like' => true]) }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
                             @else
-                                <a href="{{ route('likes.store', ['post_id' => $post->id, 'from_like' => true]) }}" class="like"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
+                                <a href="{{ route('likes.store', ['post_id' => $post->id, 'from_like' => true]) }}" class="like"><i class="fa-regular fa-heart mark" style="font-size: 18px"></i></a>
                             @endif
                             {{ $post->likes->count() }}
                         </div>
                         <div class="count">
-                            <a href="#"><i class="fa-regular fa-comment mark"></i></a>
+                            <i class="fa-regular fa-comment mark"></i>
                             {{ $post->comments->count() }}
                         </div>
                     </div>

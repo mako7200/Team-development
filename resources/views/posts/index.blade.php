@@ -33,7 +33,7 @@
                             <div class="author">
                                 @auth
                                     @if($post->user->avatar)
-                                        <img src="{{ asset('storage/images/' . $post->user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                                        <a href="{{ route('posts.profile' ,['id' => $post->user->id]) }}"><img src="{{ asset('storage/images/' . $post->user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;"></a>
                                     @endif
                                 @endauth
                                 <div class="username">{{ $post->user->name }}</div>
@@ -57,20 +57,18 @@
                             <div class="count">
                                 <div>
                                     @if($post->likedBy(Auth::user())->count() >0)
-                                    <a href="{{ route('likes.destroy', ['like_id' => $post->likedBy(Auth::user())->firstOrFail()->id, 'from_index' => true]) }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
+                                        <a href="{{ route('likes.destroy', ['like_id' => $post->likedBy(Auth::user())->firstOrFail()->id, 'from_index' => true]) }}" class="like"><i class="fa-solid fa-heart" style="font-size: 18px"></i></a>
                                     @else
-                                    <a href="{{ route('likes.store', ['post_id' => $post->id, 'from_index' => true]) }}"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
+                                        <a href="{{ route('likes.store', ['post_id' => $post->id, 'from_index' => true]) }}"><i class="fa-regular fa-heart" style="font-size: 18px"></i></a>
                                     @endif
                                     {{ $post->likes->count() }}   <!-- いいねの数をカウント -->
                                 </div>
                             </div>
                             <div class="count">
-                                {{-- <a href="#"></a> --}}
                                 <i class="fa-regular fa-comment mark"></i>
                                 {{ $post->comments->count() }}   <!-- コメントの数をカウント -->
                             </div>
                         </div>
-                        <p>{{ $post->created_at }}</p>
                     </div>
                     @endforeach
                 </div>
