@@ -108,11 +108,17 @@
                     <div class="commentbox2">
                         @foreach ($post->comments->sortByDesc('created_at') as $comment)   <!--コメントを「最新順」に表示-->
                         <div class="small-box">
-                            <h5 class="card-header"><img src="{{ asset('storage/images/' . $comment->user->avatar) }}" class="avatar"><strong> {{ $comment->user->name }}</strong>{{ $comment->body }}</h5>
-                            <div class="post-time">
-                                <h6 class="card-time">{{ $comment->created_at }}</h6>
-                                {{-- <p class="card-text"></p> --}}
-                            </div>
+                            <h5 class="card-header">
+                                <img src="{{ asset('storage/images/' . $comment->user->avatar) }}" class="avatar">
+                                <strong> {{ $comment->user->name }}</strong>
+                                <div class="comment-body">
+                                    <p>{!! nl2br(e($comment->body)) !!}</p>   <!--改行も表示-->
+                                    <div class="post-time">
+                                    <h6 class="card-time">{{ $comment->created_at }}</h6>
+                                    </div>
+                                </div>
+                            </h5>
+                            
                         </div>
                         @endforeach
                     </div>
