@@ -13,7 +13,12 @@
         <div class="navigation">
             <nav>
                 <ul>
-                    <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">{{ Auth::user()->name }}</a></li>
+                    {{-- <li><a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">{{ Auth::user()->name }}</a></li>   <!--ログインユーザーの名前を表示--> --}}
+                    <li>
+                        <a href="{{ route('posts.profile' ,['id' => Auth::id()]) }}" class="list-a name">
+                            <img src="{{ asset('storage/images/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="avatar">
+                        </a>
+                    </li>
                     <li><a href="{{ route('posts.index') }}" class="list-a"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="{{ route('posts.create') }}" class="list-a"><i class="fa-solid fa-square-plus"></i></a></li>
                     <li><a href="{{ route('chat.select') }}" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
