@@ -52,6 +52,7 @@ ul > li{
 }
 
 main{
+    margin: 0;
     overflow-y: auto;
 }
 
@@ -106,6 +107,10 @@ main{
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+.avatar:hover{
+    transform: scale(1.2);
 }
 
 .username{
@@ -189,14 +194,22 @@ a{
 
 /* 検索フォーム */
 .title{
-    margin-top: 30px;
     margin-left: 300px;
     font-weight: bold;
 }
 
+.glass{
+    font-size: 30px;
+    margin-top: 30px;
+    margin-right: 15px;
+}
+
 .kensaku{
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
     margin-top: 40px;
-    margin-left: 350px;
+    margin-left: 600px;
     margin-bottom: 30px;
 }
 
@@ -218,7 +231,7 @@ a{
     border: 1px solid black;
     border-radius: 5px;
     width: 15vw;
-    height: 30px;
+    height: 35px;
     margin-right: 20px;
     cursor: pointer;
 }
