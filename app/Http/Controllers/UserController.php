@@ -28,7 +28,7 @@ class UserController extends Controller
         $countries = Country::all();
         $occupations = Occupation::all();
 
-        return view('users.users', compact('users', 'countries', 'occupations'));
+        return view('posts.search', compact('users', 'countries', 'occupations'));
     }
 
     // ユーザー検索機能
@@ -54,7 +54,7 @@ class UserController extends Controller
 
         $users = $usersQuery->get();
 
-        return view('users.users', [
+        return view('posts.search', [
             'users' => $users,
             'countries' => $countries,
             'occupations' => $occupations

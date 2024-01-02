@@ -40,12 +40,12 @@
         <div class="usersearch">
             
 
-                <div class="kensaku">
+                {{-- <div class="kensaku">
                     <div>
                     <form action="{{ route('posts.search') }}" method="POST" class="kensaku-bar">
                         @csrf
-                        @if(isset($countries)) {{-- $countriesが定義しているかどうか確認している --}}
-                        <select name="country_id" class="country-bar">
+                        @if(isset($countries)) $countriesが定義しているかどうか確認している --}}
+                        {{-- <select name="country_id" class="country-bar">
                             <option value="">国を選択してください</option>
                             @foreach($countries as $country)
                                 <option value="{{ $country->id }}">{{ $country->country_name }}</option>
@@ -53,8 +53,8 @@
                         </select>
                         @endif
                         
-                        @if(isset($occupations))  {{-- $occupationsが定義されているかどうか確認している --}}
-                        <select name="occupation_id" class="occupation-bar">
+                        @if(isset($occupations))  $occupationsが定義されているかどうか確認している --}}
+                        {{-- <select name="occupation_id" class="occupation-bar">
                             <option value="">会社を選択してください</option>
                             @foreach($occupations as $occupation)
                                 <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
@@ -67,7 +67,7 @@
                             </div>
                     </form>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- <div class="search-results">
                     <h2>検索結果</h2>
@@ -93,7 +93,39 @@
                         </tbody>
                     </table>
                 </div> --}}
-        </div>
+
+                <div class="kensaku">検索フォーム</div>
+                    <form action="{{ route('users.search') }}" method="POST">
+                        @csrf
+                        <select name="country_id">
+                            <option value="">国を選択してください</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                            @endforeach
+                        </select>
+                    
+                        <select name="occupation_id">
+                            <option value="">会社を選択してください</option>
+                            @foreach($occupations as $occupation)
+                                <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                            @endforeach
+                        </select>
+                    
+                        <span>
+                            <button>検索</button>
+                        </span>
+                    </form>
+
+                    <div class="user">
+                        @foreach($users as $user)
+                        <div class="user-box">
+                            <div>名前：{{ $user->name }}</div>
+                            <div>国のタグ：{{ $user->country->country_name }}</div>
+                            <div>企業のタグ：{{ $user->occupation->occupation_name }}</div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
     </div>
 </body>
 </html>
