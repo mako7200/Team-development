@@ -76,6 +76,15 @@ h1{
     width: 240px; 
     height: 250px;
     cursor: pointer;
+    transition: opacity 0.3s ease; 
+}
+
+.avatar:hover {
+    opacity: 0.8;
+}
+
+.avatar:active{
+    transform: translateY(4px);
 }
 
 .point{
@@ -112,6 +121,10 @@ h1{
     justify-content: center;
     margin-bottom: 40px;
     gap: 120px;
+}
+
+select{
+    cursor: pointer;
 }
 
 .button{

@@ -46,7 +46,8 @@ ul > li{
     color: black;
     transition: font-size 0.3s ease-in-out;
     transform-origin: center;
-    font-size: 30px
+    font-size: 30px;
+    cursor: pointer;
 }
 
 .list-a:hover{
