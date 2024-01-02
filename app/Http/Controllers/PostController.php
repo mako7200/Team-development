@@ -98,18 +98,19 @@ class PostController extends Controller
 
         $posts = $postsQuery->get();
 
-        return view('posts.search', [
+        return view('posts.index', [
             'posts' => $posts,
             'countries' => $countries,
             'occupations' => $occupations
         ]);
     }
     
-    //✅検索ページ表示
-    function searchShow(Request $request)
-    {
-        return view('posts.search');
-    }
+    //多分不要
+    // //✅検索ページ表示
+    // function searchShow(Request $request)
+    // {
+    //     return view('posts.search');
+    // }
 
 
      //✅詳細

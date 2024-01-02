@@ -25,6 +25,32 @@
         </div>   
         <main>
             <div><img src="{{ asset('../images/airplane.jpg') }}" alt="" class="background-image"></div>
+            
+            {{-- 投稿検索 --}}
+            <h2 class="title">投稿検索</h2>
+            <div class="kensaku">
+                <form action="{{ route('posts.search') }}" method="POST" class="select-bar">
+                    @csrf
+                    <select name="country_id" class="select">
+                        <option value="">国を選択してください</option>
+                        @foreach($countries as $country)
+                            <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                        @endforeach
+                    </select>
+                
+                    <select name="occupation_id" class="select">
+                        <option value="">会社を選択してください</option>
+                        @foreach($occupations as $occupation)
+                            <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
+                        @endforeach
+                    </select>
+                
+                    <div>
+                        <button class="button">検索</button>
+                    </div>
+                 </form>
+             </div>
+
             <div class="entire">
                 <div class="card-page">
                     @foreach($posts as $post)
