@@ -37,7 +37,7 @@
                     <textarea id="content" name="content" required class="text-content"></textarea>
                     
                     {{-- ここに反映する画像挿入 --}}
-                    <div class="edit-image">
+                    <div class="create-image">
                         <img src="#" alt="" id="selectedImage">
                         <div id="hiddenBlock" class="hidden">
                         <!-- ここに非表示にしたいコンテンツを追加 -->
