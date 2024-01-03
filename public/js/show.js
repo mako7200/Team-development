@@ -11,3 +11,18 @@ function previewImage(input) {
         preview.src = "";
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    var zoomImage = document.getElementById('zoom-image');
+    var zoomOverlay = document.getElementById('zoom-overlay');
+    var zoomedImage = document.getElementById('zoomed-image');
+
+    zoomImage.addEventListener('click', function () {
+        zoomedImage.src = zoomImage.src;
+        zoomOverlay.style.display = 'flex';
+    });
+
+    zoomOverlay.addEventListener('click', function () {
+        zoomOverlay.style.display = 'none';
+    });
+});
