@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
 </head>
 <body>
-        <div class="background-images image1"><img src="{{ asset('../images/indexmain.jpg') }}" alt=""></div>
-        <div class="background-images image2"><img src="{{ asset('../images/jobsample.jpg') }}" alt=""></div>
+        <div><img src="{{ asset('../images/profile.jpg') }}" alt="" class="background-image"></div>
+        
             <div class="navigation">
                 <nav>
                     <ul>
@@ -47,7 +47,7 @@
                                 <div class="buttons">
                                     {{-- 編集機能 --}}
                                     {{-- ログインユーザー本人のみに「編集・削除ボタン」を表示 --}}
-                                    @if(Auth::check()  && $post->user_id == Auth::user()->id)
+                                    @if(Auth::check()  && $user->id == Auth::user()->id)
                                     <a class="edit" href="{{ route('profile_edit' ,['id' => Auth::id()]) }}" >編集</a>
                                     {{-- ログアウト機能 --}}
                                     <a class="logout" href="{{ route('logout') }}"
@@ -56,11 +56,9 @@
                                         {{ __('ログアウト') }}
                                     </a>
                                     @endif
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        
-                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
                             </div>
                         </div>

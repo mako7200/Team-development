@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>プロフィール編集ページ</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/show.edit.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/edit.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
     <script src="{{ asset('js/edit.js') }}"></script>   <!--✅edit.jsの読み込み-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   <!--✅jQueryの読み込み-->
@@ -44,11 +44,7 @@
 
                         {{-- 画像の反映 --}}
                         <div>
-                            {{-- @if($post->image) --}}
                             <img id="image-preview" alt="" src="{{ asset('storage/images' . $post->image) }}" class="postimage">
-                            {{-- @else
-                            <div class="no-image"></div> --}}
-                            {{-- @endif --}}
                         </div>
                     </div>
 
