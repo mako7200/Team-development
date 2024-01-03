@@ -11,9 +11,40 @@ body{
     top: 0;
     left: 0;
 }
-
+/* 
 .whole-page{
     display: flex;
+} */
+
+/* ナビバー */
+nav{
+    display: flex;
+    position: fixed;
+    border-bottom: 1px solid #dcdcdc;
+    height: 70px;
+    width: 100%;
+    background-color: #F8F6F6;
+}
+.nav-return{
+    margin: auto 0;
+    margin-left: 20px;
+    font-size: 2.5em;
+    color: black;
+}
+.nav-avatar{
+    margin: auto 10px;
+    margin-left: 30px;
+}
+.nav-avatar img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.nav-name{
+    margin: auto 0px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
 }
 
 /* チャット */
@@ -36,12 +67,14 @@ body{
     margin-bottom: 10px;
 }
 
-p {
+span {
     margin: 0;
     word-wrap: break-word;
     max-width: 35ch;
 }
-
+.send-container{
+    align-self: end;
+}
 .send {
     align-self: flex-end;
     background-color: #90ee90;
@@ -63,3 +96,7 @@ p {
     width: 100%;
     margin: auto;
 }
+textarea{
+    /* border-color: #F8F6F6; */
+}
+
