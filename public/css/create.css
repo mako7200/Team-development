@@ -156,3 +156,7 @@ h1{
     box-shadow: none;
     transform: translateY(4px);
 }
+
+.btn:hover{
+    transform: scale(1.2);
+}
