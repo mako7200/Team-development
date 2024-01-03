@@ -83,13 +83,15 @@
                         <div class="image-box">
                             @auth
                                 @if($post->image)
-                                    <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image" id="image-preview">
+                                    <div class="zoom-overlay" id="zoom-overlay">
+                                        <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="zoomed-image" id="zoomed-image">
+                                    </div>
+                                    <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image" id="zoom-image">
                                 @else
-                                    <div class="image" id="image-preview" alt=""></div>
+                                    <div class="no-image"></div>
                                 @endif
                             @endauth
                         </div>
-                    
                         {{-- <div class="no-image"></div>
                         <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image">   --}}
                     
