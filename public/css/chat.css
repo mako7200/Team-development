@@ -55,15 +55,18 @@ nav{
     position: fixed;
     bottom: 0;
     width: 100vw;
-    background-color: red;
+    background-color: #F8F6F6;
     z-index: 5;
     height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .send_form textarea{
-    width: 100%;
+    width: 95%;
     height: 50px;
-    margin-top: auto;
-    margin-bottom: auto;
+    /* margin-top: auto;
+    margin-bottom: auto; */
 }
 
 /* チャット */
