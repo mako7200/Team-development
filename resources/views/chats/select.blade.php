@@ -35,7 +35,7 @@
             <div class="index">
                 <h3>ユーザー</h3>
             </div>
-            {{-- <tbody>
+            <tbody>
                 @foreach($users as $key => $user)
                     <tr>
                         <div class="user-index">
@@ -56,8 +56,8 @@
                         </div> 
                     </tr>
                 @endforeach
-            </tbody> --}}
-            <tbody>
+            </tbody>
+            {{-- <tbody>
                 @foreach($messageUsers as $messageUser)
                     <tr>
                         <div class="user-index">
@@ -77,7 +77,7 @@
                         </div> 
                     </tr>
                 @endforeach
-            </tbody>
+            </tbody> --}}
             {{-- <tbody>
                 @foreach($users as $key => $messageUser)
                     <tr>
