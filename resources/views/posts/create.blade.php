@@ -15,6 +15,7 @@
     <main>
         <div><a href="{{ route('posts.index') }}" class="cancel-btn">キャンセル</a></div>
         
+        
         <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="createpage">
@@ -24,9 +25,8 @@
                     <label for="title" style="display: none">タイトル:</label>
                     <input type="text" id="title" name="title" class='titlebox' required placeholder="タイトル">
             
-                    {{-- ✅投稿画像の表示 --}}
+                    {{-- 投稿画像の表示 --}}
                     <div>
-                        {{-- <label for="image"><i class="fa-regular fa-image image"></i></label> --}}
                         <input type="file" id="image" name="image" style="display: none;" onchange="displayImage()">
                     </div>
                     
@@ -41,10 +41,13 @@
                         <img src="#" alt="" id="selectedImage">
                         <div id="hiddenBlock" class="hidden">
                         <!-- ここに非表示にしたいコンテンツを追加 -->
-                        {{-- このブロックは画像が選択されたときに <br>
-                        非表示にされます。 --}}
+                        {{-- 画像が選択されたとき非表示 --}}
                         <i class="fa-regular fa-images"></i>
                         <label for="image"><div class="image">写真を選択</div></label>
+                        {{-- エラー文表示 --}}
+                        @error('image')
+                            <p class="text-red-500" style="color: red;">{{ $message }}</p>
+                        @enderror
                         </div>
                     </div>
                 </div>
@@ -53,7 +56,7 @@
                     <div>
                         <label for="countries">国タグ:</label>
                         <select class="form-select choose" id="countries" name="country_id" >
-                            <option>タグを選択してください</option>
+                            <option disabled selected>タグを選択してください</option>
                             @foreach($countries as $country)
                             <option value="{{ $country->id }}">{{ $country->country_name }}</option>
                             @endforeach
@@ -62,15 +65,27 @@
                     <div>
                         <label for="occupations">企業タグ:</label>
                         <select class="form-select choose" id="occupations" name="occupation_id" >
-                            <option>タグを選択してください</option>
+                            <option disabled selected>タグを選択してください</option>
                             @foreach($occupations as $occupation)
                             <option value="{{ $occupation->id }}">{{ $occupation->occupation_name }}</option>
                             @endforeach
                         </select>
                     </div>
+
                 </div>
-                    
-                <div class="button"><button type="submit" class="btn">投稿する</button></div>
+
+                {{-- エラー文表示 --}}
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                <div class="button"><button type="submit" class="btn" style="background-color: #46d548">投稿する</button></div>
             </div>
         </form>
     </main>

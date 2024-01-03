@@ -151,6 +151,10 @@ h1{
     transform: translateY(4px);
 }
 
+.btn:hover{
+    transform: scale(1.2);
+}
+
 .hidden{
     position: relative;
     top: -300px;
