@@ -47,18 +47,48 @@ h1{
 }
 
 
-.image{
+.hidden{
+    position: relative;
+    top: -300px;
+    background-color: #F8F6F6;
+    width: 350px;
+    height: 300px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-images{
     font-size: 40px;
-    margin-left: 90px;
     color: black;
     display: inline-block;
     text-shadow: 2px 3px 3px #6a6a6a;
+}
+
+.image{
+    margin-top: 20px;
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #1b86f2; /* 背景色 */
+    box-shadow: 0 5px 0 #1b86f2; /* 影の太さ・色 */
+    border: solid 0.5px #1b86f2;
+    border-radius: 10px;
+    color: #fff;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.image:hover{
+    transform: scale(1.2);
 }
 
 .image:active{
     box-shadow: none;
-    transform: translateY(2px);
+    transform: translateY(4px);
 }
 
 .box1{
