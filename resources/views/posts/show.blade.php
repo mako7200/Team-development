@@ -83,9 +83,9 @@
                         <div class="image-box">
                             @auth
                                 @if($post->image)
-                                    <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image">
+                                    <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image" id="image-preview">
                                 @else
-                                    <div class="no-image"></div>
+                                    <div class="image" id="image-preview" alt=""></div>
                                 @endif
                             @endauth
                         </div>

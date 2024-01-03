@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>プロフィール編集ページ</title>
+    <title>詳細編集ページ</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/edit.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
@@ -32,7 +32,7 @@
 
                         <div>
                             {{-- 画像の入れ込み --}}
-                            <label for="image"><i class="fa-regular fa-image image"></i></label>
+                            {{-- <label for="image"><i class="fa-regular fa-image image"></i></label> --}}
                             <input id="image" type="file" class="form-control" name="image" value="{{ $post->image }}" onchange="previewImage(this)" style="display: none">
                         </div>
                     </div>
@@ -44,7 +44,18 @@
 
                         {{-- 画像の反映 --}}
                         <div>
-                            <img id="image-preview" alt="" src="{{ asset('storage/images' . $post->image) }}" class="postimage">
+                            @auth
+                                <label for="image">
+                                @if($post->image)
+                                    <img id="image-preview"src="{{ asset('storage/images/' . $post->image) }}" class="postimage" >
+                                @else
+                                <div id="hiddenBlock" class="hidden">
+                                <i class="fa-regular fa-images"></i>
+                                <img id="image-preview" class="postimage"><div class="image">写真を選択</div>
+                                </div>
+                                @endif
+                                </label>
+                            @endauth
                         </div>
                     </div>
 

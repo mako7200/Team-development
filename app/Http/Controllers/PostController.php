@@ -48,6 +48,7 @@ class PostController extends Controller
 
         $post->title = $request->input(["title"]);
         $post->content = $request->input(["content"]);
+        $post->image =$request->input(["image"]);
         $post->country_id = $request->input(["country_id"]);
         $post->occupation_id = $request->input(["occupation_id"]);
         $post->user_id = Auth::id(); // ログインユーザーのIDを取得
@@ -104,13 +105,6 @@ class PostController extends Controller
             'occupations' => $occupations
         ]);
     }
-    
-    //多分不要
-    // //✅検索ページ表示
-    // function searchShow(Request $request)
-    // {
-    //     return view('posts.search');
-    // }
 
 
      //✅詳細
@@ -149,7 +143,6 @@ class PostController extends Controller
 
         $post->title = $request->input(["title"]);
         $post->content = $request->input(["content"]);
-        $post->image = $request->input(["image"]);
         $post->country_id = $request->input(["country_id"]);
         $post->occupation_id = $request->input(["occupation_id"]);
         // $post->user_id = Auth::id();
