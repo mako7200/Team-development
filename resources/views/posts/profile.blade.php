@@ -55,6 +55,10 @@
                                                 document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
+                                    @else
+                                    <div class="chat-btn">
+                                        <td><a href="/chat/{{$user->id}}"><button type="button" class="btn btn-primary">Talk</button></a></td>
+                                    </div>
                                     @endif
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

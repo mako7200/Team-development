@@ -159,7 +159,8 @@
                                                 <label for="avatar" class="myavatar">{{ __('写真アイコン') }}</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input id="avatar" style="display: none" type="file" class="@error('avatar') is-invalid @enderror" name="avatar">
+                                                <input id="avatar" style="display: none" type="file" class="@error('avatar') is-invalid @enderror" name="avatar" onchange="displayAvatar(this)">
+                                                <img id="avatarPreview" src="#" alt="Avatar Preview" style="max-width: 100%; display: none;">
                                                 @error('avatar')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -217,5 +218,19 @@
     </div>
 </body>
 </html>
+
+<script>
+    function displayAvatar(input) {
+        var preview = document.getElementById('avatarPreview');
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 
