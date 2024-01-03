@@ -10,7 +10,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- css --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
 
     {{-- fontawesome --}}
@@ -24,15 +23,14 @@
 <body>
     <div class="whole-page">
 
+        {{-- ナビバー --}}
         <nav>
-            <div>
-                <a href=""></a>
-            </div>
-            <div>
-                <img src="" alt="">
-            </div>
-            <div>
-                <div></div>
+            <a href="{{ route('chat.select') }}" class="nav-return"><i class="fa-solid fa-angle-left"></i></a>
+            <a href="{{ route('posts.profile' ,['id' => $otherUser->id]) }}" class="nav-avatar">
+                <img src="{{ asset('storage/images/' . $otherUser->avatar) }}" alt="{{ $otherUser->name }}" >
+            </a>
+            <div class="nav-name">
+                <div>{{ $otherUser->name }}</div>
             </div>
         </nav>
 
@@ -42,16 +40,16 @@
                 @foreach($messages as $key => $message)
                     {{--   送信したメッセージ  --}}
                     @if($message->send == \Illuminate\Support\Facades\Auth::id())
+                    <p>{{ $message->created_at }}</p>
                         <div class="message send">
-                            <p>{{ $message->created_at }}</p> {{-- 送信日時を表示 --}}
                             <p>{{$message->message}}</p>
                         </div>
+            
                     @endif
             
                     {{--   受信したメッセージ  --}}
                     @if($message->receive == \Illuminate\Support\Facades\Auth::id())
                         <div class="message receive">
-                            <p>{{ $message->created_at }}</p>
                             <p>{{$message->message}}</p>
                         </div>
                     @endif
