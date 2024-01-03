@@ -153,7 +153,6 @@
             </div>
         </div>
     </main>
-</div>
 {{-- ✅ライトボックスの導入（画像表示） --}}
 <script src="{{ asset ('js/lightbox-plus-jquery.js') }}"></script>
     <script>
