@@ -26,53 +26,30 @@ class ChatController extends Controller
     public function __construct()
     {
     }
-
-    // public function index(Request $request , $receive)
-    // {
-    //     // チャットの画面
-    //     $loginId = Auth::id();
- 
-    //     $param = [
-    //       'send' => $loginId,
-    //       'receive' => $receive,
-    //     ];
- 
-    //     // 送信 / 受信のメッセージを取得する
-    //     $query = Message::where('send' , $loginId)->where('receive' , $receive);;
-    //     $query->orWhere(function($query) use($loginId , $receive){
-    //         $query->where('send' , $receive);
-    //         $query->where('receive' , $loginId);
- 
-    //     });
- 
-    //     $messages = $query->get();
- 
-    //     return view('chats.chat' , compact('param' , 'messages'));
-    // }
     public function index(Request $request , $receive)
-{
-    // チャットの画面
-    $loginId = Auth::id();
-
-    $param = [
-      'send' => $loginId,
-      'receive' => $receive,
-    ];
-
-    // 相手の情報を取得
-    $otherUser = User::findOrFail($receive);
-
-    // 送信 / 受信のメッセージを取得する
-    $query = Message::where('send' , $loginId)->where('receive' , $receive);
-    $query->orWhere(function($query) use($loginId , $receive){
-        $query->where('send' , $receive);
-        $query->where('receive' , $loginId);
-    });
-
-    $messages = $query->get();
-
-    return view('chats.chat' , compact('param' , 'messages', 'otherUser'));
-}
+    {
+        // チャットの画面
+        $loginId = Auth::id();
+    
+        $param = [
+          'send' => $loginId,
+          'receive' => $receive,
+        ];
+    
+        // 相手の情報を取得
+        $otherUser = User::findOrFail($receive);
+    
+        // 送信 / 受信のメッセージを取得する
+        $query = Message::where('send' , $loginId)->where('receive' , $receive);
+        $query->orWhere(function($query) use($loginId , $receive){
+            $query->where('send' , $receive);
+            $query->where('receive' , $loginId);
+        });
+    
+        $messages = $query->get();
+    
+        return view('chats.chat' , compact('param' , 'messages', 'otherUser'));
+    }
 
  
     /**

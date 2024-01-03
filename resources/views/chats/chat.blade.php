@@ -40,18 +40,24 @@
                 @foreach($messages as $key => $message)
                     {{--   送信したメッセージ  --}}
                     @if($message->send == \Illuminate\Support\Facades\Auth::id())
-                    <p>{{ $message->created_at }}</p>
                         <div class="message send">
                             <p>{{$message->message}}</p>
                         </div>
+                        <p class="send-time time">{{ \Carbon\Carbon::parse($message->created_at)->format('n月j日G時i分') }}</p>
             
                     @endif
             
                     {{--   受信したメッセージ  --}}
                     @if($message->receive == \Illuminate\Support\Facades\Auth::id())
-                        <div class="message receive">
-                            <p>{{$message->message}}</p>
+                        <div class="receive-content">
+                            <a href="{{ route('posts.profile' ,['id' => $otherUser->id]) }}" class="receive-avatar">
+                                <img src="{{ asset('storage/images/' . $otherUser->avatar) }}" alt="{{ $otherUser->name }}" >
+                            </a>
+                            <div class="message receive">
+                                <p>{{$message->message}}</p>
+                            </div>
                         </div>
+                        <p class="receive-time time">{{ \Carbon\Carbon::parse($message->created_at)->format('n月j日G時i分') }}</p>
                     @endif
                 @endforeach
             </div>
