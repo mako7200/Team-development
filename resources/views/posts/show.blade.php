@@ -79,24 +79,27 @@
                             <strong>{!! nl2br(e($post->content)) !!}</strong>   {{-- 改行の反映 --}}
                         </div>
                         {{-- ✅画像の表示 --}}
-                        {{-- @if(isset($post))
+                        
                         <div class="image-box">
                             @auth
-                        @if($post->image)
-                        <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image"></div>
-                        @endif
-                        @endauth
-                        @endif --}}
+                                @if($post->image)
+                                    <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image">
+                                @else
+                                    <div class="no-image"></div>
+                                @endif
+                            @endauth
+                        </div>
                     
-
+                        {{-- <div class="no-image"></div>
+                        <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image">   --}}
                     
-                        <div class="image-box">
+                        {{-- <div class="image-box">
                             @if($post->image)
                                 <img src="/storage/{{ $post->image }}" alt="" class="image">
                             @else
                                 <div class="no-image"></div>
                             @endif
-                        </div>
+                        </div> --}}
                     </div>
 
                     
