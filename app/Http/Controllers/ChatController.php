@@ -61,6 +61,7 @@ class ChatController extends Controller
             'send' => $request->input('send'),
             'receive' => $request->input('receive'),
             'message' => $request->input('message'),
+            'created_at' => now(), 
         ];
  
         // メッセージデータ保存
