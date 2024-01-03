@@ -58,10 +58,9 @@ class PostController extends Controller
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('public/images',$imageName);
-            $imagePath = 'images/' . $imageName;
+            $imagePath =  $imageName;
             $post->image = $imagePath;   //✅$postに画像を格納
         }
-
         
         $post->save();
 

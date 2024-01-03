@@ -28,12 +28,10 @@
                     <div class="box1">
 
                         <label for="title" style="display: none">タイトル:</label>
-                        <input type="text" class="titlebox" placeholder="タイトル" name="title" 
-                        {{-- value="{{ $todo->title }}" --}}
-                        >
+                        <input type="text" class="titlebox" value="{{ $post->title }}" name="title">
 
                         <div>
-                            {{-- ✅画像の表示 --}}
+                            {{-- ✅画像の入れ込み --}}
                             <label for="image"><i class="fa-regular fa-image image"></i></label>
                             <input id="image" type="file" class="form-control" name="image" value="{{ $post->image }}" onchange="previewImage(this)" style="display: none">
                         </div>
@@ -41,14 +39,16 @@
 
                     <div class="box2">
                         <label for="content" style="display: none">内容:</label>
-                        <textarea class="text-content" name="content" id="content"></textarea>
+                        <textarea class="text-content" name="content" id="content">{{ $post->content }}</textarea>
                         {{-- {{ $todo->content }} --}}
 
+                        {{-- 画像の反映 --}}
                         <div>
-                            @if($post->image)
+                            {{-- @if($post->image) --}}
                             <img id="image-preview" alt="" src="{{ asset('storage/images' . $post->image) }}" class="postimage">
-                            {{-- style="max-width: 100%; max-height: 200px;" --}}
-                            @endif
+                            {{-- @else
+                            <div class="no-image"></div> --}}
+                            {{-- @endif --}}
                         </div>
                     </div>
 
