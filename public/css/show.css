@@ -230,7 +230,7 @@ a > .stamp:active{
     width: 120px;
     height: 40px;
     display: inline-block;
-    margin: 15px 0 0 0;
+    margin: 15px 5px 0 0;
     background-color: #7fda80; /* 背景色 */
     box-shadow: 0 3px 0 #46d548; /* 影の太さ・色 */
     border: solid 0.5px #46d548;
@@ -243,6 +243,10 @@ a > .stamp:active{
 .btn:active {
     box-shadow: none;
     transform: translateY(4px);
+}
+
+.btn:hover{
+    transform: scale(1.1);
 }
 
 .commentlist{

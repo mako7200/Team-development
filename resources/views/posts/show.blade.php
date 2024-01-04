@@ -6,8 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/show.css') }}">
-    <script src="{{ asset('js/show.js') }}"></script>   <!--✅show.jsの読み込み-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   <!--✅jQueryの読み込み-->
+    <script src="{{ asset('js/show.js') }}"></script>   <!--show.jsの読み込み-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   <!--jQueryの読み込み-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
 </head>
 <body>
@@ -78,7 +78,7 @@
                         <div class="content">
                             <strong>{!! nl2br(e($post->content)) !!}</strong>   {{-- 改行の反映 --}}
                         </div>
-                        {{-- ✅画像の表示 --}}
+                        {{-- 画像の表示 --}}
                         
                         <div class="image-box">
                             @auth
@@ -92,19 +92,9 @@
                                 @endif
                             @endauth
                         </div>
-                        {{-- <div class="no-image"></div>
-                        <img src="{{ asset('storage/images/' . $post->image) }}" alt="" class="image">   --}}
-                    
-                        {{-- <div class="image-box">
-                            @if($post->image)
-                                <img src="/storage/{{ $post->image }}" alt="" class="image">
-                            @else
-                                <div class="no-image"></div>
-                            @endif
-                        </div> --}}
+
                     </div>
 
-                    
                 </div>
             </div>
 
@@ -124,7 +114,7 @@
                         </div>
 
                         <div class="btn-box">
-                            <button type="submit" class="btn">投稿する</button>
+                            <button type="submit" class="btn" style="background-color: #46d548">投稿する</button>
                         </div>
                     </form>
                 </div>
@@ -153,7 +143,7 @@
             </div>
         </div>
     </main>
-{{-- ✅ライトボックスの導入（画像表示） --}}
+{{-- ライトボックスの導入（画像表示） --}}
 <script src="{{ asset ('js/lightbox-plus-jquery.js') }}"></script>
     <script>
         lightbox.option({
