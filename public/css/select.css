@@ -78,9 +78,24 @@ ul > li{
   text-align: center;
 }
 
+.title{
+  font-weight: bold;
+}
+
 tr{
  width: 80%;
 }
+
+.message-row{
+  text-decoration: none;
+  /* transition: background-color 0.6 ease-in-out; */
+}
+
+.message-row:hover{
+  background-color: #d9dbdd;
+  /* transition: background-color 0.6 ease-in-out; */
+}
+
 .user-index{
   display: flex;
   height: 60px;
@@ -88,7 +103,10 @@ tr{
   text-align: center;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #000; /* ボーダーの色や太さは適宜調整してください */
+  text-align: left;
+  gap: 30px;
+  border-bottom: 1px solid rgba(99, 97, 97, 0.4);
+  padding: 50px 0;
   border-radius: 5px; /* 角を丸める（適宜調整） */
   box-sizing: border-box; /* ボーダーを要素の外側ではなく内側に収める */
 }
@@ -110,8 +128,7 @@ tr{
 .name{
   margin: 10px;
   padding-left: 10px;
-  font-size: 25px;
-  
+  font-size: 30px;
 }
 .chat-btn{
   margin: 10px;
