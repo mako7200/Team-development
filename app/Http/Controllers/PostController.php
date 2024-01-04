@@ -40,7 +40,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:20',
             'content' => 'required|min:1',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'country_id' => 'required',
             'occupation_id'=>'required',
         ],[
@@ -150,7 +150,7 @@ class PostController extends Controller
                 $validated = $request->validate([
                     'title' => 'required|max:20',
                     'content' => 'required|min:1',
-                    'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
                     'country_id' => 'required',
                     'occupation_id'=>'required',
                 ],[
