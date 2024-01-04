@@ -40,22 +40,15 @@
                 @foreach($messages as $key => $message)
                     {{--   送信したメッセージ  --}}
                     @if($message->send == \Illuminate\Support\Facades\Auth::id())
-                        <div class="message send">
-                            <p>{{$message->message}}</p>
-                        </div>
+                        <p class="message send">{{$message->message}}</p>
                         <p class="send-time time">{{ \Carbon\Carbon::parse($message->created_at)->format('n/j G:i') }}</p>
-            
                     @endif
             
                     {{--   受信したメッセージ  --}}
                     @if($message->receive == \Illuminate\Support\Facades\Auth::id())
                         <div class="receive-content">
-                            <a href="{{ route('posts.profile' ,['id' => $otherUser->id]) }}" class="receive-avatar">
-                                <img src="{{ asset('storage/images/' . $otherUser->avatar) }}" alt="{{ $otherUser->name }}" >
-                            </a>
-                            <div class="message receive">
-                                <p>{{$message->message}}</p>
-                            </div>
+                        <img class="receive-avatar" src="{{ asset('storage/images/' . $otherUser->avatar) }}" alt="{{ $otherUser->name }}" >
+                            <p class="message receive">{{$message->message}}</p>
                         </div>
                         <p class="receive-time time">{{ \Carbon\Carbon::parse($message->created_at)->format('n/j G:i') }}</p>
                     @endif
@@ -72,6 +65,115 @@
             <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
         </div>
     </div>
+
+    <script type="text/javascript">
+        //ログを有効にする
+        Pusher.logToConsole = true;
+    
+        var pusher = new Pusher('778557bd534208ab5b2d', {
+            cluster: 'ap3',
+            encrypted: true
+        });
+    
+        var pusherChannel = pusher.subscribe('teamchat');
+    
+        pusher.connection.bind('state_change', function(states) {
+            console.log('Pusher Connection State:', states.current);
+        });
+    
+        // pusherChannel.bind('chat_event', function(data) {
+        //     let appendText;
+        //     let login = $('input[name="login"]').val();
+    
+        //     if (data.send === login) {
+        //         appendText = '<div class="send" style="text-align:right"><p>' + data.message + '</p></div> ';
+        //     } else if (data.receive === login) {
+        //         appendText = '<div class="receive" style="text-align:left"><p>' + data.message + '</p></div> ';
+        //     } else {
+        //         return false;
+        //     }
+    
+        //     $("#room").append(appendText);
+        //     scrollToBottom();
+        // });
+
+
+
+        pusherChannel.bind('chat_event', function(data) {
+            let appendText;
+            let login = $('input[name="login"]').val();
+
+            if (data.send === login) {
+                appendText = '<p class="message send">' + data.message + '</p>';
+                appendText += '<p class="send-time time">';
+            } else if (data.receive === login) {
+                appendText = '<div class="receive-content">';
+                appendText += '<img class="receive-avatar" src="' + data.otherUserAvatar + '" alt="' + data.otherUserName + '">';
+                appendText += '<p class="message receive">' + data.message + '</p>';
+                appendText += '</div>';
+                appendText += '<p class="receive-time time">';
+            } else {
+                return false;
+            }
+
+            const dateTime = new Date(data.created_at);
+            const month = dateTime.getMonth() + 1;
+            const day = dateTime.getDate();
+            const hour = dateTime.getHours();
+            const minute = dateTime.getMinutes();
+            const formattedTime = month + '/' + day + ' ' + hour + ':' + minute;
+
+            appendText += formattedTime + '</p>';
+
+            $("#room").append(appendText);
+            scrollToBottom();
+        });
+
+
+
+
+
+    
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+    
+        // チャットが表示された際に最下部にスクロールする関数
+        function scrollToBottom() {
+            var room = $('#room');
+            room.scrollTop(room[0].scrollHeight);
+        }
+    
+        // Enterキーが押された時の処理
+        $('textarea[name="message"]').keydown(function(event) {
+            if (event.keyCode === 13 && !event.shiftKey) { // Enterキーのキーコードは13、Shiftキーが押されていないことを確認
+                event.preventDefault(); // デフォルトのEnterキーの動作を無効化
+                send(); // メッセージを送信する関数を呼び出す
+            }
+        });
+    
+        // メッセージ送信
+        const send = () => {
+            $.ajax({
+                type: 'POST',
+                url: '/chat/send',
+                data: {
+                    message: $('textarea[name="message"]').val(),
+                    send: $('input[name="send"]').val(),
+                    receive: $('input[name="receive"]').val(),
+                }
+            }).done(function(result) {
+                $('textarea[name="message"]').val('');
+            }).fail(function(result) {});
+        }
+    
+        // チャットが読み込まれたときに最下部にスクロール
+        $(document).ready(function() {
+            scrollToBottom();
+        });
+    </script>
 
     {{-- <script type="text/javascript">
         //ログを有効にする
@@ -135,77 +237,6 @@
 
 
     </script> --}}
-    <script type="text/javascript">
-        //ログを有効にする
-        Pusher.logToConsole = true;
-    
-        var pusher = new Pusher('778557bd534208ab5b2d', {
-            cluster: 'ap3',
-            encrypted: true
-        });
-    
-        var pusherChannel = pusher.subscribe('teamchat');
-    
-        pusher.connection.bind('state_change', function(states) {
-            console.log('Pusher Connection State:', states.current);
-        });
-    
-        pusherChannel.bind('chat_event', function(data) {
-            let appendText;
-            let login = $('input[name="login"]').val();
-    
-            if (data.send === login) {
-                appendText = '<div class="send" style="text-align:right"><p>' + data.message + '</p></div> ';
-            } else if (data.receive === login) {
-                appendText = '<div class="receive" style="text-align:left"><p>' + data.message + '</p></div> ';
-            } else {
-                return false;
-            }
-    
-            $("#room").append(appendText);
-            scrollToBottom();
-        });
-    
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            }
-        });
-    
-        // チャットが表示された際に最下部にスクロールする関数
-        function scrollToBottom() {
-            var room = $('#room');
-            room.scrollTop(room[0].scrollHeight);
-        }
-    
-        // Enterキーが押された時の処理
-        $('textarea[name="message"]').keydown(function(event) {
-            if (event.keyCode === 13 && !event.shiftKey) { // Enterキーのキーコードは13、Shiftキーが押されていないことを確認
-                event.preventDefault(); // デフォルトのEnterキーの動作を無効化
-                send(); // メッセージを送信する関数を呼び出す
-            }
-        });
-    
-        // メッセージ送信
-        const send = () => {
-            $.ajax({
-                type: 'POST',
-                url: '/chat/send',
-                data: {
-                    message: $('textarea[name="message"]').val(),
-                    send: $('input[name="send"]').val(),
-                    receive: $('input[name="receive"]').val(),
-                }
-            }).done(function(result) {
-                $('textarea[name="message"]').val('');
-            }).fail(function(result) {});
-        }
-    
-        // チャットが読み込まれたときに最下部にスクロール
-        $(document).ready(function() {
-            scrollToBottom();
-        });
-    </script>
     
     
 </body>

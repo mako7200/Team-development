@@ -52,6 +52,7 @@ class ChatMessageReceived implements ShouldBroadcast
             'message' => $this->request['message'],
             'send' => $this->request['send'],
             'receive' => $this->request['receive'],
+            'created_at' => now()->toIso8601String(), 
         ];
     }
  
