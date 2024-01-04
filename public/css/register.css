@@ -116,7 +116,7 @@ i{
     line-height: 30px;
     display: inline-block;
     padding: 8px 8px;
-    margin: 30px auto;
+    margin-left: 90px;
     background-color: #1b86f2; /* 背景色 */
     box-shadow: 0 5px 0 #1b86f2; /* 影の太さ・色 */
     border: solid 0.5px #1b86f2;
@@ -139,9 +139,15 @@ i{
 }
 
 .myavatar{
-    font-size: 15px;
-    margin: 0 auto 0 auto;
     cursor: pointer;
+}
+
+.myimage{
+    width: 180px;
+    height: 180px;
+    border-radius: 80%;
+    margin: 50px 0 0 90px;
+    border: 1px solid black;
 }
 
 .form-select{
