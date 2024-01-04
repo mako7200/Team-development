@@ -37,6 +37,15 @@
             </div>
             <tbody>
                 @foreach($users as $key => $user)
+                    @php
+                    $hasMessages = \App\Models\Message::where(function($query) use($user) {
+                        $query->where('send', Auth::id())->where('receive', $user->id);
+                    })->orWhere(function($query) use($user) {
+                        $query->where('send', $user->id)->where('receive', Auth::id());
+                    })->exists();
+                    @endphp
+
+                    @if($hasMessages)
                     <tr>
                         <div class="user-index">
                             <div class="avatar-image">
@@ -55,6 +64,7 @@
                             </div>
                         </div> 
                     </tr>
+                    @endif
                 @endforeach
             </tbody>
             {{-- <tbody>
