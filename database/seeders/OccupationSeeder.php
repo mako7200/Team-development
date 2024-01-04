@@ -87,6 +87,11 @@ class OccupationSeeder extends Seeder
             [
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => null,
+                'occupation_name'=> '学生',
+            ],
+            [
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => null,
                 'occupation_name'=> 'その他',
             ],
         ]);
