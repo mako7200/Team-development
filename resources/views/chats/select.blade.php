@@ -30,7 +30,7 @@
         {{--  チャット可能ユーザ一覧  --}}
         <div class="select-page">
             <div class="index">
-                <h1>メッセージ</h1>
+                <h2>メッセージ</h2>
             </div>
             <tbody>
                 @foreach($users->sortByDesc(function($user) {
@@ -48,33 +48,40 @@
                         })->latest()->first();
             
                         $hasMessages = $lastMessage !== null;
+                        $isReceivedMessage = $lastMessage && $lastMessage->receive == Auth::id();
                     @endphp
-            
+
+                    @if($hasMessages)
                     <a href="/chat/{{$user->id}}" class="message-row">
-                        @if($hasMessages)
-                            <tr>
-                                <div class="user-index">
-                                    <div class="avatar-image">
-                                        @if($user->avatar)
-                                        <div class="image-box">
-                                            <img src="{{ asset('storage/images/' . $user->avatar) }}" class="image">
+                        <tr>
+                            <div class="user-index">
+                                <div class="avatar-image">
+                                    @if($user->avatar)
+                                    <div class="image-box">
+                                        <img src="{{ asset('storage/images/' . $user->avatar) }}" class="image">
+                                    </div>
+                                    @else
+                                        <img src="{{ asset('path/to/default/avatar-image.jpg') }}">
+                                    @endif
+                                    <div class="name">
+                                        <p>{{$user->name}}</p>
+                                    </div>
+                                    {{-- <div class="last-message-info"> --}}
+                                        @if($isReceivedMessage)
+                                        <div class="dot">
+                                            <p class="last-message-text"><span>・</span>{{$lastMessage->message}}</p>
+                                            <!-- 中黒を追加 -->
                                         </div>
                                         @else
-                                            <img src="{{ asset('path/to/default/avatar-image.jpg') }}">
+                                            <p class="last-message-text">{{$lastMessage->message}}</p>
                                         @endif
-                                        <div class="name">
-                                            <p>{{$user->name}}</p>
-                                        </div>
-                                        {{-- <div class="last-message-info"> --}}
-                                            <p class="last-message-info">{{$lastMessage->message}}</p>
-                                            
                                         {{-- </div> --}}
                                     </div>
                                     <p class="last-time">{{$lastMessage->created_at->format('m-d H:i')}}</p>
                                 </div>
                             </tr>
-                        @endif
-                    </a>
+                        </a>
+                    @endif
                 @endforeach
             </tbody>
         </div>
