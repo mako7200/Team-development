@@ -68,7 +68,7 @@
                     <div>
                         <label for="countries">国タグ:</label>
                         <select class="form-select choose" id="countries" name="country_id" >
-                            <option value="" selected>タグを選択してください</option>
+                            <option value="" disabled selected>タグを選択してください</option>
                             @foreach($countries as $country)
                             <option value="{{ $country->id }}"
                                 @if($selectedCountry== $country->id) 
@@ -80,7 +80,7 @@
                     <div>
                         <label for="occupations">企業タグ:</label>
                         <select class="form-select choose" id="occupations" name="occupation_id" >
-                            <option value="" selected>タグを選択してください</option>
+                            <option value="" disabled selected>タグを選択してください</option>
                             @foreach($occupations as $occupation)
                             <option value="{{ $occupation->id }}" 
                                 @if($selectedOccupation == $occupation->id) 
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="button">
-                    <button type="submit" class="btn">編集完了</button>
+                    <button type="submit" class="btn" style="background-color: #46d548">保存</button>
                 </div>
             </div>
         </form>
