@@ -168,3 +168,21 @@ label{
     box-shadow: none;
     transform: translateY(4px);
 }
+
+
+.btn:hover{
+    transform: scale(1.2);
+}
+
+.hidden{
+    position: relative;
+    top: -300px;
+    background-color: #F8F6F6;
+    width: 350px;
+    height: 300px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -36,19 +36,26 @@ class PostController extends Controller
     //投稿新規保存
     function store(Request $request)
     {
-        $request->validate([
-            'title'=>'required|max:20',
-            'content'=>'required',
-            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-            'country_id'=>'required',
+        //バリデーション
+        $validated = $request->validate([
+            'title' => 'required|max:20',
+            'content' => 'required|min:1',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'country_id' => 'required',
             'occupation_id'=>'required',
+        ],[
+            'title.required' => 'タイトルは必須項目です。',
+            'title.max' => 'タイトルは20文字以内で入力してください',
+            'content.required' => '内容を入力してください',
+            'country_id.required' => '※ 国タグを選択してください',
+            'occupation_id.required' => '※ 企業タグを選択してください',
         ]);
 
         $post = new Post;
 
         $post->title = $request->input(["title"]);
         $post->content = $request->input(["content"]);
-        $post->image =$request->input(["image"]);
+        $post->image = $request->input(["image"]);
         $post->country_id = $request->input(["country_id"]);
         $post->occupation_id = $request->input(["occupation_id"]);
         $post->user_id = Auth::id(); // ログインユーザーのIDを取得
@@ -60,7 +67,7 @@ class PostController extends Controller
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('public/images',$imageName);
             $imagePath =  $imageName;
-            $post->image = $imagePath;   //✅$postに画像を格納
+            $post->image = $imagePath;   //$postに画像を格納
         }
         
         $post->save();
@@ -107,7 +114,7 @@ class PostController extends Controller
     }
 
 
-     //✅詳細
+     //投稿詳細
     function show($id)
     {
         $post = Post::find($id);
@@ -122,7 +129,7 @@ class PostController extends Controller
     }
     
     //投稿詳細の編集
-    function edit($id)
+    function edit(Request $request, $id)
     {
         $post = Post::find($id);
         $countries = Country::all(); // 適切なクエリで国データを取得する
@@ -139,6 +146,20 @@ class PostController extends Controller
     //投稿詳細の更新
     function update(Request $request,$id)
     {
+                //バリデーション
+                $validated = $request->validate([
+                    'title' => 'required|max:20',
+                    'content' => 'required|min:1',
+                    'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'country_id' => 'required',
+                    'occupation_id'=>'required',
+                ],[
+                    'title.required' => 'タイトルは必須項目です。',
+                    'title.max' => 'タイトルは20文字以内で入力してください',
+                    'content.required' => '内容を入力してください',
+                    'country_id.required' => '※ 国タグを選択してください',
+                    'occupation_id.required' => '※ 企業タグを選択してください',
+                ]);
         $post = Post::find($id);
 
         $post->title = $request->input(["title"]);

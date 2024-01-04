@@ -43,7 +43,7 @@
                         <div class="message send">
                             <p>{{$message->message}}</p>
                         </div>
-                        <p class="send-time time">{{ \Carbon\Carbon::parse($message->created_at)->format('n月j日G時i分') }}</p>
+                        <p class="send-time time">{{ \Carbon\Carbon::parse($message->created_at)->format('n/j G:i') }}</p>
             
                     @endif
             
@@ -57,7 +57,7 @@
                                 <p>{{$message->message}}</p>
                             </div>
                         </div>
-                        <p class="receive-time time">{{ \Carbon\Carbon::parse($message->created_at)->format('n月j日G時i分') }}</p>
+                        <p class="receive-time time">{{ \Carbon\Carbon::parse($message->created_at)->format('n/j G:i') }}</p>
                     @endif
                 @endforeach
             </div>

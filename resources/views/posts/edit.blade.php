@@ -28,7 +28,7 @@
                     <div class="box1">
 
                         <label for="title" style="display: none">タイトル:</label>
-                        <input type="text" class="titlebox" value="{{ $post->title }}" name="title">
+                        <input type="text" class="titlebox" value="{{ $post->title }}" name="title" required placeholder="タイトル">
 
                         <div>
                             {{-- 画像の入れ込み --}}
@@ -39,8 +39,7 @@
 
                     <div class="box2">
                         <label for="content" style="display: none">内容:</label>
-                        <textarea class="text-content" name="content" id="content">{{ $post->content }}</textarea>
-                        {{-- {{ $todo->content }} --}}
+                        <textarea class="text-content" name="content" id="content" required placeholder="内容">{{ $post->content }}</textarea>
 
                         {{-- 画像の反映 --}}
                         <div class="edit-image">
@@ -48,6 +47,11 @@
                                 <label for="image">
                                 @if($post->image)
                                     <img id="image-preview"src="{{ asset('storage/images/' . $post->image) }}" class="postimage" >
+                                {{-- エラー文表示 --}}
+                                @error('image')
+                                    <p class="text-red-500" style="color: red;">{{ $message }}</p>
+                                @enderror
+                                    <div class="image" style="background-color: rgb(0, 157, 255)" >写真を選択</div>
                                 @else
                                 <img id="image-preview" class="postimage">
                                 <div id="hiddenBlock" class="hidden">
@@ -58,25 +62,27 @@
                                 </label>
                             @endauth
                         </div>
+                        
                     </div>
 
                     <div class="box3">
+
                         <div>
                             <label for="countries">国タグ:</label>
-                            <select class="form-select choose" id="countries" name="country_id">
-                                <option>タグを選択してください</option>
+                            <select class="form-select choose" id="countries" name="country_id" required>
+                                <option value="" disabled selected>タグを選択してください</option>
                                 @foreach($countries as $country)
                                     <option value="{{ $country->id }}" @if($country->id == $selectedCountry) selected @endif>   <!--編集前のタグを引き継ぐ-->
                                         {{ $country->country_name }}
                                     </option>
                                 @endforeach
                             </select>
-
                         </div>
+
                         <div>
                             <label for="occupations">企業タグ:</label>
-                            <select class="form-select choose" id="occupations" name="occupation_id">
-                                <option>タグを選択してください</option>
+                            <select class="form-select choose" id="occupations" name="occupation_id" required>
+                                <option disabled selected>タグを選択してください</option>
                                 @foreach($occupations as $occupation)
                                     <option value="{{ $occupation->id }}" @if($occupation->id == $selectedOccupation) selected @endif>   <!--編集前のタグを引き継ぐ-->
                                         {{ $occupation->occupation_name }}
@@ -85,9 +91,20 @@
                             </select>
                         </div>
                     </div>
-                
+
+                {{-- エラー文表示 --}}
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                     <div class="button">
-                        <button type="submit" class="btn">編集する</button>
+                        <button type="submit" class="btn" style="background-color: #46d548">編集する</button>
                     </div>
 
             </div>
