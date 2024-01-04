@@ -74,14 +74,15 @@ nav{
     /* margin-right: 45px; */
     margin: auto;
     /* width: 100%; */
-    /* height: 90vh;
-    overflow-y: auto;
-    margin-right: 10px;
+    /* height: 90vh; */
+    overflow-y: scroll;
+    /* margin-right: 10px;
     margin-left: 10px;
     word-wrap: break-word;
     justify-content: space-between; */
     margin-top: 75px;
     margin-bottom: 60px;
+    max-height: 80vh;
 }
 
 .message {
