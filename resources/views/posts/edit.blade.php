@@ -110,13 +110,43 @@
             </div>
         </form>
     </main>
+
+    <script>
+        function displayImage(){
+            var input = document.getElementById('image');
+            var image = document.getElementById('selectedImage');
+            var hiddenBlock = document.getElementById('hiddenBlock');
+    
+            // ファイルが選択されたか確認
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+    
+                // 画像が読み込まれた時の処理
+                reader.onload = function(e){
+                    image.src = e.target.result;
+                    image.style.display = 'block';
+                };
+    
+                // 画像を読み込む
+                reader.readAsDataURL(input.files[0]);
+            } 
+    
+            hiddenBlock.style.display = "none";
+        }
+    
+        // input要素のchangeイベントにdisplayImage関数をバインド
+        document.getElementById('image').addEventListener('change', displayImage);
+    </script>
+
+
     {{-- ライトボックスの導入（画像表示） --}}
-<script src="{{ asset ('js/lightbox-plus-jquery.js') }}"></script>
+{{-- <script src="{{ asset ('js/lightbox-plus-jquery.js') }}"></script>
 <script>
     lightbox.option({
         'resizeDuration': 200,
         'wrapAround': true
     });
-</script>
+</script> --}}
+
 </body>
 </html>
