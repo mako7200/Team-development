@@ -19,13 +19,14 @@
         </style> 
 
     </head>
-    <body class="antialiased"> {{--フェードアウト後bodyにappearクラス付与--}}
+    <body> {{--フェードアウト後bodyにappearクラス付与  class="antialiased"--}}
+        <h1>Swallow</h1>
         {{-- 最初の読み込み画面 --}}
-        <div id="splash">
+        {{-- <div id="splash">
             <div id="splash-logo">読み込み中...</div>
-        </div>
+        </div> --}}
 
-        <div class="splashbg"></div><!---画面遷移用-->
+        {{-- <div class="splashbg"></div><!---画面遷移用--> --}}
 
         <div id="container">
             <header class="homeview">
@@ -45,7 +46,7 @@
                 @endif
 
                 {{-- <div class="viewpage"> --}}
-                    <h1>アプリ名</h1>
+                    <h2>プロに出会える。<br>世界に出会える。</h2>
                 {{-- </div> --}}
 
             </header>
