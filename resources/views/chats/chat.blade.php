@@ -80,38 +80,22 @@
         pusher.connection.bind('state_change', function(states) {
             console.log('Pusher Connection State:', states.current);
         });
-    
-        // pusherChannel.bind('chat_event', function(data) {
-        //     let appendText;
-        //     let login = $('input[name="login"]').val();
-    
-        //     if (data.send === login) {
-        //         appendText = '<div class="send" style="text-align:right"><p>' + data.message + '</p></div> ';
-        //     } else if (data.receive === login) {
-        //         appendText = '<div class="receive" style="text-align:left"><p>' + data.message + '</p></div> ';
-        //     } else {
-        //         return false;
-        //     }
-    
-        //     $("#room").append(appendText);
-        //     scrollToBottom();
-        // });
-
-
 
         pusherChannel.bind('chat_event', function(data) {
             let appendText;
             let login = $('input[name="login"]').val();
+            let avatar = data.avatar;
 
             if (data.send === login) {
                 appendText = '<p class="message send">' + data.message + '</p>';
                 appendText += '<p class="send-time time">';
             } else if (data.receive === login) {
-                appendText = '<div class="receive-content">';
-                appendText += '<img class="receive-avatar" src="' + data.otherUserAvatar + '" alt="' + data.otherUserName + '">';
-                appendText += '<p class="message receive">' + data.message + '</p>';
-                appendText += '</div>';
-                appendText += '<p class="receive-time time">';
+            let avatarHTML = '<img class="receive-avatar" src="{{ asset('storage/images/' . $otherUser->avatar) }}" alt="{{ $otherUser->name }}" >';
+            appendText = '<div class="receive-content">';
+            appendText += avatarHTML; // avatarを直接追加する
+            appendText += '<p class="message receive">' + data.message + '</p>';
+            appendText += '</div>';
+            appendText += '<p class="receive-time time">';
             } else {
                 return false;
             }
@@ -128,8 +112,6 @@
             $("#room").append(appendText);
             scrollToBottom();
         });
-
-
 
 
 
@@ -173,71 +155,6 @@
         $(document).ready(function() {
             scrollToBottom();
         });
-    </script>
-
-    {{-- <script type="text/javascript">
-        //ログを有効にする
-        Pusher.logToConsole = true;
-    
-        var pusher = new Pusher('778557bd534208ab5b2d', {
-            cluster: 'ap3',
-            encrypted: true
-        });
-    
-        var pusherChannel = pusher.subscribe('teamchat');
-    
-        pusher.connection.bind('state_change', function(states) {
-            console.log('Pusher Connection State:', states.current);
-        });
-    
-        pusherChannel.bind('chat_event', function(data) {
-            let appendText;
-            let login = $('input[name="login"]').val();
-    
-            if (data.send === login) {
-                appendText = '<div class="send" style="text-align:right"><p>' + data.message + '</p></div> ';
-            } else if (data.receive === login) {
-                appendText = '<div class="receive" style="text-align:left"><p>' + data.message + '</p></div> ';
-            } else {
-                return false;
-            }
-    
-            $("#room").append(appendText);
-        });
-    
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            }
-        });
-    
-        // Enterキーが押された時の処理
-        $('textarea[name="message"]').keydown(function(event) {
-            if (event.keyCode === 13 && !event.shiftKey) { // Enterキーのキーコードは13、Shiftキーが押されていないことを確認
-                event.preventDefault(); // デフォルトのEnterキーの動作を無効化
-                send(); // メッセージを送信する関数を呼び出す
-            }
-        });
-    
-        // メッセージ送信
-        const send = () => {
-            $.ajax({
-                type: 'POST',
-                url: '/chat/send',
-                data: {
-                    message: $('textarea[name="message"]').val(),
-                    send: $('input[name="send"]').val(),
-                    receive: $('input[name="receive"]').val(),
-                }
-            }).done(function(result) {
-                $('textarea[name="message"]').val('');
-            }).fail(function(result) {});
-        }
-        console.log('Pusher Connection State:', pusher.connection.state);
-
-
-    </script> --}}
-    
-    
+    </script> 
 </body>
 </html>

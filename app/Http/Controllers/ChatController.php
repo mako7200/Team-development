@@ -50,11 +50,7 @@ class ChatController extends Controller
     
         return view('chats.chat' , compact('param' , 'messages', 'otherUser'));
     }
-
- 
-    /**
-     * メッセージの保存をする
-     */
+    
     public function store(Request $request)
     {
  
