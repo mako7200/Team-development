@@ -87,6 +87,11 @@ class CountrySeeder extends Seeder
             [
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => null,
+                'country_name'=> '日本',
+            ],
+            [
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => null,
                 'country_name'=> 'ニュージーランド',
             ],
             [
