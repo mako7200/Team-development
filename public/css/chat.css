@@ -96,8 +96,8 @@ p {
 }
 .send {
     align-self: flex-end;
-    background-color: #90ee90;
-    color: black;
+    background-color: #1E90FF;
+    color: white;
     float: right;
     margin-right: 10px;
 }
@@ -116,7 +116,7 @@ p {
 }
 .receive {
     align-self: flex-start;
-    background-color: #c0c0c0;
+    background-color: #DCDCDC;
     float: left;
     margin-left: 10px;
 }
