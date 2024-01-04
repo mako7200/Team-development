@@ -139,7 +139,7 @@
 
                                         </div>
 
-                                        {{-- ここに画像選択後に反映されるimage置いてください！！  classはmyavatarで--}}
+                                        {{-- ここに画像選択後に反映されるimage--}}
                                         <div>
                                         <img id="avatarPreview" src="#" alt="Avatar Preview" style="max-width: 100%; display: none;" class="myimage">
                                         @error('avatar')

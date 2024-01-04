@@ -33,7 +33,7 @@
         {{--  チャット可能ユーザ一覧  --}}
         <div class="select-page">
             <div class="index">
-                <h3>ユーザー</h3>
+                <h3>メッセージ</h3>
             </div>
             <tbody>
                 @foreach($users->sortByDesc(function($user) {
@@ -51,6 +51,7 @@
                     })->exists();
                     @endphp
             
+            <a href="/chat/{{$user->id}}">
                     @if($hasMessages)
                     <tr>
                         <div class="user-index">
@@ -65,12 +66,13 @@
                                 </div>
                             </div>
                            
-                            <div class="chat-btn">
-                                <td><a href="/chat/{{$user->id}}"><button type="button" class="btn btn-primary">Talk</button></a></td>
-                            </div>
+                            {{-- <div class="chat-btn">
+                                <td><button type="button" class="btn btn-primary">Talk</button></td>
+                            </div> --}}
                         </div> 
                     </tr>
                     @endif
+                </a>
                 @endforeach
             </tbody>
             
