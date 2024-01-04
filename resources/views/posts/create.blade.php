@@ -39,16 +39,23 @@
                     {{-- ここに反映する画像挿入 --}}
                     <div class="create-image">
                         <img src="#" alt="" id="selectedImage">
+
                         <div id="hiddenBlock" class="hidden">
-                        <!-- ここに非表示にしたいコンテンツを追加 -->
-                        {{-- 画像が選択されたとき非表示 --}}
-                        <i class="fa-regular fa-images"></i>
-                        <label for="image"><div class="image">写真を選択</div></label>
-                        {{-- エラー文表示 --}}
-                        @error('image')
-                            <p class="text-red-500" style="color: red;">{{ $message }}</p>
-                        @enderror
+                            <!-- ここに非表示にしたいコンテンツを追加 -->
+                            {{-- 画像が選択されたとき非表示 --}}
+                            <i class="fa-regular fa-images"></i>
+                            <label for="image">
+                                <div class="image">写真を選択</div>
+                            </label>
+                            {{-- エラー文表示 --}}
+                            @error('image')
+                                <p class="text-red-500" style="color: red;">{{ $message }}</p>
+                            @enderror
                         </div>
+                        
+                        <label for="image">
+                            <div class="image" style="background-color: rgb(0, 157, 255)" >写真を選択</div>
+                        </label>
                     </div>
                 </div>
 

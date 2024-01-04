@@ -45,20 +45,21 @@
                         <div class="edit-image">
                             @auth
                                 <label for="image">
-                                @if($post->image)
-                                    <img id="image-preview"src="{{ asset('storage/images/' . $post->image) }}" class="postimage" >
-                                {{-- エラー文表示 --}}
-                                @error('image')
-                                    <p class="text-red-500" style="color: red;">{{ $message }}</p>
-                                @enderror
-                                    <div class="image" style="background-color: rgb(0, 157, 255)" >写真を選択</div>
-                                @else
-                                <img id="image-preview" class="postimage">
-                                <div id="hiddenBlock" class="hidden">
-                                    <i class="fa-regular fa-images"></i>
-                                    <label for="image"><div class="image">写真を選択</div></label>
-                                </div>
-                                @endif
+                                    @if($post->image)
+                                            <img id="image-preview"src="{{ asset('storage/images/' . $post->image) }}" class="postimage" >
+                                        {{-- エラー文表示 --}}
+                                        @error('image')
+                                            <p class="text-red-500" style="color: red;">{{ $message }}</p>
+                                        @enderror
+                                            <div class="image" style="background-color: rgb(0, 157, 255)" >写真を選択</div>
+                                        @else
+                                        <img id="image-preview" class="postimage">
+                                        <div id="hiddenBlock" class="hidden">
+                                            <i class="fa-regular fa-images"></i>
+                                            <label for="image"><div class="image">写真を選択</div></label>
+                                        </div>
+                                        <div class="image" style="background-color: rgb(0, 157, 255)" >写真を選択</div>
+                                    @endif
                                 </label>
                             @endauth
                         </div>
