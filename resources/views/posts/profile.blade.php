@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
 </head>
@@ -35,36 +35,48 @@
                             <div class="user">
                                 @auth
                                     @if($user->avatar)
-                                        <img src="{{ asset('storage/images/' . $user->avatar) }}" class="avatar" style="max-width: 100%; max-height: 200px;">
+                                        <img src="{{ asset('storage/images/' . $user->avatar) }}" class="bigavatar">
                                     @endif
                                 @endauth
-                                <div class="myname">　{{ $user->name }}</div>
-                            </div>
-                            <div class="sub-box">
-                                <div class="hashtag">
-                                    #{{ $user->country->country_name }}　#{{ $user->occupation->occupation_name }}
-                                </div>
-                                <div class="buttons">
-                                    {{-- 編集機能 --}}
-                                    {{-- ログインユーザー本人のみに「編集・削除ボタン」を表示 --}}
-                                    @if(Auth::check()  && $user->id == Auth::user()->id)
-                                    <a class="edit" href="{{ route('profile_edit' ,['id' => Auth::id()]) }}" >編集</a>
-                                    {{-- ログアウト機能 --}}
-                                    <a class="logout" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                        {{ __('ログアウト') }}
-                                    </a>
-                                    @else
-                                    <div class="chat-btn">
-                                        <td><a href="/chat/{{$user->id}}"><button type="button" class="btn btn-primary">Talk</button></a></td>
+                                <div>
+                                    <div class="territory">
+                                        <p class="myname">{{ $user->name }}</p>
+                                        <div class="buttons">
+                                            {{-- 編集機能 --}}
+                                            {{-- ログインユーザー本人のみに「編集・削除ボタン」を表示 --}}
+                                            @if(Auth::check()  && $user->id == Auth::user()->id)
+        
+                                            <a class="edit" href="{{ route('profile_edit' ,['id' => Auth::id()]) }}" >編集</a>
+        
+                                            {{-- ログアウト機能 --}}
+                                            <a class="logout" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                                {{ __('ログアウト') }}
+                                            </a>
+        
+                                            @else
+        
+                                            {{-- トークボタン --}}
+                                            <div class="chat-btn">
+                                                <a href="/chat/{{$user->id}}">
+                                                    <button type="button" class="talk-btn">メッセージを送信する</button>
+                                                </a>
+                                            </div>
+        
+                                            @endif
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
                                     </div>
-                                    @endif
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                    <div class="hashtag">
+                                        #{{ $user->country->country_name }}　#{{ $user->occupation->occupation_name }}
+                                    </div>
                                 </div>
                             </div>
+                                
                         </div>
                     @endif
                     <div class="card-page">
