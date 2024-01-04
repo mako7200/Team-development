@@ -35,6 +35,42 @@
             <div class="index">
                 <h3>メッセージ</h3>
             </div>
+            {{-- <tbody>
+                @foreach($users->sortByDesc(function($user) {
+                    return \App\Models\Message::where(function($query) use($user) {
+                        $query->where('send', Auth::id())->where('receive', $user->id);
+                    })->orWhere(function($query) use($user) {
+                        $query->where('send', $user->id)->where('receive', Auth::id());
+                    })->latest()->value('created_at');
+                    }) as $key => $user)
+                    @php
+                    $hasMessages = \App\Models\Message::where(function($query) use($user) {
+                        $query->where('send', Auth::id())->where('receive', $user->id);
+                    })->orWhere(function($query) use($user) {
+                        $query->where('send', $user->id)->where('receive', Auth::id());
+                    })->exists();
+                    @endphp
+                    
+                    <a href="/chat/{{$user->id}}">
+                        @if($hasMessages)
+                        <tr>
+                            <div class="user-index">
+                                <div class="avatar-image">
+                                    @if($user->avatar)
+                                    <img src="{{ asset('storage/images/' . $user->avatar) }}" class="image">
+                                    @else
+                                    <img src="{{ asset('path/to/default/avatar-image.jpg') }}">
+                                    @endif
+                                    <div class="name">
+                                        <td>{{$user->name}}</td>
+                                    </div>
+                                </div>
+                            </div> 
+                        </tr>
+                        @endif
+                    </a>
+                @endforeach
+            </tbody> --}}
             <tbody>
                 @foreach($users->sortByDesc(function($user) {
                     return \App\Models\Message::where(function($query) use($user) {
@@ -44,37 +80,40 @@
                     })->latest()->value('created_at');
                 }) as $key => $user)
                     @php
-                    $hasMessages = \App\Models\Message::where(function($query) use($user) {
-                        $query->where('send', Auth::id())->where('receive', $user->id);
-                    })->orWhere(function($query) use($user) {
-                        $query->where('send', $user->id)->where('receive', Auth::id());
-                    })->exists();
+                        $lastMessage = \App\Models\Message::where(function($query) use($user) {
+                            $query->where('send', Auth::id())->where('receive', $user->id);
+                        })->orWhere(function($query) use($user) {
+                            $query->where('send', $user->id)->where('receive', Auth::id());
+                        })->latest()->first();
+            
+                        $hasMessages = $lastMessage !== null;
                     @endphp
             
-            <a href="/chat/{{$user->id}}">
-                    @if($hasMessages)
-                    <tr>
-                        <div class="user-index">
-                            <div class="avatar-image">
-                                @if($user->avatar)
-                                    <img src="{{ asset('storage/images/' . $user->avatar) }}" class="image">
-                                @else
-                                    <img src="{{ asset('path/to/default/avatar-image.jpg') }}">
-                                @endif
-                                <div class="name">
-                                    <td>{{$user->name}}</td>
+                    <a href="/chat/{{$user->id}}">
+                        @if($hasMessages)
+                            <tr>
+                                <div class="user-index">
+                                    <div class="avatar-image">
+                                        @if($user->avatar)
+                                            <img src="{{ asset('storage/images/' . $user->avatar) }}" class="image">
+                                        @else
+                                            <img src="{{ asset('path/to/default/avatar-image.jpg') }}">
+                                        @endif
+                                        <div class="name">
+                                            <td>{{$user->name}}</td>
+                                        </div>
+                                        <div class="last-message-info">
+                                            <p>{{$lastMessage->created_at->format('m-d H:i')}}</p>
+                                            <p>{{$lastMessage->message}}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                           
-                            {{-- <div class="chat-btn">
-                                <td><button type="button" class="btn btn-primary">Talk</button></td>
-                            </div> --}}
-                        </div> 
-                    </tr>
-                    @endif
-                </a>
+                            </tr>
+                        @endif
+                    </a>
                 @endforeach
             </tbody>
+            
             
 
         </div>
