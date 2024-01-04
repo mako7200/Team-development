@@ -47,7 +47,7 @@ document.addEventListener("scroll", function() {
     }
 
     // 新しい条件を追加して、一定の高さで非表示にする
-    if (scrollPosition > 1900) { // 100px以上スクロールしたら
+    if (scrollPosition > 1500) { // 100px以上スクロールしたら
         scrolldown.style.display = 'none';
     } else {
         scrolldown.style.display = 'block'; // または 'inline' など適切な表示属性を使用する

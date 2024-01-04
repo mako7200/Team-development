@@ -140,6 +140,14 @@
                                         </div>
 
                                         {{-- ここに画像選択後に反映されるimage置いてください！！  classはmyavatarで--}}
+                                        <div>
+                                        <img id="avatarPreview" src="#" alt="Avatar Preview" style="max-width: 100%; display: none;" class="myimage">
+                                        @error('avatar')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        </div>
 
 
                                     </div>
@@ -160,12 +168,6 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <input id="avatar" style="display: none" type="file" class="@error('avatar') is-invalid @enderror" name="avatar" onchange="displayAvatar(this)">
-                                                <img id="avatarPreview" src="#" alt="Avatar Preview" style="max-width: 100%; display: none;">
-                                                @error('avatar')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
                                             </div>
                                         </div>
                                     </div>
