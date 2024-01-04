@@ -17,34 +17,19 @@ class ChatMessageReceived implements ShouldBroadcast
     protected $message;
     protected $request;
  
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
     public function __construct($request)
     {
         $this->request = $request;
  
     }
  
-    /**
-     * イベントをブロードキャストすべき、チャンネルの取得
-     *
-     * @return Channel|Channel[]
-     */
     public function broadcastOn()
     {
  
         return new Channel('teamchat');
  
     }
- 
-    /**
-     * ブロードキャストするデータを取得
-     *
-     * @return array
-     */
+
     public function broadcastWith()
     {
  
