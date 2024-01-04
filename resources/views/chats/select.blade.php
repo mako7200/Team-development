@@ -67,51 +67,6 @@
                     @endif
                 @endforeach
             </tbody>
-            {{-- <tbody>
-                @foreach($messageUsers as $messageUser)
-                    <tr>
-                        <div class="user-index">
-                            <div class="avatar-image">
-                                @if($messageUser->avatar)
-                                    <img src="{{ asset('storage/images/' . $messageUser->avatar) }}" class="image">
-                                @else
-                                    <img src="{{ asset('path/to/default/avatar-image.jpg') }}">
-                                @endif
-                                <div class="name">
-                                    <td>{{$messageUser->name}}</td>
-                                </div>
-                            </div>
-                            <div class="chat-btn">
-                                <td><a href="/chat/{{$messageUser->id}}"><button type="button" class="btn btn-primary">Talk</button></a></td>
-                            </div>
-                        </div> 
-                    </tr>
-                @endforeach
-            </tbody> --}}
-            {{-- <tbody>
-                @foreach($users as $key => $messageUser)
-                    <tr>
-                        <div class="user-index">
-                            <div class="avatar-image">
-                                @if($messageUser->avatar)
-                                    <img src="{{ asset('storage/images/' . $messageUser->avatar) }}" class="image">
-                                @else
-                                    <img src="{{ asset('path/to/default/avatar-image.jpg') }}">
-                                @endif
-                                <div class="name">
-                                    <td>{{ $messageUser->name }}</td>
-                                </div>
-                            </div>
-            
-                            <div class="chat-btn">
-                                <td><a href="/chat/{{ $messageUser->id }}"><button type="button" class="btn btn-primary">Talk</button></a></td>
-                            </div>
-                        </div>
-                    </tr>
-                @endforeach
-            </tbody> --}}
-            
-
         </div>
     </div>
 
@@ -119,20 +74,3 @@
 </html>
 
 
-{{-- <tbody>
-    @foreach($users as $key => $user)
-        <tr>
-            <div class="user-index" onclick="window.location='/chat/{{$user->id}}';" style="cursor: pointer;">
-                <div class="avatar-image">
-                    @if($user->avatar)
-                        <img src="{{ asset('storage/images/' . $user->avatar) }}" class="image">
-                    @endif
-                </div>
-                <div class="name">
-                    <td>{{$user->name}}</td>
-                </div>
-                <!-- チャットボタンは削除 -->
-            </div>
-        </tr>
-    @endforeach
-</tbody> --}}
