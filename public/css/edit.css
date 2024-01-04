@@ -31,7 +31,7 @@ h1{
 
 .editpage{
     position: absolute;
-    top: 24%;
+    top: 22%;
     left: 20%;
 }
 
@@ -47,7 +47,7 @@ h1{
 }
 
 
-.hidden{
+/* .hidden{
     position: relative;
     right: ;
     background-color: #F8F6F6;
@@ -58,7 +58,7 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .fa-images{
     font-size: 40px;
@@ -103,6 +103,7 @@ h1{
     flex-direction: row;
     margin-bottom: 40px;
     gap: 120px;
+    height: 30vh;
 }
 
 .text-content{
@@ -112,11 +113,28 @@ h1{
     font-family: 'Times New Roman', Times, serif;
 }
 
+.hidden{
+    position: relative;
+    top: -300px;
+    background-color: #F8F6F6;
+    width: 350px;
+    height: 300px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .postimage{
     width: 350px;
     height: 300px;
     border-radius: 30px;
     box-shadow: 5px 5px 4px 0 #5f5f5f;
+}
+
+label{
+    height: 20v;
 }
 
 .box3{
@@ -149,17 +167,4 @@ h1{
 .btn:active {
     box-shadow: none;
     transform: translateY(4px);
-}
-
-.hidden{
-    position: relative;
-    top: -300px;
-    background-color: #F8F6F6;
-    width: 350px;
-    height: 300px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }

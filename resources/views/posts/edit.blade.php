@@ -43,15 +43,16 @@
                         {{-- {{ $todo->content }} --}}
 
                         {{-- 画像の反映 --}}
-                        <div>
+                        <div class="edit-image">
                             @auth
                                 <label for="image">
                                 @if($post->image)
                                     <img id="image-preview"src="{{ asset('storage/images/' . $post->image) }}" class="postimage" >
                                 @else
+                                <img id="image-preview" class="postimage">
                                 <div id="hiddenBlock" class="hidden">
-                                <i class="fa-regular fa-images"></i>
-                                <img id="image-preview" class="postimage"><div class="image">写真を選択</div>
+                                    <i class="fa-regular fa-images"></i>
+                                    <label for="image"><div class="image">写真を選択</div></label>
                                 </div>
                                 @endif
                                 </label>
