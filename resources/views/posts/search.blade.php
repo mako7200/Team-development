@@ -30,7 +30,7 @@
                     <li><a href="{{ route('chat.select') }}" class="list-a"><i class="fa-solid fa-comments"></i></a></li>
                     <li><a href="{{ route('users.index') }}" class="list-a"><i class="fa-solid fa-user"></i></a></li>
                     <li><a href="{{ route('likes.index') }}" class="list-a"><i class="fa-solid fa-heart"></i></a></li>
-                    <li>アプリ名</li>
+                    <li>Swallow</li>
                 </ul>
             </nav>
         </div> 
