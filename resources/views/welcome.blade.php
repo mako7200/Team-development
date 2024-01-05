@@ -19,16 +19,17 @@
         </style> 
 
     </head>
-    <body> {{--フェードアウト後bodyにappearクラス付与  class="antialiased"--}}
-        <h1>Swallow</h1>
+    <body class="antialiased"> {{--フェードアウト後bodyにappearクラス付与  --}}
+       
         {{-- 最初の読み込み画面 --}}
-        {{-- <div id="splash">
+        <div id="splash">
             <div id="splash-logo">読み込み中...</div>
-        </div> --}}
+        </div>
 
-        {{-- <div class="splashbg"></div><!---画面遷移用--> --}}
+        <div class="splashbg"></div>{{--<!---画面遷移用--> --}}
 
         <div id="container">
+            <h1>Swallow</h1>
             <header class="homeview">
                 @if (Route::has('login'))
                     <div class="register-login">
