@@ -171,7 +171,7 @@
                                             {{-- ✅アバター {{ __('写真アイコン') }}, <i class="fa-solid fa-camera" style=""></i>--}}
                                         <div class="row mb-3">
                                             <div class="chooseimg">
-                                                <label for="avatar" class="myavatar">{{ __('写真アイコン') }}</label>
+                                                <label for="avatar" class="myavatar">{{ __('写真アイコン※') }}</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <input id="avatar" style="display: none" type="file" class="@error('avatar') is-invalid @enderror" name="avatar" onchange="displayAvatar(this)">
@@ -182,7 +182,7 @@
                                     <div class="third-block">
                                         {{-- 国タグ --}}
                                         <div class="row mb-3">
-                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Country (国名)') }}</label>
+                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Country (国名)※') }}</label>
                                             <div class="col-md-6">
                                                 <select class="form-select" id="countries" name="country_id" >
                                                     <option>国をタグを選択してください</option>
@@ -195,7 +195,7 @@
                                         
                                         {{-- 職種タグ --}}
                                         <div class="row mb-3">
-                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Occupation (職業)') }}</label>
+                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Occupation (職業)※') }}</label>
                                             <div class="col-md-6">
                                                 <select class="form-select" id="occupations" name="occupation_id" >
                                                     <option>職業をタグを選択してください</option>
