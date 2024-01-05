@@ -77,7 +77,7 @@
                                         @endif
                                         {{-- </div> --}}
                                     </div>
-                                    <p class="last-time">{{$lastMessage->created_at->format('m-d H:i')}}</p>
+                                    <p class="last-time">{{$lastMessage->created_at->format('n/j G:i')}}</p>
                                 </div>
                             </tr>
                         </a>
