@@ -25,12 +25,12 @@ html{
 /*画面遷移のためのCSS*/
 
 /*画面遷移アニメーション*/
-/* .splashbg{
+.splashbg{
     display: none;
-} */
+}
 
 /*bodyにappearクラスがついたら出現*/
-/* body.appear .splashbg{
+body.appear .splashbg{
     display: block;
     content: "";
     position:fixed;
@@ -40,13 +40,13 @@ html{
     top: 0;
 	left: 0;
     transform: scaleY(0);
-    background-color: #80D9FF;伸びる背景色の設定 */
-	/* animation-name:PageAnime;
+    background-color: #80D9FF; /*伸びる背景色の設定 */
+	animation-name:PageAnime;
 	animation-duration:0.8s;
 	animation-timing-function:ease-in-out;
 	animation-fill-mode:forwards;
 
-}
+} 
 
 @keyframes PageAnime{
 	0% {
@@ -64,13 +64,13 @@ html{
 		transform-origin:top;
 		transform:scaleY(0);
 	}
-} */
+} 
 
 /*画面遷移の後現れるコンテンツ設定*/
 
-/* #container{
+#container{
 	opacity: 0;
-} */
+}
 
 /*bodyにappearクラスがついたら出現*/
 body.appear #container{
