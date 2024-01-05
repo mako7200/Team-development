@@ -34,7 +34,7 @@
 
                 <div class="box2">
                     <label for="content" style="display: none">内容:</label>
-                    <textarea id="content" name="content" required class="text-content"></textarea>
+                    <textarea id="content" name="content" required class="text-content" placeholder="内容"></textarea>
                     
                     {{-- ここに反映する画像挿入 --}}
                     <div class="create-image">

@@ -76,7 +76,9 @@ h1{
 .text-content{
     width: 33vw;
     height: 30vh;
-    font-size: 20px;
+    font-size: 25px;
+    padding: 10px;
+    overflow-y: auto;
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -136,6 +138,7 @@ h1{
     background-color:mintcream;
     cursor: pointer;
 }
+
 
 .button{
     display: flex;

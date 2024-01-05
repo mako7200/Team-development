@@ -71,6 +71,10 @@ label{
     font-size: 15px;
 }
 
+.form-check{
+    margin: 0 auto 0 0;
+}
+
 
 .form-control{
     border: none;
@@ -130,6 +134,7 @@ i{
 .submit-box{
     display: flex;
     justify-content: end;
+    margin-top: 50px;
 }
 
 /* ゆうやのCSS */
