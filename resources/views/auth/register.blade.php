@@ -125,10 +125,13 @@
                                             </div>
 
                                             {{-- パスワード --}}
-                                            <div class="row mb-3">
+                                            <div >
                                                 <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password (パスワード)※') }}</label>
                                                 <div class="col-md-6">
                                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                                    
+                                                </div>
+                                                <div>
                                                     @error('password')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -141,15 +144,19 @@
 
                                         {{-- ここに画像選択後に反映されるimage--}}
                                         <div>
-                                        <img id="avatarPreview" src="#" alt="Avatar Preview" style="max-width: 100%; display: none;" class="myimage">
-                                        @error('avatar')
+                                        <div>
+                                            <img id="avatarPreview" src="#" alt="Avatar Preview" style="max-width: 100%; display: none;" class="myimage">
+                                        </div>
+                                        <div>
+                                            @error('avatar')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                         </div>
+                                        </div>
 
-
+                                        
                                     </div>
 
                                     <div class="second-block">
