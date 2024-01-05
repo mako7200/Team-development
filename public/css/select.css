@@ -198,3 +198,13 @@ a {
     color: inherit;
     text-decoration: none;
   } */
+
+  @media screen and (max-width: 1060px) {
+    .select-page {
+        margin-left: 190px;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+}
