@@ -73,6 +73,7 @@ h1{
 
 .avatar{
     border-radius: 80%;
+    object-fit: cover;
     width: 240px; 
     height: 250px;
     cursor: pointer;
