@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var zoomedImage = document.getElementById('zoomed-image');
 
     zoomImage.addEventListener('click', function () {
+        
         zoomedImage.src = zoomImage.src;
         zoomOverlay.style.display = 'flex';
          // アニメーションを一度再生するために一時的にクラスを削除して再追加
@@ -28,15 +29,16 @@ document.addEventListener('DOMContentLoaded', function () {
             zoomedImage.src = zoomImage.src;
             zoomOverlay.style.display = 'flex';
             zoomOverlay.classList.add('zoomed');
-    });
+        });
 
-    zoomOverlay.addEventListener('click', function () {
-        // zoomOverlay.style.display = 'none';
-        zoomOverlay.classList.remove('zoomed');
-        setTimeout(function () {
-            zoomOverlay.style.display = 'none';
-        }, 300); // アニメーションが終わるまでの時間 (0.3秒)
-    });
-});
+        zoomOverlay.addEventListener('click', function () {
+            // zoomOverlay.style.display = 'none';
+            zoomOverlay.classList.remove('zoomed');
+            setTimeout(function () {
+                zoomOverlay.style.display = 'none';
+                zoomOverlay.style.opacity = '1';
+            }, 300); // アニメーションが終わるまでの時間 (0.3秒)
+        });
 
+    });
 });

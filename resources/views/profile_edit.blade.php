@@ -14,7 +14,7 @@
 </head>
 <body>
     <header>
-        <h1>アプリ名</h1>
+        <h1>Swallow</h1>
     </header>
     <main>
         <div>
